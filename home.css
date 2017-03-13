@@ -1,0 +1,74 @@
+
+/*CONTINGUT PRINCIPAL*/
+#content{
+    width: 80%;
+    left: 0;
+    text-align: center;
+}
+#ttaula{
+    text-align: center;
+    width: 30%;
+    height: 30%;
+    font-size: 25px;
+    color:white;
+    display: inline-block;
+}
+#head{
+    width: 100%;
+    height: 30%;
+}
+.mdiv{
+    width: 100%;
+    height: 40% 
+}
+.taula{
+    color:white;
+    text-align: center;
+    width: 49%;
+    height: 70%;
+    display: inline-block;
+    margin-top: 1%;
+}
+.mdiv2{
+    width: 100%;
+    height: 60% 
+}
+
+.blog{
+    color:black;
+    text-align: center;
+    width: 100%;
+    height: 90% 
+}
+
+#esquerralogo{
+    color: white;
+    width: 150px;
+    height: 100%;
+}
+
+.table{
+    background-color:none;
+    border-color: black;
+    border-style: solid;
+    border-collapse: collapse;
+    display: inline-block;
+    margin-top: 1%;
+}
+
+td{
+    border-color: black;
+    border-style: solid;
+    width: 120px;
+
+}
+.publi{
+    margin-top: 3%;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+}
+.publi>img{
+    width: 100%;
+    height: 100%;
+}

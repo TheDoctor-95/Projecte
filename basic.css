@@ -1,0 +1,230 @@
+@font-face {
+    font-family: comercial;
+    src: url("commersial_script.ttf");
+}
+/*GENERAL*/
+
+body,html{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    
+}
+body{
+    background-image: url("fondo.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+section,div, span, header, article, aside, nav, ul, li,footer,p{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+/*HEADER*/
+body>header{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 175px;
+    background-color: rgba(20,20,20, 0.8);
+    
+}
+
+/*ESQUERRA HEADER*/
+#esquerra{
+    color: white;
+    width: 150px;
+    height: 100%;
+   
+}
+
+#esquerra img{
+    height: 100%;
+}
+
+/*IDIOMES*/
+
+#idioma_sel .idiomes{
+    text-align: left;
+    top:0;
+    z-index: 2;
+    display: none;
+    background-color: #009999;
+    border-radius: 0 0 12px 12px;
+}
+.idiomes p{
+    margin: 10px;
+    padding: 0;
+    height: 20px;
+    width: 85%;
+}
+.idiomes p:hover{
+    background-color: rgba(0,255,255,0.6);
+}
+.idiomes img{
+    height: 100%;
+    width: 30px;
+}
+#idioma_sel:hover{
+    border-radius: 12px 12px 0 0;
+}
+#idioma_sel:hover .idiomes{
+    display: block;
+}
+#idioma_sel>div:nth-child(1){
+    height: 50%;
+    width: 100%;
+}
+#idioma_sel>div>img{
+    display: inline-block;
+    height: 100%;
+    transition: transform 0.5s;
+}
+#idioma_sel:hover>div>img{
+    transform: rotate(90deg);
+}
+
+/*CENTRE HEADER*/
+#mig{
+    margin-left: 10px;
+    width: 80%;
+    height: 100%;
+    vertical-align: top;
+    text-align: center;
+}
+#mig>div{
+    color: beige;
+    font-size: 550%;
+    /*background-image: url("Cover.jpg");*/
+    display: block;
+    margin: auto;
+    width: 95%;
+    height: 60%;
+}
+#mig>nav{
+    width: 95%;
+    height: 40%;
+}
+#mig>div>img{
+    height: 100%;
+    bottom:0;
+    
+}
+.opcio{
+    width: 20%;
+    background-color: #009999;
+    color: white;
+    border-radius: 12px;
+    padding: 5px;
+    border-color: brown;
+    border-style: solid;
+    border-width: 2px;
+}
+.opcio:hover{
+    text-decoration: underline overline;
+}
+ /*DRETA HEADER*/
+#dreta{
+    
+    vertical-align: top;
+    position: absolute;
+    right: 0;
+    top:0;
+    color: black;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+
+#dreta>div:nth-child(1){
+    background-color: transparent;
+}
+#dreta>div{
+    background-color: #009999;
+    border-radius: 12px;
+    display: block;
+    height: 15%;
+    padding-top: 5%;
+    top: 10px;
+    margin: 10px auto;
+    width: 80%;
+}
+ 
+#dreta>div img{
+    height: 125%;
+    display: inline-block;
+}
+#dreta>div input{
+    position: absolute;
+    left: 12px;
+    width: 85%;
+    height: 100%;
+    top:0;
+    background-color: transparent;
+    border-width: 0;
+    
+}
+/*LINKS*/
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+#main{
+    width: 100%;
+}
+
+/*BANERS*/
+.banner{
+    background-color: darkcyan;
+    width: 10%;
+    height: 700px;
+}
+
+.banner img{
+    width: 100%;
+    height: 100%;
+}
+.right{
+    position: relative;
+    right:0;
+}
+
+.left{
+    position: relative;
+    left:0;
+}
+/*FOOTER*/
+
+footer{
+    width: 100%;
+    background-color: blue;
+    text-align: center;
+    vertical-align: top;
+    height: 4%;
+    bottom: 0;
+    padding: 5px;
+    font-size: 25px;
+}
+footer>img{
+    height: 100%;
+}
+
+footer a{
+    color: white;
+}
+footer span{
+    color: white;
+    font-family: comercial;
+}
+
+/*CONTINGUT PRINCIPAL*/
+#content{
+    width: 80%;
+    left: 0;
+    text-align: center;
+}

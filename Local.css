@@ -1,0 +1,103 @@
+
+/*CONTENT*/
+#content>header{
+    width: 80%;
+    margin: 10px 0;
+    height: 50px;
+    text-align: right;
+    padding: 2px;
+    z-index: 20;
+}
+#content>header>div{
+    margin-right: 50px;
+    background-color: #009999;
+    padding: 2px;
+    border-color: darkred;
+    border-style: solid;
+    border-width: 2px;
+    text-align: center;
+  
+}
+#desplegable{
+    position: absolute;
+    top:0;
+    left: 0;
+    text-align: left;
+    background-color: #009999;
+    border-color: darkred;
+    border-style: solid;
+    border-width: 2px;
+    display: none;
+}
+#content>header>div:hover{
+    border-width: 0px;
+}
+#content>header>div:hover #desplegable{
+    display: block;
+}
+/*TAULA*/
+#table{
+  width: auto;
+  margin-top: 10px;
+  background-color: rgba(0,100,250,0.8);
+  display: inline-block;
+}
+
+table{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-collapse: collapse;
+}
+
+td{
+ border-style: solid;
+    border-color: black;
+    border-width: 2px;   
+}
+ 
+#toptable>td{
+    background-color: black;
+    color: white;
+
+}
+tr:hover{
+    background-color: rgba(250,250,250,0.8);
+}
+tr>td:nth-child(1){
+    width: 150px;
+}
+tr>td:nth-child(2){
+    width: 150px;
+}
+tr>td:nth-child(3){
+    width: 150px;
+}
+tr>td:nth-child(3) p{
+    display: block;
+}
+tr>td:nth-child(3)>div{
+    display: none;
+    background-color: rgba(250,250,250,0.8);
+    width: 150px;
+    text-align: center;
+
+}
+tr>td:nth-child(3):hover>div{
+    position: absolute;
+    display: block;
+}
+tr>td:nth-child(4){
+    width: auto;
+    cursor: pointer;
+}
+tr>td:nth-child(4){
+    width: 10px;
+    cursor: pointer;
+}
+tr>td:nth-child(5):hover{
+    color:red;
+}
+
+
+
