@@ -33,4 +33,33 @@ function selectApuntats($id_concert){
     return $resultado;
 }
 
-/*clara*/
+/*fan */
+
+function ProximsConcerts() {
+    //Conectamos con la bbdd
+    $con = conectar("webmusica");
+    //Definimos la consulta
+    $query ="select nom,data_concert from concerts order by data_concert desc";
+    //Ejecutamos la consulta, recogiendo el resultado
+    $resultado =mysqli_query($con,$query);
+    //desconectamos de la bbdd
+    desconectar ($con);
+    //devolvemos el resultado de la consulta
+    return $resultado;
+    
+}
+
+function VotarMusicConcert() {
+    //Conectamos con la bbdd
+    $con = conectar("webmusica");
+    //Definimos la consulta
+    $query ="select nom_usuari, datahora from votarmusicconcert";
+    //Ejecutamos la consulta, recogiendo el resultado
+    $resultado =mysqli_query($con,$query);
+    //desconectamos de la bbdd
+    desconectar ($con);
+    //devolvemos el resultado de la consulta
+    return $resultado;
+    
+}
+
