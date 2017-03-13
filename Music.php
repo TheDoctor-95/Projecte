@@ -53,7 +53,7 @@
                             </tr>
                                     <?php
                                     require_once 'bbddmusic.php';
-                                    $musica = selectConcertsConfirm("bbb");
+                                    $musica = selectConcertsConfirm("music1");
                                     
                                     while ($fila = mysqli_fetch_array($musica)) {
                                         extract($fila);
@@ -81,7 +81,7 @@
                                         <td>Modificar</td>
                                     </tr>
                                     <?php
-                                    $musica = selectConcertsUnconfirm("aaa");
+                                    $musica = selectConcertsUnconfirm("music1");
                                     
                                     while ($fila = mysqli_fetch_array($musica)) {
                                         extract($fila);
