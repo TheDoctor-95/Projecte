@@ -32,3 +32,5 @@ function selectApuntats($id_concert){
     desconectar($con);
     return $resultado;
 }
+
+/*clara*/
