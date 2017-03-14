@@ -73,7 +73,7 @@
                             <td>x</td>
                         </tr>
                         <?php
-                        $concerts = selectConcertsLocal("Razz");
+                        $concerts = selectConcertsLocal("local1");
                         while ($concert = mysqli_fetch_array($concerts)) {
                             extract($concert);
                             echo"<tr >
@@ -85,10 +85,10 @@
                             echo "$apun Musics Apuntas id: $id_concert";
                             if ($apun != 0) {
                                 echo "<div>";
-//                                while ($nomapuntats = mysqli_fetch_array(selectApuntats($id_concert))) {
-//                                    extract($nomapuntats);
-//                                    echo "<p>$nom_grup</p>";
-//                                }
+                                while ($nomapuntats = mysqli_fetch_array(selectApuntats($id_concert))) {
+                                    extract($nomapuntats);
+                                    echo "<p>$nom_grup</p>";
+                                }
                                 echo "</div>";
                             }
                             echo "</td><td>Modificar</td>
