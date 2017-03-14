@@ -17,7 +17,7 @@ body{
     background-attachment: fixed;
 }
 
-section,div, span, header, article, aside, nav, ul, li,footer,p{
+section,div, span, header, article, aside, nav, ul, li,footer{
     position: relative;
     display: inline-block;
     vertical-align: top;
