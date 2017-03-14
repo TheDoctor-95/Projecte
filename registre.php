@@ -68,7 +68,7 @@ and open the template in the editor.
                         <div class=" bloc_preguntes">                          
                             <div class="preguntes">                                                                  
                                 <div class="fan">
-                                    <form action="" method="POST" >
+                                    <form id ="formfan" action="" method="POST" >
                                         <div>
                                             <p><input type="hidden" value="fan" name="type" /></p>
                                             <p>Nom: </p><p> <input type="text"  name="fname" /> </p>
@@ -96,13 +96,13 @@ and open the template in the editor.
                                                 <br<input type="checkbox" name="generes" value="electro">Electrònica
                                             </p>
                                         </div>
-                                        <div><input type="submit" value="Registrate" name="fan" /></div>
+                                        <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
                                     </form>
                                 </div>
 
 
                                 <div class ="local" >
-                                    <form action="" method="POST" >
+                                    <form id ="formlocal" action="" method="POST" >
                                         <div>
                                             <p><input type="hidden" value="local" name="type" /></p>
                                             <p>Nick o nom d'usuari*:</p><p> <input type="text"  name="usu" required /> </p>
@@ -115,7 +115,7 @@ and open the template in the editor.
                                         </div>
                                         <div>
                                             <p>Direcció*: </p><p><input type="text" name="direccio" /></p>                             
-                                            <p>Telèfon*: </p><p> <input type="number" name="tel"></p>
+                                            <p>Telèfon*: </p><p> <input type="tel" name="tel"></p>
                                             <p>Gènere que es toca al local*:   
                                                 <br />
                                                 <input type="checkbox" name="generes" value="pop">Pop 
@@ -131,39 +131,33 @@ and open the template in the editor.
                                             </p>
                                             <p>Aforo: </p><p> <input type="number" name="aforo"></p>
                                         </div>
-                                        <input type="submit" value="Registrate" name="local" />
+                                        <div><input type="submit" value="Registrate" name="local" /></div>
                                     </form>
                                 </div>
 
                                 <div class="music">
-                                    <form action="" method="POST" >
+                                    <form id ="formmusic" action="" method="POST" >
                                         <div><p><input type="hidden" value="music" name="type" /></p>
-                                            <p>Nick o nom d'usuari*:</p><p><input type="text"  name="usu" required> </p>
-                                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" > </p>
-                                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" ><p>
-                                            <p>Email*: </p><p><input type="email"  name="email" required> </p>    
-                                            <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup">    </p>
-                                            <p>Imatge:</p>
+                                            <p>Nick o nom d'usuari*:</p><p><input type="text"  name="usu" required> <label> </label></p>
+                                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" required><label></label> </p>
+                                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required><label></label><p>
+                                            <p>Email*: </p><p><input type="email"  name="email" required><label></label> </p>    
+                                            <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup"> <label></label>   </p>
+                                            
                                         </div>
                                         <div>
-                                            <p>Web*: </p><p><input type="url"  name="web"></p>
-                                            <p>Discogràfica*: </p><p><input type="text"  name="discografica"></p>
-                                            <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"></p>
-                                            <p>Gènere del grup*:
-                                                <br />
-                                                <input type="checkbox" name="generes" value="pop">Pop 
-                                                <br />
-                                                <input type="checkbox" name="generes" value="rock">Rock 
-                                                <br />
-                                                <input type="checkbox" name="generes" value="jazz">Jazz  
-                                                <br />
-                                                <input type="checkbox" name="generes" value="classica">Clàssica
-                                                <br />
-                                                <input type="checkbox" name="generes" value="indie">Indie
-                                                <br<input type="checkbox" name="generes" value="electro">Electrònica
+                                            <p>Imatge:</p>
+                                            <p>insertar aqui imagen<label></label></p>
+                                            <p>Web*: </p><p><input type="url"  name="web"><label></label></p>
+                                            <p>Discogràfica*: </p><p><input type="text"  name="discografica"><label></label></p>
+                                            <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"><label></label></p>
+                                            <p>Gènere del grup*:</p>
+                                            <p><select name="genere">
+                                            
+                                            </select><label></label>
                                             </p>
                                         </div>
-                                        <input type="submit" value="Registrate" name="music" />
+                                        <div><input type="submit" value="Registrate" name="music" /></div>
                                     </form>
                                 </div>
                             </div>

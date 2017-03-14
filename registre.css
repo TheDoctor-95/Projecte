@@ -29,13 +29,28 @@
     display: inline-block;
 
 }
-.preguntes>div>div{
 
-    display: inline-block;
+.preguntes>div>form{
+    text-align: center;
+}
+.preguntes>div>form>div{
+   display: inline-block;
     width: 40%;
     margin: 20px;
     text-align: center;
 
+}
+label{
+    display: block;
+}
+input{
+    border-width: 2px;
+    border-style: solid;
+    border-color: brown;
+    border-radius: 20px;
+    background-color: #009999;
+    text-align: center;
+    color: white;
 }
 
 .preguntes{

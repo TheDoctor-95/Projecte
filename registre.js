@@ -11,4 +11,7 @@ function show(){
     $(this).css({"text-decoration": "underline overline"});
     $(".preguntes>div").fadeOut();
     $("."+div).fadeIn();
+    $("#formfan").validate();
+    $("#formlocal").validate();
+    $("#formmusic").validate();
 }
