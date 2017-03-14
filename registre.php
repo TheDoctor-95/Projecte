@@ -61,13 +61,14 @@ and open the template in the editor.
                 </div>
                 <div id="formulari">
 
-                    <form action="" method="POST">
 
-                        <div id="blocs">
 
-                            <div class=" bloc_preguntes">                          
-                                <div class="preguntes">                                                                  
-                                    <div class="fan">
+                    <div id="blocs">
+
+                        <div class=" bloc_preguntes">                          
+                            <div class="preguntes">                                                                  
+                                <div class="fan">
+                                    <form action="" method="POST" >
                                         <div>
                                             <p><input type="hidden" value="fan" name="type" /></p>
                                             <p>Nom: </p><p> <input type="text"  name="fname" /> </p>
@@ -95,10 +96,13 @@ and open the template in the editor.
                                                 <br<input type="checkbox" name="generes" value="electro">Electrònica
                                             </p>
                                         </div>
-                                        <div><input type="submit" value="Registrate"/></div>
-                                    </div>
+                                        <div><input type="submit" value="Registrate" name="fan" /></div>
+                                    </form>
+                                </div>
 
-                                    <div class ="local" >
+
+                                <div class ="local" >
+                                    <form action="" method="POST" >
                                         <div>
                                             <p><input type="hidden" value="local" name="type" /></p>
                                             <p>Nick o nom d'usuari*:</p><p> <input type="text"  name="usu" required /> </p>
@@ -127,10 +131,12 @@ and open the template in the editor.
                                             </p>
                                             <p>Aforo: </p><p> <input type="number" name="aforo"></p>
                                         </div>
-                                        <input type="submit" value="Registrate"/>
-                                    </div>
+                                        <input type="submit" value="Registrate" name="local" />
+                                    </form>
+                                </div>
 
-                                    <div class="music">
+                                <div class="music">
+                                    <form action="" method="POST" >
                                         <div><p><input type="hidden" value="music" name="type" /></p>
                                             <p>Nick o nom d'usuari*:</p><p><input type="text"  name="usu" required> </p>
                                             <p>Contrasenya*:</p><p><input type="password" name="fpasswd" > </p>
@@ -157,11 +163,12 @@ and open the template in the editor.
                                                 <br<input type="checkbox" name="generes" value="electro">Electrònica
                                             </p>
                                         </div>
-                                        <input type="submit" value="Registrate"/>
-                                    </div>
+                                        <input type="submit" value="Registrate" name="music" />
+                                    </form>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                 </div>       
 
