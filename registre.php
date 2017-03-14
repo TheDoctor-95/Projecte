@@ -11,6 +11,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="registre.css" rel="stylesheet" type="text/css"/>
         <link href="basic.css" rel="stylesheet" type="text/css" />
+        <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="jquery.validate.js" type="text/javascript"></script>
+        <script src="registre.js" type="text/javascript"></script>
 
     </head>
     <body>
@@ -19,18 +22,18 @@ and open the template in the editor.
             <div id="mig">
                 <div><img src="lletra.png" /></div>
                 <nav>
-                    
+
                     <div class="opcio">Qui sóm</div>
                     <div class="opcio">Concerts</div>
                     <div class="opcio">Notícies</div>
                     <div class="opcio">Botiga</div>
-                
+
                 </nav>
 
             </div>
-                    
-            
-             <div id="dreta">
+
+
+            <div id="dreta">
                 <div> <a href="https://www.facebook.com/"><img src="facebook.png" alt="facebook"/></a><a href="https://www.twitter.com/"><img src="twitter.png" alt="twiter" /></a><a href="https://plus.google.com/"><img src="Google.png" alt="google+" /></a></div>
                 <div id="idioma_sel">
                     <div>IDIOMA <img src="flechaNegra.png"></div>
@@ -59,196 +62,106 @@ and open the template in the editor.
                 </div>
 
                 <div id="formulari">
-                    
-                    <form action="formulario02.php" autocomplete="on" method="get">
+
+                    <form action="" method="POST">
 
                         <div id="blocs">
                             <div class=" bloc_preguntes">                           
                                 <div class="preguntes">                                                                  
 
-                                    <br />
-                                    <br />
-                                    Escull una opció: <select name="registre" required>
-                                        <option value="1">Fan</option>
-                                        <option value="2">Músic</option>
-                                        <option value="3">Local</option>              
-                                    </select>
-                                    
+                                    <div class="fan">
+                                        <p><input type="hiden" value="fan" name="type" />FAN  </p>
+                                        <p>Nom: <input type="text"  name="fname" /> </p>
+                                        <p>Cognoms:<input type="text"  name="fsurname" /> </p>
+                                        <p>Nick o nom d'usuari*: <input type="text"  name="usu" required /> </p>
+                                        <p>Contrasenya*:<input type="password" name="fpasswd" /> </p>
+                                        <p>Repeteix la contrasenya*:<input type="password" name="fpasswd2" /></p>
+                                        <p>Email*: <input type="email"  name="email" required /></p>    
+                                        <p> IMG: </p>
 
-                                    <!-- FAN  
-                                    <br />
-                                    <br />                                                                       
-                                    Nom: <input type="text"  name="fname"> 
-                                    <br />
-                                    <br />
-                                    Cognoms:<input type="text"  name="fsurname"> 
-                                    <br />
-                                    <br />
-                                    Nick o nom d'usuari*: <input type="text"  name="usu" required> 
-                                    <br />
-                                    <br />
-                                    Contrasenya*:<input type="password" name="fpasswd" >
-                                    <br />
-                                    <br />
-                                    Repeteix la contrasenya*:<input type="password" name="fpasswd2" >
-                                    <br />
-                                    <br />
-                                    Email*: <input type="email"  name="email" required>    
-                                       <br />
-                                    <br />
-                                    Imatge:
-                                    -->
+                                    </div>
 
-                                    <!-- LOCAL 
-                                    <br />
-                                    <br />                                                                    
-                                    Nick o nom d'usuari*: <input type="text"  name="usu" required> 
-                                    <br />
-                                    <br />
-                                    Contrasenya*:<input type="password" name="fpasswd" required>
-                                    <br />
-                                    <br />
-                                    Repeteix la contrasenya*:<input type="password" name="fpasswd2" required>
-                                    <br />
-                                    <br />
-                                    Email*: <input type="email" placeholder="Email" name="email" required> 
-                                    <br />
-                                    <br />
-                                    Nom del local*:  <input type="text"  name="nomlocal" required>                                                                         
-                                    <br />
-                                    <br />
-                                    Ciutat*:  <input type="text" name="ciutat" required>                                  
-                                       <br />
-                                    <br />
-                                    Imatge:
-                                    --> 
+                                    <div class ="local" >
+                                        <p><input type="hiden" value="local" name="type" />LOCAL </p>
+                                        <p>Nick o nom d'usuari*: <input type="text"  name="usu" required /> </p>
+                                        <p>Contrasenya*:<input type="password" name="fpasswd" /> </p>
+                                        <p>Repeteix la contrasenya*:<input type="password" name="fpasswd2" /></p>
+                                        <p>Email*: <input type="email"  name="email" required /> </p>
+                                        <p>Nom del local*:  <input type="text"  name="nomlocal" required /></p>
+                                        <p>Ciutat*:  <input type="text" name="ciutat" required /></p> 
+                                        <p> IMG: </p>
+                                    </div>
 
-
-                                    <!-- MÚSIC -->
-                                    <br />
-                                    <br />
-                                    Nick o nom d'usuari*: <input type="text"  name="usu" required> 
-                                    <br />
-                                    <br />
-                                    Contrasenya*:<input type="password" name="fpasswd" >
-                                    <br />
-                                    <br />
-                                    Repeteix la contrasenya*:<input type="password" name="fpasswd2" >
-                                    <br />
-                                    <br />
-                                    Email*: <input type="email"  name="email" required> 
-                                    <br />
-                                    <br />
-                                    Nom del grup/cantant*: <input type="text"  name="nomgrup">    
-                                    <br />
-                                    <br />
-                                    Imatge:
-
-
-
-
-
-
-
-                                    </form>
+                                    <div class="music">
+                                        <p><input type="hiden" value="music" name="type" />MUSIC </p>
+                                        <p>Nick o nom d'usuari*: <input type="text"  name="usu" required> </p>
+                                        <p>Contrasenya*:<input type="password" name="fpasswd" > </p>
+                                        <p>Repeteix la contrasenya*:<input type="password" name="fpasswd2" ><p>
+                                        <p>Email*: <input type="email"  name="email" required> </p>    
+                                        <p>Nom del grup/cantant*: <input type="text"  name="nomgrup">    </p>
+                                        <p>Imatge:</p>
+                                    </div>
                                 </div>
-
                             </div>
-
                             <div class=" bloc_preguntes">
-
                                 <div class="preguntes">
-                                    <br />
-                                    <br />
+                                    <div class="fan">
+                                        <p>Telèfon: <input type="text" name="tel"></p>
+                                        <p>Direcció: <input type="number" name="postal"></p>                              
+                                        <p>Generes de música preferits:
+                                            <br />
+                                            <input type="checkbox" name="generes" value="pop">Pop 
+                                            <br />
+                                            <input type="checkbox" name="generes" value="rock">Rock 
+                                            <br />
+                                            <input type="checkbox" name="generes" value="jazz">Jazz  
+                                            <br />
+                                            <input type="checkbox" name="generes" value="classica">Clàssica
+                                            <br />
+                                            <input type="checkbox" name="generes" value="indie">Indie
+                                            <br<input type="checkbox" name="generes" value="electro">Electrònica
+                                        </p> />
 
-                                    <!-- FAN 
-                                    Telèfon: <input type="text" name="tel">                                                            
-                                    <br />
-                                    <br />
-                                    Direcció: <input type="number" name="postal">                                    
-                                    <br />
-                                    <br />
+                                    </div>
+                                    <div class="local">
 
-                                    Generes de música preferits*:  
-                                        <br />
-                                        <input type="checkbox" name="generes" value="pop">Pop 
-                                        <br />
-                                        <input type="checkbox" name="generes" value="rock">Rock 
-                                        <br />
-                                        <input type="checkbox" name="generes" value="jazz">Jazz  
-                                        <br />
-                                        <input type="checkbox" name="generes" value="classica">Clàssica
-                                        <br />
-                                        <input type="checkbox" name="generes" value="indie">Indie
-                                        <br />
-                                        <input type="checkbox" name="generes" value="electro">Electrònica
-                                        <br />
-                                        Altres <input type="text" name="altres" > 
-                                    
-                                    
-
-                                    -->    
-
-
-                                    <!-- LOCAL 
-                                                                       
-                                    Direcció*: <input type="text" name="direccio">                                      
-                                    <br />
-                                    <br />
-                                    Telèfon*:  <input type="number" name="tel">                                                                    
-                                    <br />
-                                    <br />
-                                    Gènere que es toca al local*:   
-                                        <br />
-                                        <input type="checkbox" name="generes" value="pop">Pop 
-                                        <br />
-                                        <input type="checkbox" name="generes" value="rock">Rock 
-                                        <br />
-                                        <input type="checkbox" name="generes" value="jazz">Jazz  
-                                        <br />
-                                        <input type="checkbox" name="generes" value="classica">Clàssica
-                                        <br />
-                                        <input type="checkbox" name="generes" value="indie">Indie
-                                        <br />
-                                        <input type="checkbox" name="generes" value="electro">Electrònica
-                                        <br />
-                                        Altres <input type="text" name="altres" > 
-
-                                    <br />
-                                    <br />
-                                    Aforo:  <input type="number" name="aforo">                                                                      
-                                    <br />
-                                    <br />
-                                    -->
+                                        <p>Direcció*: <input type="text" name="direccio"></p>                             
+                                        <p>Telèfon*:  <input type="number" name="tel"></p>
+                                        <p>Gènere que es toca al local*:   
+                                            <br />
+                                            <input type="checkbox" name="generes" value="pop">Pop 
+                                            <br />
+                                            <input type="checkbox" name="generes" value="rock">Rock 
+                                            <br />
+                                            <input type="checkbox" name="generes" value="jazz">Jazz  
+                                            <br />
+                                            <input type="checkbox" name="generes" value="classica">Clàssica
+                                            <br />
+                                            <input type="checkbox" name="generes" value="indie">Indie
+                                            <br<input type="checkbox" name="generes" value="electro">Electrònica
+                                        </p>
+                                        <p>Aforo:  <input type="number" name="aforo"></p>
+                                    </div>
 
 
-                                    <!-- MÚSIC -->
-                                    Web*: <input type="url"  name="web">
-                                    <br />
-                                    <br />
-                                    Discogràfica*: <input type="text"  name="discografica">
-                                    <br />
-                                    <br />                                  
-                                    Numero de membres del grup*: <input type="number"  name="nummembres">
-                                    <br />
-                                    <br />
-
-                                    Gènere del grup*:
-                                    <br />
-                                    <input type="checkbox" name="generes" value="pop">Pop 
-                                    <br />
-                                    <input type="checkbox" name="generes" value="rock">Rock 
-                                    <br />
-                                    <input type="checkbox" name="generes" value="jazz">Jazz  
-                                    <br />
-                                    <input type="checkbox" name="generes" value="classica">Clàssica
-                                    <br />
-                                    <input type="checkbox" name="generes" value="indie">Indie
-                                    <br />
-                                    <input type="checkbox" name="generes" value="electro">Electrònica
-                                    <br />
-                                    Altres <input type="text" name="altres" > 
-
+                                    <div class="music">
+                                        <p>Web*: <input type="url"  name="web"></p>
+                                        <p>Discogràfica*: <input type="text"  name="discografica"></p>
+                                        <p>Numero de membres del grup*: <input type="number"  name="nummembres"></p>
+                                        <p>Gènere del grup*:
+                                            <br />
+                                            <input type="checkbox" name="generes" value="pop">Pop 
+                                            <br />
+                                            <input type="checkbox" name="generes" value="rock">Rock 
+                                            <br />
+                                            <input type="checkbox" name="generes" value="jazz">Jazz  
+                                            <br />
+                                            <input type="checkbox" name="generes" value="classica">Clàssica
+                                            <br />
+                                            <input type="checkbox" name="generes" value="indie">Indie
+                                            <br<input type="checkbox" name="generes" value="electro">Electrònica
+                                        </p>
+                                    </div>
 
 
 
