@@ -85,10 +85,10 @@
                             echo "$apun Musics Apuntas id: $id_concert";
                             if ($apun != 0) {
                                 echo "<div>";
-                                while ($nomapuntats = mysqli_fetch_array(selectApuntats($id_concert))) {
-                                    extract($nomapuntats);
-                                    echo "<p>$nom_grup</p>";
-                                }
+//                               while ($nom_apuntats = mysqli_fetch_array(selectApuntats($id_concert))){
+//                                   extract($nom_apuntats);
+//                                   echo "<p>$nom_grup</p>";
+//                               }
                                 echo "</div>";
                             }
                             echo "</td><td>Modificar</td>
