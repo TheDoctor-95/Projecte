@@ -52,21 +52,9 @@
                                 <th>Local</th>
                                 <th>Data</th>
                             </tr>
-                            <tr>
-                                <td>Concert1</td>
-                                <td>Local1</td>
-                                <td>Data1</td>
-                            </tr>
-                            <tr>
-                                <td>Concert2</td>
-                                <td>Local2</td>
-                                <td>Data2</td>
-                            </tr>
-                            <tr>
-                                <td>Concert3</td>
-                                <td>Local3</td>
-                                <td>Data3</td>
-                            </tr>
+                            <?php
+                                
+                            ?>
                         </table>
                     </div>
                     <div class="taula">

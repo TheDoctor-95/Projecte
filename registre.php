@@ -81,7 +81,7 @@ and open the template in the editor.
                                         </div>
                                         <div>
                                             <p>Telèfon:</p><p> <input type="text" name="tel"></p>
-                                            <p>Direcció:</p><p> <input type="number" name="postal"></p>                              
+                                            <p>Direcció:</p><p> <input type="text" name="postal"></p>                              
                                             <p>Generes de música preferits:
                                                 <br />
                                                 <input type="checkbox" name="generes" value="pop">Pop 
@@ -93,7 +93,8 @@ and open the template in the editor.
                                                 <input type="checkbox" name="generes" value="classica">Clàssica
                                                 <br />
                                                 <input type="checkbox" name="generes" value="indie">Indie
-                                                <br<input type="checkbox" name="generes" value="electro">Electrònica
+                                                <br/>
+                                                <input type="checkbox" name="generes" value="electro">Electrònica
                                             </p>
                                         </div>
                                         <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
