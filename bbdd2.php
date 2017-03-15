@@ -29,7 +29,7 @@ function contaApuntats($id_concert){
 
 function selectApuntats($id_concert){
     $con = conectar("webmusica");
-    $query = "select nom_grup from usuaris where nom_usuari in (select nom_usuari from apuntar where id_concert='$id_concert')";
+    $query = "select nom_usuari from usuaris where nom_usuari in (select nom_usuari from apuntar where id_concert='$id_concert')";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;

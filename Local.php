@@ -87,7 +87,7 @@
                                 echo "<div>";
 //                               while ($nom_apuntats = mysqli_fetch_array(selectApuntats($id_concert))){
 //                                   extract($nom_apuntats);
-//                                   echo "<p>$nom_grup</p>";
+//                                   echo "<p>$nom_usuari</p>";
 //                               }
                                 echo "</div>";
                             }
