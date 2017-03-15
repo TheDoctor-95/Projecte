@@ -8,7 +8,7 @@
 
 #titol, #botons {
     display: block;
-    
+
 }
 #botons>button{
     width: 20%;
@@ -34,7 +34,7 @@
     text-align: center;
 }
 .preguntes>div>form>div{
-   display: inline-block;
+    display: inline-block;
     width: 40%;
     margin: 20px;
     text-align: center;
@@ -65,5 +65,9 @@ input{
 }
 
 p{
+    display: block;
+}
+
+.submit{
     display: block;
 }
