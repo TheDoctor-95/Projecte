@@ -70,7 +70,7 @@ function VotarMusicConcert() {
 
 function selectConcertsHome(){
     $con = conectar("webmusica");
-    $query = "select concerts.nom, usuaris.nom_local, concerts.data_concert from concerts inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari order by concerts.data_concert desc limit 3";
+    $query = "select concerts.nom, usuaris.nom_local, concerts.data_concert from concerts inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari order by concerts.data_concert desc limit 5";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;
@@ -78,7 +78,7 @@ function selectConcertsHome(){
 
 function selectMusicsHome(){
     $con = conectar("webmusica");
-    $query = "select concerts.nom, usuaris.nom_local, concerts.data_concert from concerts inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari order by concerts.data_concert desc limit 3";
+    $query = "select usuaris.nom_grup, estils.nom, (select count(*) from votarmusic where votacio=1)-(select count(*) from votarmusic where votacio=0) as nota from usuaris inner join estils on usuaris.id_estil=estils.id_estil inner join votarmusic on usuaris.nom_usuari=votarmusic.nom_music group by votarmusic.nom_music order by nota limit 5";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;

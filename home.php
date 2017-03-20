@@ -81,13 +81,13 @@
                                 <th>Nota</th>
                             </tr>
                            <?php
-                        $concerts = selectMusicsHome();
-                        while ($concert = mysqli_fetch_array($concerts)) {
-                            extract($concert);
+                        $grups = selectMusicsHome();
+                        while ($grup = mysqli_fetch_array($grups)) {
+                            extract($grup);
                             echo"<tr >
+                                    <td>$nom_grup</td>
                                     <td>$nom</td>
-                                    <td>$nom_local</td>
-                                    <td>$data_concert</td>
+                                    <td>$nota</td>
                                     <tr>";
                                                     }
                         ?>

@@ -65,7 +65,7 @@ and open the template in the editor.
 <!--id="toptable"-->
                     <div id="taulaconcerts">       
                         <?php
-                              require_once 'bbdd.php';
+                              require_once 'bbdd2.php';
                               $matriz = ProximsConcerts();
                        echo" <table>
                             PROXIMS CONCERTS
