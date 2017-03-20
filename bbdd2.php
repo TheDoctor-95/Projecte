@@ -65,3 +65,22 @@ function VotarMusicConcert() {
     
 }
 
+
+//Home
+
+function selectConcertsHome(){
+    $con = conectar("webmusica");
+    $query = "select concerts.nom, usuaris.nom_local, concerts.data_concert from concerts inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari order by concerts.data_concert desc limit 3";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    return $resultado;
+}
+
+function selectMusicsHome(){
+    $con = conectar("webmusica");
+    $query = "select nom_usuari from usuaris where nom_usuari in (select nom_usuari from apuntar where id_concert='$id_concert')";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    return $resultado;
+}
+

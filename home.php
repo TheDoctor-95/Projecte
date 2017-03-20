@@ -8,6 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        
+        <?php
+        require_once 'bbdd2.php';
+        ?>
         <header>
             <a href="home.php"><div id="esquerra"><img src="Logoyem.png" /></div></a>
             <div id="mig">
@@ -53,8 +57,16 @@
                                 <th>Data</th>
                             </tr>
                             <?php
-                                
-                            ?>
+                        $concerts = selectConcertsHome();
+                        while ($concert = mysqli_fetch_array($concerts)) {
+                            extract($concert);
+                            echo"<tr >
+                                    <td>$nom</td>
+                                    <td>$nom_local</td>
+                                    <td>$data_concert</td>
+                                    <tr>";
+                                                    }
+                        ?>
                         </table>
                     </div>
                     <div class="taula">
@@ -68,21 +80,17 @@
                                 <th>Estil</th>
                                 <th>Nota</th>
                             </tr>
-                            <tr>
-                                <td>G.M.1</td>
-                                <td>Estil1</td>
-                                <td>Nota1</td>
-                            </tr>
-                            <tr>
-                                <td>G.M.1</td>
-                                <td>Estil2</td>
-                                <td>Nota2</td>
-                            </tr>
-                            <tr>
-                                <td>G.M.1</td>
-                                <td>Estil3</td>
-                                <td>Nota3</td>
-                            </tr>
+                           <?php
+                        $concerts = selectConcertsHome();
+                        while ($concert = mysqli_fetch_array($concerts)) {
+                            extract($concert);
+                            echo"<tr >
+                                    <td>$nom</td>
+                                    <td>$nom_local</td>
+                                    <td>$data_concert</td>
+                                    <tr>";
+                                                    }
+                        ?>
                         </table>
                     </div>     
                     <div class="publi"><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
