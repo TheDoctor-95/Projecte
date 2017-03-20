@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="">log out</a> </div>
+                <div><a href="registre.php">Sing in</a> </div>
             </div>
         </header>
         <div id="main">
@@ -81,7 +81,7 @@
                                 <th>Nota</th>
                             </tr>
                            <?php
-                        $concerts = selectConcertsHome();
+                        $concerts = selectMusicsHome();
                         while ($concert = mysqli_fetch_array($concerts)) {
                             extract($concert);
                             echo"<tr >
@@ -93,8 +93,8 @@
                         ?>
                         </table>
                     </div>     
-                    <div class="publi"><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
-                </div>
+                    
+                </div><div class="publi"><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
             </section><section class="banner right">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>
             </section>

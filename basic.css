@@ -53,6 +53,7 @@ body>header{
     display: none;
     background-color: #009999;
     border-radius: 0 0 12px 12px;
+    padding: 5px;
 }
 .idiomes p{
     margin: 10px;
@@ -69,6 +70,7 @@ body>header{
 }
 #idioma_sel:hover{
     border-radius: 12px 12px 0 0;
+    z-index: 1;
 }
 #idioma_sel:hover .idiomes{
     display: block;
