@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <link href="home.css" rel="stylesheet" type="text/css"/>
-        <link href="basic.css" rel="stylesheet" type="text/css" />
+        <link href="quisom.css" rel="stylesheet" type="text/css" />
         <title>Qui Som</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,9 +46,17 @@ and open the template in the editor.
             <section class="banner left">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>
             </section><section id="content">
-                <div class="mdiv"></div>
-                
-                
+                <div class="mdiv">
+                <p>
+                  Your Easy Music és un portal web que posa en contacte els millors grups musicals del moment, 
+                  així com els aspirants més prometedors tant amb les sales de concerts i els espais musicals
+                  com amb els seus fans.
+                  <br><br>
+                  El nostre objectiu és crear sinergies entre els musics, les sales de concert i els fans per
+                  tal de facilitar la realitzaxió de concerts i la promoció de grups musicals d'una forma facilment
+                  accessible per als fans i persones interessades.
+                  
+                </p></div>     
             </section><section class="banner right">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>
             </section>
