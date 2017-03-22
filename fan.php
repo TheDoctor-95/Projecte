@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -33,8 +27,8 @@ and open the template in the editor.
                 <div id="idioma_sel">
                     <div>IDIOMA <img src="flechaNegra.png"></div>
                     <div class="idiomes">
-                        <p><img src="cat.jpg"> Català</p>
-                        <p><img src="cas.jpg"> Castellà</p>
+                        <p><img src="cat.jpg"> CatalÃ </p>
+                        <p><img src="cas.jpg"> CastellÃ </p>
                         <p><img src="eng.jpg"> Angles</p>
                     </div>
                 </div>
@@ -62,95 +56,30 @@ and open the template in the editor.
                         </div>
                     </div>
 
-<!--id="toptable"-->
+                    <!--id="toptable"-->
                     <div id="taulaconcerts">       
                         <?php
-                              require_once 'bbdd2.php';
-                              $matriz = ProximsConcerts();
-                       echo" <table>
+                        require_once 'bbdd.php';
+                        $matriz = ProximsConcerts();
+                        echo" <table>
                             PROXIMS CONCERTS
-                         <tr >
-
+                         <tr>
                                 <td><strong>Concert</strong></td>
                                 <td><strong>Data</strong></td>
-                                <td><strong>Hora</strong></td>
-                                <td><strong>x</strong></td>
                             </tr>";
 
 
-                            while ($fila = mysqli_fetch_array($matriz)) {
+                        while ($fila = mysqli_fetch_array($matriz)) {
                             extract($fila);
                             //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
                             //Mostramos los datos
                             echo "<tr>";
-                                echo "<td>$nom</td><td>$data_concert</td><br>";
-                            echo "<tr>";
-                                }
-                                echo "'</table>'";
+                            echo "<td>$nom</td><td>$data_concert</td><br>";
+                            echo "</tr>";
+                        }
+                        echo '</table>';
+                        ?>
 
-
-?>
-
-<!--                            <tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr><tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td>Concert</td>
-    <td>Data</td>
-    <td>Hora</td>
-    <td>x</td>
-</tr>
-<tr>
-    <td></td>              
-    <td>more</td>                                
-    <td></td>
-</tr>-->
-
-                        </table>
                     </div>
                 </div>
 
@@ -159,163 +88,56 @@ and open the template in the editor.
 
 
                     <div class="taula">
-                        <table>
-                            VOTACIÓ CONCERTS
-                            <tr id="toptable">
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td>Votar</td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
+                           <?php
+                        require_once 'bbdd.php';
+                       
+                        $music = VotarMusicConcert();
+                        echo" <table>
+                            PROXIMS CONCERTS
+                         <tr >
 
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr><tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Concert</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>more</td>
-                                <td></td>
-                            </tr>
+                                <td><strong>Music</strong></td>
+                                <td><strong>Data</strong></td>
+                               
+                            </tr>";
 
-                        </table>
+
+                        while ($fila = mysqli_fetch_array($music)) {
+                            extract($fila);
+                            //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
+                            //Mostramos los datos
+                            echo "<tr>";
+                            echo "<td>$nom_usuari</td><td>$datahora</td><br>";
+                            echo "</tr>";
+                        }
+                        echo '</table>';
+                        ?>
+                       
                     </div>
 
                     <div class="taula">
-                        <table>
-                            VOTACIÓ MUSICS
-                            <tr id="toptable">
-                                <td>Music/Grup</td>
-                                <td>Gènere</td>                                
-                                <td>Votar</td>
-                            </tr>
-                            <tr>
-                                <td>Music/Grup</td>
-                                <td>Gènere</td>                                
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
+                       <?php
+                        require_once 'bbdd.php';
+                        $matriz = VotarLocalConcert();
+                        echo" <table>
+                            PROXIMS CONCERTS
+                         <tr>
+                                <td><strong>Concert</strong></td>
+                                <td><strong>Data</strong></td>
+                            </tr>";
 
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Music/Grup</td>
-                                <td>Gènere</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Music/Grup</td>
-                                <td>Gènere</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr><tr>
-                                <td>Music/Grup</td>
-                                <td>Gènere</td>
-                                <td><select name="registre" required>
-                                        <option value="1">-1</option>
-                                        <option selected=""></option>
-                                        <option value="2">1</option>
-                                    </select></td>
-                            </tr><tr>
-                                <td></td>                                
-                                <td>more</td>                               
-                                <td></td>
-                            </tr>
 
-                        </table>
+                        while ($fila = mysqli_fetch_array($matriz)) {
+                            extract($fila);
+                            //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
+                            //Mostramos los datos
+                            echo "<tr>";
+                            echo "<td>$nom_usuari</td><td>$data_concert</td><br>";
+                            echo "</tr>";
+                        }
+                        echo '</table>';
+                        ?>
+
                     </div>                    
                 </div>
 
