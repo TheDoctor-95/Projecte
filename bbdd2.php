@@ -65,6 +65,20 @@ function VotarMusicConcert() {
     
 }
 
+function VotarLocalConcert() {
+    //Conectamos con la bbdd
+    $con = conectar("webmusica");
+    //Definimos la consulta
+    $query ="select nom_usuari, datahora from votarlocalconcert";
+    //Ejecutamos la consulta, recogiendo el resultado
+    $resultado =mysqli_query($con,$query);
+    //desconectamos de la bbdd
+    desconectar ($con);
+    //devolvemos el resultado de la consulta
+    return $resultado;
+    
+}
+
 
 //Home
 

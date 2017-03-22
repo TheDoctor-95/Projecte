@@ -88,9 +88,9 @@
 
 
                     <div class="taula">
-                           <?php
+                        <?php
                         require_once 'bbdd.php';
-                       
+
                         $music = VotarMusicConcert();
                         echo" <table>
                             PROXIMS CONCERTS
@@ -107,16 +107,21 @@
                             //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
                             //Mostramos los datos
                             echo "<tr>";
-                            echo "<td>$nom_usuari</td><td>$datahora</td><br>";
+                            echo "<td>$nom_usuari</td><td>$datahora</td>";
+                            echo "<td><select name='registre' required>
+                                        <option value='0'>-1</option>
+                                        <option selected></option>
+                                        <option value='1'>1</option>
+                                    </select></td><br>";
                             echo "</tr>";
                         }
                         echo '</table>';
                         ?>
-                       
+
                     </div>
 
                     <div class="taula">
-                       <?php
+                        <?php
                         require_once 'bbdd.php';
                         $matriz = VotarLocalConcert();
                         echo" <table>
@@ -133,6 +138,11 @@
                             //Mostramos los datos
                             echo "<tr>";
                             echo "<td>$nom_usuari</td><td>$data_concert</td><br>";
+                            echo "<td><select name='registre' required>
+                                        <option value='0'>-1</option>
+                                        <option selected></option>
+                                        <option value='1'>1</option>
+                                    </select></td><br>";
                             echo "</tr>";
                         }
                         echo '</table>';
