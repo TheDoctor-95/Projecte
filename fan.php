@@ -116,6 +116,7 @@
                             echo "</tr>";
                         }
                         echo '</table>';
+                        insertarVotacioMusic($votacio);
                         ?>
 
                     </div>
@@ -146,6 +147,8 @@
                             echo "</tr>";
                         }
                         echo '</table>';
+                        
+                        insertarVotacioConcert($votacio);
                         ?>
 
                     </div>                    
