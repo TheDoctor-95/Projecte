@@ -47,9 +47,10 @@
                         <table>
                             <tr id="toptable" class="center">
                                 <td>Concert</td>
+                                <td>Local</td>
+                                <td>Direcció local</td>
+                                <td>Població</td>
                                 <td>Data/Hora</td>
-                                <td>Estat</td>
-                                <td>Modificar</td>
                             </tr>
                                     <?php
                                     require_once 'bbddmusic.php';
@@ -59,10 +60,12 @@
                                         extract($fila);
                                         echo "<tr>";
 
+                                        echo "<td>$concert</td>";
+                                        echo "<td>$nom_local</td>";
+                                        echo "<td>$direccio</td>";
                                         echo "<td>$nom</td>";
                                         echo "<td>$data_concert</td>";
-                                        echo "<td>$confirmacio</td>";
-                                        echo "<td>Modificar</td>";
+
 
                                         echo "</tr>";
                                     }
@@ -76,6 +79,9 @@
                                 <table>
                                     <tr id="toptable">
                                         <td>Concert</td>
+                                        <td>Local</td>
+                                        <td>Direcció local</td>
+                                        <td>Població</td>
                                         <td>Data/Hora</td>
                                         <td>Estat</td>
                                         <td>Modificar</td>
@@ -87,6 +93,9 @@
                                         extract($fila);
                                         echo "<tr>";
 
+                                        echo "<td>$concert</td>";
+                                        echo "<td>$nom_local</td>";
+                                        echo "<td>$direccio</td>";
                                         echo "<td>$nom</td>";
                                         echo "<td>$data_concert</td>";
                                         echo "<td>$confirmacio</td>";

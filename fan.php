@@ -27,9 +27,9 @@
                 <div id="idioma_sel">
                     <div>IDIOMA <img src="flechaNegra.png"></div>
                     <div class="idiomes">
-                        <p><img src="cat.jpg"> CatalÃ </p>
-                        <p><img src="cas.jpg"> CastellÃ </p>
-                        <p><img src="eng.jpg"> Angles</p>
+                        <p><img src="cat.jpg"> Català </p>
+                        <p><img src="cas.jpg"> Castellà </p>
+                        <p><img src="eng.jpg"> Anglès</p>
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
@@ -59,7 +59,7 @@
                     <!--id="toptable"-->
                     <div id="taulaconcerts">       
                         <?php
-                        require_once 'bbdd.php';
+                        require_once 'bbdd2.php';
                         $matriz = ProximsConcerts();
                         echo" <table>
                             PROXIMS CONCERTS
@@ -89,7 +89,7 @@
 
                     <div class="taula">
                         <?php
-                        require_once 'bbdd.php';
+                 
 
                         $music = VotarMusicConcert();
                         echo" <table>
@@ -122,7 +122,7 @@
 
                     <div class="taula">
                         <?php
-                        require_once 'bbdd.php';
+                     
                         $matriz = VotarLocalConcert();
                         echo" <table>
                             PROXIMS CONCERTS
