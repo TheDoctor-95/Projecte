@@ -17,6 +17,9 @@ and open the template in the editor.
 
     </head>
     <body>
+        <?php
+        require_once './BBDD_registre.php';
+        ?>
         <header>
             <a href="home.php"><div id="esquerra"><img src="Logoyem.png" /></div></a>
             <div id="mig">
@@ -71,31 +74,32 @@ and open the template in the editor.
                                     <form id ="formfan" action="" method="POST" >
                                         <div>
                                             <p><input type="hidden" value="fan" name="type" /></p>
-                                            <p>Nom: </p><p> <input type="text"  name="fname" /> </p>
-                                            <p>Cognoms:</p><p><input type="text"  name="fsurname" /> </p>
                                             <p>Nick o nom d'usuari*: </p><p><input type="text"  name="usu" required /> </p>
                                             <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
                                             <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
+                                            <p>Nom: </p><p> <input type="text"  name="fname" /> </p>
+                                            <p>Cognoms:</p><p><input type="text"  name="fsurname" /> </p>
                                             <p>Email*:</p><p> <input type="email"  name="email" required /></p>    
-                                            <p> IMG: </p>
+                                            <p>Data naixement</p><p><input type="date" name="fnac" /></p>
+
                                         </div>
                                         <div>
                                             <p>Telèfon:</p><p> <input type="text" name="tel"></p>
                                             <p>Direcció:</p><p> <input type="text" name="postal"></p>                              
-                                            <p>Generes de música preferits:
-                                                <br />
-                                                <input type="checkbox" name="generes" value="pop">Pop 
-                                                <br />
-                                                <input type="checkbox" name="generes" value="rock">Rock 
-                                                <br />
-                                                <input type="checkbox" name="generes" value="jazz">Jazz  
-                                                <br />
-                                                <input type="checkbox" name="generes" value="classica">Clàssica
-                                                <br />
-                                                <input type="checkbox" name="generes" value="indie">Indie
-                                                <br/>
-                                                <input type="checkbox" name="generes" value="electro">Electrònica
+                                            <p>Genere:</p>
+                                            <p><select name="genero" >
+                                                    <?php
+                                                    ?>
+                                                </select>
                                             </p>
+                                            <p>Ciutat</p>
+                                            <p><select name="ciutat">
+                                                    <?php
+                                                    ?>
+                                                </select></p>
+
+                                            <p> IMG: </p>
+                                            <p> input imatge </p>
                                         </div>
                                         <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
                                     </form>
@@ -144,7 +148,7 @@ and open the template in the editor.
                                             <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required><label></label><p>
                                             <p>Email*: </p><p><input type="email"  name="email" required><label></label> </p>    
                                             <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup"> <label></label>   </p>
-                                            
+
                                         </div>
                                         <div>
                                             <p>Imatge:</p>
@@ -154,8 +158,8 @@ and open the template in the editor.
                                             <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"><label></label></p>
                                             <p>Gènere del grup*:</p>
                                             <p><select name="genere">
-                                            
-                                            </select><label></label>
+
+                                                </select><label></label>
                                             </p>
                                         </div>
                                         <div><input type="submit" value="Registrate" name="music" /></div>
@@ -172,7 +176,7 @@ and open the template in the editor.
             </section>
         </div>
         <footer>
-            <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
+            <span>Your Easy Music</span> <a href='Quisom.php'>Qui Som</a> | <a href=''> Copyright</a>
         </footer>
     </body>
 </html>

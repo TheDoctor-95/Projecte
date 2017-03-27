@@ -48,7 +48,7 @@
 }
 
 .table{
-    background-color:none;
+    background-color: transparent;
     border-color: black;
     border-style: solid;
     border-collapse: collapse;
@@ -59,7 +59,6 @@
 td{
     border-color: black;
     border-style: solid;
-    width: 120px;
 
 }
 .publi{
@@ -70,4 +69,11 @@ td{
 .publi>img{
     width: 100%;
     height: 100%;
+}
+a{
+    color: white;
+}
+
+.mdiv, .publi{
+    display: block;
 }

@@ -85,10 +85,11 @@
                             echo "$apun Musics Apuntas id: $id_concert";
                             if ($apun != 0) {
                                 echo "<div>";
-//                               while ($nom_apuntats = mysqli_fetch_array(selectApuntats($id_concert))){
-//                                   extract($nom_apuntats);
-//                                   echo "<p>$nom_usuari</p>";
-//                               }
+                                $nom_apuntats = selectApuntats($id_concert);
+                                while ($nom_apuntat = mysqli_fetch_array($nom_apuntats)) {
+                                    extract($nom_apuntat);
+                                    echo "<p>$nom_usuari</p>";
+                                }
                                 echo "</div>";
                             }
                             echo "</td><td>Modificar</td>
@@ -96,48 +97,7 @@
                                         </tr>";
                         }
                         ?>
-                        <tr>
-                            <td>Concert</td>
-                            <td>Data</td>
-
-                            <td>0 muscis apuntats
-                                <div><p>music 1</p><p>music 1</p><p>music 1</p></div></td>
-                            <td>Modificar</td>
-                            <td>x</td>
-                        </tr>
-                        <tr>
-                            <td>Concert</td>
-                            <td>Data</td>
-
-                            <td>0 muscis apuntats
-                                <div><p>music 1</p><p>music 1</p><p>music 1</p></div></td>
-                            <td>Modificar</td>
-                            <td>x</td>
-                        </tr>
-                        <tr>
-                            <td>Concert</td>
-                            <td>Data</td>
-
-                            <td>0 muscis apuntats
-                                <div><p>music 1</p><p>music 1</p><p>music 1</p></div></td>
-                            <td>Modificar</td>
-                            <td>x</td>
-                        </tr><tr>
-                            <td>Concert</td>
-                            <td>Data</td>
-                            <td>0 muscis apuntats
-                                <div><p>music 1</p><p>music 1</p><p>music 1</p></div></td>
-                            <td>Modificar</td>
-                            <td>x</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>more</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
+                       
                     </table>
                 </div>
             </section><section class="banner right">

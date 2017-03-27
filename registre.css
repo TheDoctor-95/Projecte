@@ -43,7 +43,7 @@
 label{
     display: block;
 }
-input{
+input,select, option{
     border-width: 2px;
     border-style: solid;
     border-color: brown;
@@ -70,4 +70,8 @@ p{
 
 .submit{
     display: block;
+}
+
+#botons{
+    margin-top: 200px;
 }

@@ -18,7 +18,7 @@
                 <div><img src="lletra.png" /></div>
                 <nav>
 
-                    <div class="opcio">Qui sóm</div>
+                    <div class="opcio"><a href="Quisom.php" >Qui sóm</a></div>
                     <div class="opcio">Concerts</div>
                     <div class="opcio">Notícies</div>
                     <div class="opcio">Botiga</div>
@@ -94,7 +94,8 @@
                         </table>
                     </div>     
                     
-                </div><div class="publi"><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
+                </div>
+                <div class="publi"><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
             </section><section class="banner right">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>
             </section>
