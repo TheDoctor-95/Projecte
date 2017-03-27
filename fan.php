@@ -59,7 +59,7 @@
                     <!--id="toptable"-->
                     <div id="taulaconcerts">       
                         <?php
-                        require_once 'bbdd.php';
+                        require_once 'bbdd2.php';
                         $matriz = ProximsConcerts();
                         echo" <table>
                             PROXIMS CONCERTS
@@ -89,7 +89,7 @@
 
                     <div class="taula">
                         <?php
-                        require_once 'bbdd.php';
+                        require_once 'bbdd2.php';
 
                         $music = VotarMusicConcert();
                         echo" <table>
@@ -116,13 +116,14 @@
                             echo "</tr>";
                         }
                         echo '</table>';
+                        insertarVotacioMusic($votacio);
                         ?>
 
                     </div>
 
                     <div class="taula">
                         <?php
-                        require_once 'bbdd.php';
+                        require_once 'bbdd2.php';
                         $matriz = VotarLocalConcert();
                         echo" <table>
                             PROXIMS CONCERTS
@@ -146,6 +147,8 @@
                             echo "</tr>";
                         }
                         echo '</table>';
+                        
+                        insertarVotacioConcert($votacio);
                         ?>
 
                     </div>                    

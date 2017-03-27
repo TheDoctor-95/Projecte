@@ -79,6 +79,35 @@ function VotarLocalConcert() {
     
 }
 
+function insertarVotacioConcert($votacio){
+    
+   
+    $con = conectar("webmusica");
+    $insert = "insert into votarconcert values ('fan1', 2, '$votacio')";
+    if (mysqli_query($con, $insert)) {
+        echo "<p>Votació correcte</p>";
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
+}
+    
+
+
+function insertarVotacioMusic($votacio){
+    
+   
+    $con = conectar("webmusica");
+    $insert = "insert into votarconcert values ('fan1', 'music1', '$votacio')";
+    if (mysqli_query($con, $insert)) {
+        echo "<p>Votació correcte</p>";
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
+}
+    
+
 
 //Home
 
