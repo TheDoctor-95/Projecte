@@ -1,4 +1,5 @@
 <?php
+
 function conectar($database) {
     $con = mysqli_connect("localhost", "root", "", $database)
             or die("No se ha podido conectar con la BBDD.");
@@ -122,6 +123,25 @@ function selectConcertsHome(){
 function selectMusicsHome(){
     $con = conectar("webmusica");
     $query = "select usuaris.nom_grup, estils.nom, (select count(*) from votarmusic where votacio=1)-(select count(*) from votarmusic where votacio=0) as nota from usuaris inner join estils on usuaris.id_estil=estils.id_estil inner join votarmusic on usuaris.nom_usuari=votarmusic.nom_music group by votarmusic.nom_music order by nota limit 5";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    return $resultado;
+}
+
+
+// Registre
+
+function selectGenere(){
+    $con = conectar("webmusica");
+    $query = "select * from estils";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    return $resultado;
+}
+
+function selectCiutats(){
+    $con = conectar("webmusica");
+    $query = "select * from ciutats";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;

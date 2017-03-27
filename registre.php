@@ -89,12 +89,22 @@ and open the template in the editor.
                                             <p>Genere:</p>
                                             <p><select name="genero" >
                                                     <?php
+                                                    $generos = selectGenere();
+                                                    while ($fila = mysqli_fetch_array($generos)) {
+                                                        extract($fila);
+                                                        echo "<option value='$id_estil'>$nom</option>";
+                                                    }
                                                     ?>
                                                 </select>
                                             </p>
                                             <p>Ciutat</p>
                                             <p><select name="ciutat">
                                                     <?php
+                                                    $ciutats = selectCiutats();
+                                                    while ($fila = mysqli_fetch_array($ciutats)) {
+                                                        extract($fila);
+                                                        echo "<option value='$id_ciutat'>$nom</option>";
+                                                    }
                                                     ?>
                                                 </select></p>
 
@@ -158,7 +168,13 @@ and open the template in the editor.
                                             <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"><label></label></p>
                                             <p>Gènere del grup*:</p>
                                             <p><select name="genere">
-
+                                                    <?php
+                                                    $generos = selectGenere();
+                                                    while ($fila = mysqli_fetch_array($generos)) {
+                                                        extract($fila);
+                                                        echo "<option value='$id_estil'>$nom</option>";
+                                                    }
+                                                    ?>
                                                 </select><label></label>
                                             </p>
                                         </div>
