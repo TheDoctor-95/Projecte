@@ -45,20 +45,22 @@
 }
 
 table{
-    border-style: solid;
+/*    border-style: solid;
     border-color: black;
-    border-width: 2px;
+    border-width: 2px;*/
     border-collapse: collapse;
+    border-radius: 5px;
 }
 
+/*
 td{
- border-style: solid;
+    border-style: solid;
     border-color: black;
     border-width: 2px;   
-}
+}*/
  
 #toptable>td{
-    background-color: black;
+    background-color: darkblue;
     color: white;
 
 }
@@ -109,5 +111,13 @@ input,select, option{
     text-align: center;
     color: white;
 }
-
+button{
+    display: inline-block;
+    height: 20px;
+    border-color: transparent;
+    background-color: transparent;
+}
+button>img{
+    height: 100%;
+}
 

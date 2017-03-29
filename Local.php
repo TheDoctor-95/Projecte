@@ -14,7 +14,20 @@
     </head>
     <body>
         <?php
+        session_start();
         require_once './bbdd2.php';
+        if(isset($_POST["ordre"])){
+            $_SESSION["ordre"]=$_POST["ordre"];
+            
+        }
+        
+        if(!isset($_SESSION["ordre"])){
+            $_SESSION["ordre"] = "nom";
+        
+            
+        }
+        
+       
         ?>
 
         <header>
@@ -67,17 +80,18 @@
                     </div>
 
                 </header>
+                <?phpecho $_SESSION["ordre"];?>
                 <div id="table">
                     <table>
                         <tr id="toptable">
-                            <td>Concert</td>
-                            <td>Data i Hora</td>
+                            <td><form action="" method="POST" >Concert<button name="ordre" value="nom" ><img src="flechaNegra.png" /></button></form></td>
+                            <td><form action="" method="POST" >Data i Hora<button name="ordre" value="data_concert" ><img src="flechaNegra.png" /></button></form></td>
                             <td>Estat</td>
                             <td></td>
                             <td></td>
                         </tr>
                         <?php
-                        $concerts = selectConcertsLocal("local1");
+                        $concerts = selectConcertsLocal("local2",$_SESSION["ordre"]);
                         while ($concert = mysqli_fetch_array($concerts)) {
                             extract($concert);
                             echo"<tr >
@@ -86,7 +100,7 @@
                                     <td>";
                             $apuntats = mysqli_fetch_array(contaApuntats($id_concert));
                             extract($apuntats);
-                            echo "$apun Musics Apuntas id: $id_concert";
+                            echo "$apun Musics Apuntas";
                             if ($apun != 0) {
                                 echo "<div>";
                                 $nom_apuntats = selectApuntats($id_concert);
