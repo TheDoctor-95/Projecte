@@ -46,30 +46,30 @@
                     <div class="taula">
                         <table>
                             <tr id="toptable" class="center">
-                                <td>Concert</td>
+                                <td><form action="" method="POST">Concert<button name="ordre" value="concert"><img src="flechaNegra2.png"/></button> </form> </td>
                                 <td>Local</td>
                                 <td>Direcció local</td>
                                 <td>Població</td>
                                 <td>Data/Hora</td>
                             </tr>
-                                    <?php
-                                    require_once 'bbddmusic.php';
-                                    $musica = selectConcertsConfirm("music5");
-                                    
-                                    while ($fila = mysqli_fetch_array($musica)) {
-                                        extract($fila);
-                                        echo "<tr>";
+                            <?php
+                            require_once 'bbddmusic.php';
+                            $musica = selectConcertsConfirm("music5");
 
-                                        echo "<td>$concert</td>";
-                                        echo "<td>$nom_local</td>";
-                                        echo "<td>$direccio</td>";
-                                        echo "<td>$nom</td>";
-                                        echo "<td>$data_concert</td>";
+                            while ($fila = mysqli_fetch_array($musica)) {
+                                extract($fila);
+                                echo "<tr>";
+
+                                echo "<td>$concert</td>";
+                                echo "<td>$nom_local</td>";
+                                echo "<td>$direccio</td>";
+                                echo "<td>$nom</td>";
+                                echo "<td>$data_concert</td>";
 
 
-                                        echo "</tr>";
-                                    }
-                                    ?>
+                                echo "</tr>";
+                            }
+                            ?>
                         </table>
 
                     </div>
@@ -84,11 +84,10 @@
                                         <td>Població</td>
                                         <td>Data/Hora</td>
                                         <td>Estat</td>
-                                        <td>Modificar</td>
                                     </tr>
                                     <?php
                                     $musica = selectConcertsUnconfirm("music1");
-                                    
+
                                     while ($fila = mysqli_fetch_array($musica)) {
                                         extract($fila);
                                         echo "<tr>";
@@ -98,8 +97,14 @@
                                         echo "<td>$direccio</td>";
                                         echo "<td>$nom</td>";
                                         echo "<td>$data_concert</td>";
-                                        echo "<td>$confirmacio</td>";
-                                        echo "<td>Modificar</td>";
+                                        echo "<td>";
+                                        if ($confirmacio == 0) {
+                                            echo "<button name='ordre' value='concert'>Alta</button>";
+                                        } else {
+                                            echo "<button name='ordre' value='concert'>Baixa</button>";
+                                        }
+                                        echo"</td>";
+                                        
 
                                         echo "</tr>";
                                     }
