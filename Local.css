@@ -7,6 +7,7 @@
     text-align: right;
     padding: 2px;
     z-index: 20;
+
 }
 #content>header>div{
     margin-right: 50px;
@@ -22,7 +23,7 @@
     position: absolute;
     top:0;
     left: 0;
-    text-align: left;
+    text-align: center;
     background-color: #009999;
     border-color: darkred;
     border-style: solid;
@@ -99,5 +100,14 @@ tr>td:nth-child(5):hover{
     color:red;
 }
 
+input,select, option{
+    border-width: 2px;
+    border-style: solid;
+    border-color: brown;
+    border-radius: 20px;
+    background-color: #009999;
+    text-align: center;
+    color: white;
+}
 
 

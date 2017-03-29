@@ -25,8 +25,8 @@ and open the template in the editor.
                 </nav>
 
             </div>
-                    
-            
+
+
             <div id="dreta">
                 <div> <a href="https://www.facebook.com/"><img src="facebook.png" alt="facebook"/></a><a href="https://www.twitter.com/"><img src="twitter.png" alt="twiter" /></a><a href="https://plus.google.com/"><img src="Google.png" alt="google+" /></a></div>
                 <div id="idioma_sel">
@@ -45,32 +45,41 @@ and open the template in the editor.
             <section class="banner left">
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
-                <form action="">
-            <br />                                                                    
-                                    Nick o nom d'usuari*: <input type="text"  name="usu" required> 
-                                    <br />
-                                    <br />
-                                    Contrasenya*:<input type="password" name="fpasswd" required>
-                                    <br />
-                                    <br />
-                                    Repeteix la contrasenya*:<input type="password" name="fpasswd2" required>
-                                    <br />
-                                    <br />
-                                    Email*: <input type="email" placeholder="Email" name="email" required> 
-                                    <br />
-                                    <br />
-                                    Nom del local*:  <input type="text"  name="nomlocal" required>                                                                         
-                                    <br />
-                                    <br />
-                                    Ciutat*:  <input type="text" name="ciutat" required>                                  
-                                       <br />
-                                    <br />
-                                    Imatge:
-                                    --> 
+                <div class ="local" >
+                    <form id ="formlocal" action="" method="POST" >
+                        <div>
+                            <p><input type="hidden" value="local" name="type" /></p>
+                            <p>Nick o nom d'usuari*:</p><p> <input type="text"  name="usu" required /> </p>
+                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
+                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
+                            <p>Email*: </p><p><input type="email"  name="email" required /> </p>
+                            <p>Nom del local*: </p><p> <input type="text"  name="nomlocal" required /></p>
+                            <p>Ciutat*: </p><p> <input type="text" name="ciutat" required /></p> 
+                            <p> IMG:  </p>
+                        </div>
+                        <div>
+                            <p>Direcció*: </p><p><input type="text" name="direccio" /></p>                             
+                            <p>Telèfon*: </p><p> <input type="tel" name="tel"></p>
+                            <p>Gènere que es toca al local*:   
+                                <br />
+                                <input type="checkbox" name="generes" value="pop">Pop 
+                                <br />
+                                <input type="checkbox" name="generes" value="rock">Rock 
+                                <br />
+                                <input type="checkbox" name="generes" value="jazz">Jazz  
+                                <br />
+                                <input type="checkbox" name="generes" value="classica">Clàssica
+                                <br />
+                                <input type="checkbox" name="generes" value="indie">Indie
+                                <br<input type="checkbox" name="generes" value="electro">Electrònica
+                            </p>
+                            <p>Aforo: </p><p> <input type="number" name="aforo"></p>
+                        </div>
+                        <div><input type="submit" value="Registrate" name="local" /></div>
                     </form>
+                </div>
 
 
-                
             </section><section class="banner right">
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section>

@@ -8,6 +8,9 @@
         <link href="basic.css" rel="stylesheet" type="text/css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="jquery.validate.js" type="text/javascript"></script>
+        <script src="local.js" type="text/javascript"></script>
     </head>
     <body>
         <?php
@@ -21,7 +24,6 @@
                 <nav>
                     <a href="Local.php"><div class="opcio">Local</div></a>
                     <a href="Perfil_Local.php"><div class="opcio">Perfil</div></a>
-                    <a href=""><div class="opcio">Botiga</div></a>
                     <a href=""><div class="opcio">Notificacions</div></a>
                 </nav>
 
@@ -44,19 +46,21 @@
             <section class="banner left">
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
+                
                 <header>
                     <div>Afegir Concert
                         <div id="desplegable">
                             <form action="" method="POST">
-                                <p>Nom <input type="text" name="name_concierto" /></p>
-                                <p>Data concierto <input type="date" name="data concierto" /></p>
-                                <p>Grups necesaris: <input type="number" name="data concierto" /></p>
-                                <p> GENERO:
+                                <p>Nom </p><p><input type="text" name="name_concierto" /></p>
+                                <p>Data concierto </p><p><input type="datetime" name="data_concierto" /></p>
+                                <p>Preu </p><p> <input type="number" name="price" /></p>
+                                <p> GENERO </p><p>
                                     <select name="genero">
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
+                                        <?php
+                                        
+                                        ?>
                                     </select></p>
+                                <p>Aforament Maxim </p><p> <input type="number" name="aforo" /></p>
                                 <p><input type="submit" value="Añadir" /></p>
                             </form>
                         </div>
@@ -69,8 +73,8 @@
                             <td>Concert</td>
                             <td>Data i Hora</td>
                             <td>Estat</td>
-                            <td>Modificar</td>
-                            <td>x</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <?php
                         $concerts = selectConcertsLocal("local1");
