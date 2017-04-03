@@ -47,11 +47,20 @@
 
                 <div id="dalt">
                     <div id="faninfo">
+
                         <div id="img">img_fan</div>
                         <div id="info">
-                            <b>Nom:</b><br/>                       
-                            <b>Telefon:</b><br/>
-                            <b>Correu:</b><br/>
+                            
+                            <?php
+                            /*require_once 'bbdd2.php';
+                            $usu = selectUsu("fan1");
+                            while ($fila = mysqli_fetch_array($usu)) {
+                                extract($fila);
+                                echo "<b>Nom:$nom_usuari</b><br/>";
+                                echo "<b>Telefon:$telefon</b><br/>";
+                                echo "<b>Correu:$email</b><br/>";
+                            }*/
+                            ?>
 
                         </div>
                     </div>
@@ -59,7 +68,7 @@
                     <!--id="toptable"-->
                     <div id="taulaconcerts">       
                         <?php
-                        require_once 'bbdd2.php';
+                        
                         $matriz = ProximsConcerts();
                         echo" <table>
                             PROXIMS CONCERTS
@@ -85,12 +94,8 @@
 
                 <div id="taules"> 
 
-
-
                     <div class="taula">
                         <?php
-                 
-
                         $music = VotarMusicConcert();
                         echo" <table>
                             PROXIMS CONCERTS
@@ -123,8 +128,7 @@
 
                     <div class="taula">
                         <?php
-                     
-                        $matriz = VotarLocalConcert();
+                        $matriz1 = VotarLocalConcert();
                         echo" <table>
                             PROXIMS CONCERTS
                          <tr>
@@ -133,7 +137,7 @@
                             </tr>";
 
 
-                        while ($fila = mysqli_fetch_array($matriz)) {
+                        while ($fila = mysqli_fetch_array($matriz1)) {
                             extract($fila);
                             //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
                             //Mostramos los datos
@@ -147,7 +151,7 @@
                             echo "</tr>";
                         }
                         echo '</table>';
-                        
+
                         insertarVotacioConcert($votacio);
                         ?>
 
