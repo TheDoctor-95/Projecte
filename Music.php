@@ -46,11 +46,11 @@
                     <div class="taula">
                         <table>
                             <tr id="toptable" class="center">
-                                <td><form action="" method="POST">Concert<button name="ordre" value="concert"><img src="flechaNegra2.png"/></button> </form> </td>
-                                <td>Local</td>
-                                <td>Direcció local</td>
-                                <td>Població</td>
-                                <td>Data/Hora</td>
+                                <td><form action="" method="POST">Concert<button name="ordre" value="concert"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Local<button name="ordre" value="local"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Direcció local<button name="ordre" value="direccio"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Població<button name="ordre" value="poblacio"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Data/Hora<button name="ordre" value="data"><img src="flechaNegra2.png"/></button></form></td>
                             </tr>
                             <?php
                             require_once 'bbddmusic.php';
@@ -86,7 +86,7 @@
                                         <td>Estat</td>
                                     </tr>
                                     <?php
-                                    $musica = selectConcertsUnconfirm("music1");
+                                    $musica = selectConcertsUnconfirm("music5");
 
                                     while ($fila = mysqli_fetch_array($musica)) {
                                         extract($fila);
@@ -98,10 +98,11 @@
                                         echo "<td>$nom</td>";
                                         echo "<td>$data_concert</td>";
                                         echo "<td>";
-                                        if ($confirmacio == 0) {
-                                            echo "<button name='ordre' value='concert'>Alta</button>";
+                                        if (checkapuntar("music5",$id_concert)) {
+                                            echo "<form action='' method='POST'><button name='alta' value='alta'>Alta</button></form>";
+                                            
                                         } else {
-                                            echo "<button name='ordre' value='concert'>Baixa</button>";
+                                            echo "<form action='' method='POST'><button name='baixa' value='baixa'>Baixa</button></form>";
                                         }
                                         echo"</td>";
                                         
