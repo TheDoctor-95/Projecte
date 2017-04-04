@@ -100,9 +100,14 @@
                                         echo "<td>";
                                         if (checkapuntar("music5",$id_concert)) {
                                             echo "<form action='' method='POST'><button name='alta' value='alta'>Alta</button></form>";
-                                            
+                                            if(isset($_POST["alta"])){
+                                                switchapuntar ("music5",$id_concert);
+                                            }
                                         } else {
                                             echo "<form action='' method='POST'><button name='baixa' value='baixa'>Baixa</button></form>";
+                                            if(isset($_POST["baixa"])){
+                                                deleteapuntar ("music5",$id_concert);
+                                            }
                                         }
                                         echo"</td>";
                                         

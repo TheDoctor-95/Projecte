@@ -48,9 +48,19 @@ function checkapuntar($music,$id_concert){
 function switchapuntar ($nusuario,$id_concert){
     $con=conectar("webmusica");
     $insert="insert into apuntar values"."('$nusuario','$id_concert',0)";
-    if(mysqli_query($conexion,$insert)){
+    if(mysqli_query($con,$insert)){
     }else{
         echo mysqli_error($conexion);
+    }
+    desconectar($con);
+}
+
+function deleteapuntar ($nusuario,$id_concert){
+    $con=conectar("webmusica");
+    $delete="detele from apuntar  where id_concert ='$id_concert' and nom_usuari='$nusuario'";
+    if(mysqli_query($con,$delete)){
+    }else{
+        echo mysqli_error($con);
     }
     desconectar($con);
 }
