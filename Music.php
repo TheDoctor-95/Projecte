@@ -39,6 +39,15 @@
             <section class="banner left">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>
             </section><section id="content">
+                <?php
+                require_once 'bbddmusic.php';
+                if (isset($_POST["alta"])) {
+                    switchapuntar("music5", $_POST["concert"]);
+                }
+                if (isset($_POST["baixa"])) {
+                    deleteapuntar("music5", $_POST["concert"]);
+                }
+                ?>
                 <div class="mdiv">
                     <header id="ttaula">Proximes actuacions acordades previstes
 
@@ -53,7 +62,7 @@
                                 <td><form action="" method="POST">Data/Hora<button name="ordre" value="data"><img src="flechaNegra2.png"/></button></form></td>
                             </tr>
                             <?php
-                            require_once 'bbddmusic.php';
+                            
                             $musica = selectConcertsConfirm("music5");
 
                             while ($fila = mysqli_fetch_array($musica)) {
@@ -98,20 +107,13 @@
                                         echo "<td>$nom</td>";
                                         echo "<td>$data_concert</td>";
                                         echo "<td>";
-                                        if (checkapuntar("music5",$id_concert)) {
-                                            echo "<form action='' method='POST'><button name='alta' value='alta'>Alta</button></form>";
-                                            if(isset($_POST["alta"])){
-                                                switchapuntar ("music5",$id_concert);
-                                            }
+                                        if (checkapuntar("music5", $id_concert)) {
+                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='alta' value='alta'>Alta</button></form>";
                                         } else {
-                                            echo "<form action='' method='POST'><button name='baixa' value='baixa'>Baixa</button></form>";
-                                            if(isset($_POST["baixa"])){
-                                                deleteapuntar ("music5",$id_concert);
-                                            }
+                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='baixa' value='baixa'>Baixa</button></form>";
                                         }
                                         echo"</td>";
                                         
-
                                         echo "</tr>";
                                     }
                                     ?>

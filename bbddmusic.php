@@ -39,9 +39,9 @@ function checkapuntar($music,$id_concert){
     $contador=mysqli_num_rows($resultado);
     desconectar($con);
     if($contador==0){
-        return false;
-    }else{ //Este else no hace falta
         return true;
+    }else{ //Este else no hace falta
+        return FALSE;
     }
 }
 
@@ -57,7 +57,7 @@ function switchapuntar ($nusuario,$id_concert){
 
 function deleteapuntar ($nusuario,$id_concert){
     $con=conectar("webmusica");
-    $delete="detele from apuntar  where id_concert ='$id_concert' and nom_usuari='$nusuario'";
+    $delete="delete from apuntar where id_concert ='$id_concert' and nom_usuari='$nusuario'";
     if(mysqli_query($con,$delete)){
     }else{
         echo mysqli_error($con);
