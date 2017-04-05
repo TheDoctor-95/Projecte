@@ -14,7 +14,7 @@ function desconectar($con) {
 
 function selectConcertsLocal($local, $ordre){
     $con = conectar("webmusica");
-    $query = "select id_concert, nom, data_concert from concerts where nom_usuari = '$local' order by '$ordre'";
+    $query = "select id_concert, nom, data_concert from concerts where nom_usuari = '$local' order by $ordre";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;

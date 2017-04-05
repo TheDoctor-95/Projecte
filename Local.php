@@ -16,16 +16,18 @@
         <?php
         session_start();
         require_once './bbdd2.php';
+        if(!isset($_SESSION["ordre"])){
+            $_SESSION["ordre"] = "nom desc";
+          
+        }
+        echo $_SESSION["ordre"];
         if(isset($_POST["ordre"])){
             $_SESSION["ordre"]=$_POST["ordre"];
             
         }
+        echo $_SESSION["ordre"];
         
-        if(!isset($_SESSION["ordre"])){
-            $_SESSION["ordre"] = "nom";
         
-            
-        }
         
        
         ?>
@@ -84,8 +86,8 @@
                 <div id="table">
                     <table>
                         <tr id="toptable">
-                            <td><form action="" method="POST" >Concert<button name="ordre" value="nom" ><img src="flechaNegra.png" /></button></form></td>
-                            <td><form action="" method="POST" >Data i Hora<button name="ordre" value="data_concert" ><img src="flechaNegra.png" /></button></form></td>
+                            <td><form action="" method="POST" >Concert<button name="ordre" value="nom desc" ><img src="flechaNegra.png" /></button></form></td>
+                            <td><form action="" method="POST" >Data i Hora<button name="ordre" value="data_concert asc" ><img src="flechaNegra.png" /></button></form></td>
                             <td>Estat</td>
                             <td></td>
                             <td></td>
