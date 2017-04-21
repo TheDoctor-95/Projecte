@@ -39,6 +39,15 @@
             <section class="banner left">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>
             </section><section id="content">
+                <?php
+                require_once 'bbddmusic.php';
+                if (isset($_POST["alta"])) {
+                    switchapuntar("music5", $_POST["concert"]);
+                }
+                if (isset($_POST["baixa"])) {
+                    deleteapuntar("music5", $_POST["concert"]);
+                }
+                ?>
                 <div class="mdiv">
                     <header id="ttaula">Proximes actuacions acordades previstes
 
@@ -46,30 +55,30 @@
                     <div class="taula">
                         <table>
                             <tr id="toptable" class="center">
-                                <td>Concert</td>
-                                <td>Local</td>
-                                <td>Direcció local</td>
-                                <td>Població</td>
-                                <td>Data/Hora</td>
+                                <td><form action="" method="POST">Concert<button name="ordre" value="concert"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Local<button name="ordre" value="local"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Direcció local<button name="ordre" value="direccio"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Població<button name="ordre" value="poblacio"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Data/Hora<button name="ordre" value="data"><img src="flechaNegra2.png"/></button></form></td>
                             </tr>
-                                    <?php
-                                    require_once 'bbddmusic.php';
-                                    $musica = selectConcertsConfirm("music5");
-                                    
-                                    while ($fila = mysqli_fetch_array($musica)) {
-                                        extract($fila);
-                                        echo "<tr>";
+                            <?php
+                            
+                            $musica = selectConcertsConfirm("music5");
 
-                                        echo "<td>$concert</td>";
-                                        echo "<td>$nom_local</td>";
-                                        echo "<td>$direccio</td>";
-                                        echo "<td>$nom</td>";
-                                        echo "<td>$data_concert</td>";
+                            while ($fila = mysqli_fetch_array($musica)) {
+                                extract($fila);
+                                echo "<tr>";
+
+                                echo "<td>$concert</td>";
+                                echo "<td>$nom_local</td>";
+                                echo "<td>$direccio</td>";
+                                echo "<td>$nom</td>";
+                                echo "<td>$data_concert</td>";
 
 
-                                        echo "</tr>";
-                                    }
-                                    ?>
+                                echo "</tr>";
+                            }
+                            ?>
                         </table>
 
                     </div>
@@ -84,11 +93,10 @@
                                         <td>Població</td>
                                         <td>Data/Hora</td>
                                         <td>Estat</td>
-                                        <td>Modificar</td>
                                     </tr>
                                     <?php
-                                    $musica = selectConcertsUnconfirm("music1");
-                                    
+                                    $musica = selectConcertsUnconfirm("music5");
+
                                     while ($fila = mysqli_fetch_array($musica)) {
                                         extract($fila);
                                         echo "<tr>";
@@ -98,9 +106,14 @@
                                         echo "<td>$direccio</td>";
                                         echo "<td>$nom</td>";
                                         echo "<td>$data_concert</td>";
-                                        echo "<td>$confirmacio</td>";
-                                        echo "<td>Modificar</td>";
-
+                                        echo "<td>";
+                                        if (checkapuntar("music5", $id_concert)) {
+                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='alta' value='alta'>Alta</button></form>";
+                                        } else {
+                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='baixa' value='baixa'>Baixa</button></form>";
+                                        }
+                                        echo"</td>";
+                                        
                                         echo "</tr>";
                                     }
                                     ?>

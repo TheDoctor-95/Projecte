@@ -60,9 +60,8 @@ td{
 }
 
 #toptable>td{
-    background-color: black;
+    background-color: darkblue;
     color: white;
-
 }
 tr>td:nth-child(1){
     width: 150px;
@@ -81,4 +80,15 @@ tr>td:nth-child(5){
 }
 tr>td:nth-child(6){
     width: 10px;
+}
+
+button{
+    display: inline-block;
+    height: 15px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+button>img{
+    height: 100%
 }
