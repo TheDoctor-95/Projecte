@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -63,49 +58,73 @@ and open the template in the editor.
                 <?php
                 if (isset($_POST["fan"])) {
                     $usu = $_POST["usu"];
-                    $fpasswd = $_POST["fpasswd"];
-                    $fpasswd2 = $_POST["fpasswd2"];
-                    $fname = $_POST["fname"];
-                    $fsurname = $_POST["fsurname"];
-                    $email = $_POST["email"];
-                    $fnac = $_POST["fnac"];
-                    $tel = $_POST["tel"];
-                    $direccio = $_POST["direccio"];
-                    $ciutat = $_POST["ciutat"];
-                    $genero = $_POST["genero"];
-
-                    insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $direccio, $ciutat, $genero);
+                    if (existeUsuario($usu == true)) {
+                        echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
+                    } else {
+                        $fpasswd = $_POST["fpasswd"];
+                        $fpasswd2 = $_POST["fpasswd2"];
+                        $fname = $_POST["fname"];
+                        $fsurname = $_POST["fsurname"];
+                        $email = $_POST["email"];
+                        $fnac = $_POST["fnac"];
+                        $tel = $_POST["tel"];
+                        $direccio = $_POST["direccio"];
+                        $ciutat = $_POST["ciutat"];
+                        $genero = $_POST["genero"];
+                        // Registramos el usuario en la bbdd
+                        if ($fpasswd != $fpasswd2) {
+                            echo "Error, las dos contraseñas deben ser iguales";
+                        } else {
+                            insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $direccio, $ciutat, $genero);
+                        }
+                    }
                 }
                 ?>
                 <?php
                 if (isset($_POST["local"])) {
                     $usu = $_POST["usu"];
-                    $fpasswd = $_POST["fpasswd"];
-                    $fpasswd2 = $_POST["fpasswd2"];
-                    $email = $_POST["email"];
-                    $nomlocal = $_POST["nomlocal"];
-                    $direccio = $_POST["direccio"];
-                    $ciutat = $_POST["ciutat"];
-                    $tel = $_POST["tel"];
-                    $genero = $_POST["genero"];
-
-
-                    insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero);
+                    if (existeUsuario($usu == true)) {
+                        echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
+                    } else {
+                        $fpasswd = $_POST["fpasswd"];
+                        $fpasswd2 = $_POST["fpasswd2"];
+                        $email = $_POST["email"];
+                        $nomlocal = $_POST["nomlocal"];
+                        $direccio = $_POST["direccio"];
+                        $ciutat = $_POST["ciutat"];
+                        $tel = $_POST["tel"];
+                        $genero = $_POST["genero"];
+                        // Registramos el usuario en la bbdd
+                        if ($fpasswd != $fpasswd2) {
+                            echo "Error, las dos contraseñas deben ser iguales";
+                        } else {
+                            insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero);
+                        }
+                    }
                 }
                 ?>
                 <?php
                 if (isset($_POST["music"])) {
                     $usu = $_POST["usu"];
-                    $fpasswd = $_POST["fpasswd"];
-                    $fpasswd2 = $_POST["fpasswd2"];
-                    $email = $_POST["email"];
-                    $nomgrup = $_POST["nomgrup"];
-                    $web = $_POST["web"];
-                    $nummembres = $_POST["nummembres"];
-                    $ciutat = $_POST["ciutat"];
-                    $genere = $_POST["genero"];
+                    if (existeUsuario($usu == true)) {
+                        echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
+                    } else {
+                        $fpasswd = $_POST["fpasswd"];
+                        $fpasswd2 = $_POST["fpasswd2"];
+                        $email = $_POST["email"];
+                        $nomgrup = $_POST["nomgrup"];
+                        $web = $_POST["web"];
+                        $nummembres = $_POST["nummembres"];
+                        $ciutat = $_POST["ciutat"];
+                        $genere = $_POST["genero"];
 
-                    insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $ciutat, $genere);
+                        // Registramos el usuario en la bbdd
+                        if ($fpasswd != $fpasswd2) {
+                            echo "Error, las dos contraseñas deben ser iguales";
+                        } else {
+                            insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $ciutat, $genere);
+                        }
+                    }
                 }
                 ?>
 

@@ -117,43 +117,6 @@ function insertarVotacioMusic($nom_usuari, $votacio) {
     desconectar($con);
 }
 
-//Registre
-function insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $direccio, $ciutat, $genero) {
-
-    $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,nom,cognoms,email,data_naixement,telefon,direccio,id_ciutat,id_estil) values ('$usu','$fpasswd','$fname','$fsurname','$email','$fnac','$tel','$direccio','$ciutat','$genero')";
-    if (mysqli_query($con, $insert)) {
-        echo "<p>Usuari fan registrat </p>";
-    } else {
-        echo mysqli_error($con);
-    }
-    desconectar($con);
-}
-
-function insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero) {
-
-    $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_local,direccio,id_ciutat,telefon,id_estil) values ('$usu', '$fpasswd', '$email', '$nomlocal', '$direccio', '$ciutat', '$tel', '$genero')";
-    if (mysqli_query($con, $insert)) {
-        echo "<p>Usuari local registrat </p>";
-    } else {
-        echo mysqli_error($con);
-    }
-    desconectar($con);
-}
-
-function insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $ciutat, $genere) {
-
-    $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_grup,web,numero_components,id_ciutat,id_estil) values ('$usu', '$fpasswd', '$email', '$nomgrup', '$web', $nummembres, '$ciutat', '$genere')";
-    if (mysqli_query($con, $insert)) {
-        echo "<p>Usuari music registrat </p>";
-    } else {
-        echo mysqli_error($con);
-    }
-    desconectar($con);
-}
-
 //Home
 
 function selectConcertsHome() {
