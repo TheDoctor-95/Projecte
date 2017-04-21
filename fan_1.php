@@ -3,7 +3,7 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="fan.css" rel="stylesheet" type="text/css"/>
+        <link href="fan_css.css" rel="stylesheet" type="text/css"/>
         <link href="basic.css" rel="stylesheet" type="text/css"/>
 
 
@@ -27,9 +27,9 @@
                 <div id="idioma_sel">
                     <div>IDIOMA <img src="flechaNegra.png"></div>
                     <div class="idiomes">
-                        <p><img src="cat.jpg"> Català </p>
-                        <p><img src="cas.jpg"> Castellà </p>
-                        <p><img src="eng.jpg"> Anglès</p>
+                        <p><img src="cat.jpg"> Català</p>
+                        <p><img src="cas.jpg"> Castellà</p>
+                        <p><img src="eng.jpg"> Angles</p>
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
@@ -47,20 +47,11 @@
 
                 <div id="dalt">
                     <div id="faninfo">
-
                         <div id="img">img_fan</div>
                         <div id="info">
-                            
-                            <?php
-                            require_once 'bbdd2.php';
-                            $usu = selectUsu("fan1");
-                            while ($fila = mysqli_fetch_array($usu)) {
-                                extract($fila);
-                                echo "<b>Nom:$nom_usuari</b><br/>";
-                                echo "<b>Telefon:$telefon</b><br/>";
-                                echo "<b>Correu:$email</b><br/>";
-                            }
-                            ?>
+                            <b>Nom:</b><br/>                       
+                            <b>Telefon:</b><br/>
+                            <b>Correu:</b><br/>
 
                         </div>
                     </div>
@@ -68,7 +59,7 @@
                     <!--id="toptable"-->
                     <div id="taulaconcerts">       
                         <?php
-                        
+                        require_once 'bbdd.php';
                         $matriz = ProximsConcerts();
                         echo" <table>
                             PROXIMS CONCERTS
@@ -94,15 +85,20 @@
 
                 <div id="taules"> 
 
+
+
                     <div class="taula">
                         <?php
-                        $music = VotarMusicConcert();
+                        require_once 'bbdd.php';
+
+                        $music = VotarConcert();
                         echo" <table>
-                            PROXIMS CONCERTS
+                            VOTAR CONCERT
                          <tr >
 
-                                <td><strong>Music</strong></td>
-                                <td><strong>Data</strong></td>
+                                <td><strong>Nom</strong></td>
+                                <td><strong>Data</strong></td><td><strong>Votació</strong></td>
+                                
                                
                             </tr>";
 
@@ -112,47 +108,37 @@
                             //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
                             //Mostramos los datos
                             echo "<tr>";
-                            echo "<td>$nom_usuari</td><td>$datahora</td>";
-                            echo "<td><select name='registre' required>
-                                        <option value='0'>-1</option>
-                                        <option selected></option>
-                                        <option value='1'>1</option>
-                                    </select></td><br>";
+                            echo "<td>$nom</td><td>$data_concert</td><td><select  name='votacioconcert' required>  <option ></option><option value=0>+1</option> <option value=1>-1</option> </select></td><br>";
                             echo "</tr>";
                         }
                         echo '</table>';
-                        insertarVotacioMusic($votacio);
+                        insertarVotacioConcert($id_concert,$votacioconcert);
                         ?>
 
                     </div>
 
                     <div class="taula">
                         <?php
-                        $matriz1 = VotarLocalConcert();
+                        require_once 'bbdd.php';
+                        $matriz = VotarMusic();
                         echo" <table>
-                            PROXIMS CONCERTS
+                           VOTAR MUSIC
                          <tr>
                                 <td><strong>Concert</strong></td>
-                                <td><strong>Data</strong></td>
+                                <td><strong>Votació</strong></td>
+                                
                             </tr>";
 
 
-                        while ($fila = mysqli_fetch_array($matriz1)) {
+                        while ($fila = mysqli_fetch_array($matriz)) {
                             extract($fila);
                             //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
                             //Mostramos los datos
                             echo "<tr>";
-                            echo "<td>$nom_usuari</td><td>$data_concert</td><br>";
-                            echo "<td><select name='registre' required>
-                                        <option value='0'>-1</option>
-                                        <option selected></option>
-                                        <option value='1'>1</option>
-                                    </select></td><br>";
+                            echo "<td>$nom_usuari</td><td><select  name='votaciomusic' required>  <option ></option><option value=0>+1</option> <option value=1>-1</option> </select></td><br>";
                             echo "</tr>";
                         }
                         echo '</table>';
-
-                        insertarVotacioConcert($votacio);
                         ?>
 
                     </div>                    
