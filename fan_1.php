@@ -39,29 +39,33 @@
 
 
         <div id="main">
+            <?php
+            if (isset($_SESSION["user"])) {
+                if ($_SESSION["type"] == "1") {
+                    $username = $_SESSION["user"];
+                    ?>
+                    <section class = "banner left">
+                        <img src = "musica.png" alt = "baner"/>
+                    </section><section id = "content">
 
-            <section class="banner left">
-                <img src="musica.png" alt="baner"/>
-            </section><section id="content">
 
+                        <div id = "dalt">
+                            <div id = "faninfo">
+                                <div id = "img">img_fan</div>
+                                <div id = "info">
+                                    <b>Nom:</b><br/>
+                                    <b>Telefon:</b><br/>
+                                    <b>Correu:</b><br/>
 
-                <div id="dalt">
-                    <div id="faninfo">
-                        <div id="img">img_fan</div>
-                        <div id="info">
-                            <b>Nom:</b><br/>                       
-                            <b>Telefon:</b><br/>
-                            <b>Correu:</b><br/>
+                                </div>
+                            </div>
 
-                        </div>
-                    </div>
-
-                    <!--id="toptable"-->
-                    <div id="taulaconcerts">       
-                        <?php
-                        require_once 'bbdd.php';
-                        $matriz = ProximsConcerts();
-                        echo" <table>
+                            <!--id = "toptable" -->
+                            <div id = "taulaconcerts">
+                                <?php
+                                require_once 'bbdd.php';
+                                $matriz = ProximsConcerts();
+                                echo" <table>
                             PROXIMS CONCERTS
                          <tr>
                                 <td><strong>Concert</strong></td>
@@ -69,30 +73,30 @@
                             </tr>";
 
 
-                        while ($fila = mysqli_fetch_array($matriz)) {
-                            extract($fila);
-                            //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
-                            //Mostramos los datos
-                            echo "<tr>";
-                            echo "<td>$nom</td><td>$data_concert</td><br>";
-                            echo "</tr>";
-                        }
-                        echo '</table>';
-                        ?>
+                                while ($fila = mysqli_fetch_array($matriz)) {
+                                    extract($fila);
+                                    //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
+                                    //Mostramos los datos
+                                    echo "<tr>";
+                                    echo "<td>$nom</td><td>$data_concert</td><br>";
+                                    echo "</tr>";
+                                }
+                                echo '</table>';
+                                ?>
 
-                    </div>
-                </div>
+                            </div>
+                        </div>
 
-                <div id="taules"> 
+                        <div id="taules"> 
 
 
 
-                    <div class="taula">
-                        <?php
-                        require_once 'bbdd.php';
+                            <div class="taula">
+                                <?php
+                                require_once 'bbdd.php';
 
-                        $music = VotarConcert();
-                        echo" <table>
+                                $music = VotarConcert();
+                                echo" <table>
                             VOTAR CONCERT
                          <tr >
 
@@ -103,25 +107,25 @@
                             </tr>";
 
 
-                        while ($fila = mysqli_fetch_array($music)) {
-                            extract($fila);
-                            //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
-                            //Mostramos los datos
-                            echo "<tr>";
-                            echo "<td>$nom</td><td>$data_concert</td><td><select  name='votacioconcert' required>  <option ></option><option value=0>+1</option> <option value=1>-1</option> </select></td><br>";
-                            echo "</tr>";
-                        }
-                        echo '</table>';
-                        insertarVotacioConcert($id_concert,$votacioconcert);
-                        ?>
+                                while ($fila = mysqli_fetch_array($music)) {
+                                    extract($fila);
+                                    //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
+                                    //Mostramos los datos
+                                    echo "<tr>";
+                                    echo "<td>$nom</td><td>$data_concert</td><td><select  name='votacioconcert' required>  <option ></option><option value=0>+1</option> <option value=1>-1</option> </select></td><br>";
+                                    echo "</tr>";
+                                }
+                                echo '</table>';
+                                insertarVotacioConcert($id_concert, $votacioconcert);
+                                ?>
 
-                    </div>
+                            </div>
 
-                    <div class="taula">
-                        <?php
-                        require_once 'bbdd.php';
-                        $matriz = VotarMusic();
-                        echo" <table>
+                            <div class="taula">
+                                <?php
+                                require_once 'bbdd.php';
+                                $matriz = VotarMusic();
+                                echo" <table>
                            VOTAR MUSIC
                          <tr>
                                 <td><strong>Concert</strong></td>
@@ -130,20 +134,27 @@
                             </tr>";
 
 
-                        while ($fila = mysqli_fetch_array($matriz)) {
-                            extract($fila);
-                            //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
-                            //Mostramos los datos
-                            echo "<tr>";
-                            echo "<td>$nom_usuari</td><td><select  name='votaciomusic' required>  <option ></option><option value=0>+1</option> <option value=1>-1</option> </select></td><br>";
-                            echo "</tr>";
-                        }
-                        echo '</table>';
-                        ?>
+                                while ($fila = mysqli_fetch_array($matriz)) {
+                                    extract($fila);
+                                    //Las variables que genera extract tendran el mismo nombre que los campos en la bbdd
+                                    //Mostramos los datos
+                                    echo "<tr>";
+                                    echo "<td>$nom_usuari</td><td><select  name='votaciomusic' required>  <option ></option><option value=0>+1</option> <option value=1>-1</option> </select></td><br>";
+                                    echo "</tr>";
+                                }
+                                echo '</table>';
+                                ?>
 
-                    </div>                    
-                </div>
-
+                            </div>                    
+                        </div>
+                        <?php
+                    } else {
+                        echo "No eres fan.";
+                    }
+                } else {
+                    echo "No estás autentificado.";
+                }
+                ?>
 
             </section><section class="banner right">
                 <img src="musica.png" alt="baner"/>

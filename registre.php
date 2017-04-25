@@ -14,6 +14,7 @@
     <body>
         <?php
         require_once './BBDD_registre.php';
+        
         ?>
         <header>
             <a href="home.php"><div id="esquerra"><img src="Logoyem.png" /></div></a>
