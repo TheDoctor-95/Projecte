@@ -1,17 +1,9 @@
 <?php
-function conectar($database) {
-    $con = mysqli_connect("localhost", "root", "", $database)
-            or die("No se ha podido conectar con la BBDD.");
-    return $con;
-}
+require_once './bbdd2.php';
 
-function desconectar($conexión) {
-    mysqli_close($conexión);
-}
-
-function selectConcertsUnconfirm($music) {
+function selectConcertsUnconfirm($music,$ordre) {
     $con = conectar("webmusica");
-    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert, concerts.id_concert"
+    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert, concerts.id_concert order by $ordre"
             . " from concerts inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari"
             . " inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat"
             . " where id_concert not in (select id_concert from apuntar where apuntar.nom_usuari='$music'and confirmacio=1 )"
@@ -20,9 +12,9 @@ function selectConcertsUnconfirm($music) {
     desconectar($con);
     return $resultado;
 }
-function selectConcertsConfirm($music) {
+function selectConcertsConfirm($music, $ordre) {
     $con = conectar("webmusica");
-    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert"
+    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert order by $ordre"
             . " from concerts inner join apuntar on concerts.id_concert=apuntar.id_concert"
             . " inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari"
             . " inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat"

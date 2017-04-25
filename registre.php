@@ -59,7 +59,7 @@
                 <?php
                 if (isset($_POST["fan"])) {
                     $usu = $_POST["usu"];
-                    if (existeUsuario($usu == true)) {
+                    if (existeUsuario($usu)) {
                         echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
                     } else {
                         $fpasswd = $_POST["fpasswd"];
