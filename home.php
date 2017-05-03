@@ -6,10 +6,13 @@
         <title>Mainpage</title>
         <meta charset="UTF-8">
         <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="slick/slick.min.js" type="text/javascript"></script>
+        <link href="slick/slick.css" rel="stylesheet" type="text/css"/>
+        <link href="slick/slick-theme.css" rel="stylesheet" type="text/css"/>
         <script src="home.js" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    
+
     <body>
         <div class='login'>
             <span class='close'> X</span>
@@ -112,7 +115,11 @@
                     </div>     
 
                 </div>
-                <div class="publi"><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
+                <div class="publi">
+                    <div><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
+                    <div><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
+                    <div><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
+                </div>
             </section><section class="banner right">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>
             </section>

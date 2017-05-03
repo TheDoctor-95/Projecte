@@ -3,6 +3,7 @@ $(document).ready(start);
 function start(){
     $("#fondo, .login").hide();
     $("#login").click(show);
+    $(".publi").slick();
 }
 
 function show(){
