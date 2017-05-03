@@ -5,10 +5,23 @@
         <link href="basic.css" rel="stylesheet" type="text/css" />
         <title>Mainpage</title>
         <meta charset="UTF-8">
+        <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="home.js" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    
     <body>
-        
+        <div class='login'>
+            <span class='close'> X</span>
+            <form action='' method='POST'>
+                <p>Nombre de usuario</p>
+                <p><input type="text" name='user' /></p>
+                <p>Contraseña</p>
+                <p><input type="password" name='pass' /></p>
+                <p><input type="submit" name='login' value='LOG IN'/></p>
+            </form>
+        </div>
+        <div id='fondo'></div>
         <?php
         require_once 'bbdd2.php';
         ?>
@@ -37,7 +50,10 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="registre.php">Sing in</a> </div>
+                <div><span id='login'> Log in 
+
+                    </span>
+                    /<a href="registre.php">Sing in</a> </div>
             </div>
         </header>
         <div id="main">
@@ -57,16 +73,16 @@
                                 <th>Data</th>
                             </tr>
                             <?php
-                        $concerts = selectConcertsHome();
-                        while ($concert = mysqli_fetch_array($concerts)) {
-                            extract($concert);
-                            echo"<tr >
+                            $concerts = selectConcertsHome();
+                            while ($concert = mysqli_fetch_array($concerts)) {
+                                extract($concert);
+                                echo"<tr >
                                     <td>$nom</td>
                                     <td>$nom_local</td>
                                     <td>$data_concert</td>
                                     <tr>";
-                                                    }
-                        ?>
+                            }
+                            ?>
                         </table>
                     </div>
                     <div class="taula">
@@ -80,21 +96,21 @@
                                 <th>Estil</th>
                                 <th>Nota</th>
                             </tr>
-                           <?php
-                        $grups = selectMusicsHome();
-                        while ($grup = mysqli_fetch_array($grups)) {
-                            extract($grup);
-                            $nota=  number_format($nota,1);
-                            echo"<tr >
+                            <?php
+                            $grups = selectMusicsHome();
+                            while ($grup = mysqli_fetch_array($grups)) {
+                                extract($grup);
+                                $nota = number_format($nota, 1);
+                                echo"<tr >
                                     <td>$nom_grup</td>
                                     <td>$nom</td>
                                     <td>$nota</td>
                                     <tr>";
-                                                    }
-                        ?>
+                            }
+                            ?>
                         </table>
                     </div>     
-                    
+
                 </div>
                 <div class="publi"><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
             </section><section class="banner right">

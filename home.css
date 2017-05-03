@@ -1,4 +1,34 @@
+.close,
+#login{
+    cursor: pointer;
+}
 
+.login{
+ position: absolute;
+ z-index: 50;
+ top: 40%;
+ left: 40%;
+ width: 20%;
+ background-color: blue;
+ border-style: solid;
+ border-color: red;
+ text-align: center;
+}
+
+#fondo{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.8);
+    z-index: 9;
+}
+.close{
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
 /*CONTINGUT PRINCIPAL*/
 #content{
     width: 80%;

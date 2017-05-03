@@ -135,6 +135,11 @@ function selectMusicsHome() {
     return $resultado;
 }
 
+function login($user, $pass){
+    
+}
+
+
 // Registre
 
 function selectGenere() {
