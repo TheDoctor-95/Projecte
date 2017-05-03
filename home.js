@@ -3,13 +3,14 @@ $(document).ready(start);
 function start(){
     $("#fondo, .login").hide();
     $("#login").click(show);
-    $(".publi").slick();
+    $(".publi").slick({autoplay: true,
+  autoplaySpeed: 2000});
 }
 
 function show(){
     $("#fondo, .login").show();
     $("#login").off();
-    $(".close").click(close);
+    $(".close, #fondo").click(close);
 }
 
 function close(){

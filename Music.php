@@ -17,7 +17,6 @@ if (!isset($_SESSION["ordre2"])) {
 if (isset($_POST["ordre2"])) {
     $_SESSION["ordre2"] = $_POST["ordre2"];
 }
-
 ?>
 <html>
     <head>
@@ -52,7 +51,11 @@ if (isset($_POST["ordre2"])) {
                     </div>
                 </div>
                 <div>search</div>
-                <div><a href="">log out</a> </div>
+                <div>
+                    <form action='home.php' method='POST'>
+                        <button name='logout'>Log Out</button>
+                    </form>
+                </div>
             </div>
         </header>
         <div id="main">

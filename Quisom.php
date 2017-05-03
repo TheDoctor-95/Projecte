@@ -9,6 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <link href="home.css" rel="stylesheet" type="text/css"/>
         <link href="quisom.css" rel="stylesheet" type="text/css" />
+        <link href="basic.css" rel="stylesheet" type="text/css"/>
         <title>Qui Som</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

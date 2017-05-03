@@ -12,7 +12,15 @@
         <script src="home.js" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-
+    <?php
+    require_once 'bbdd2.php';
+    session_start();
+    if(isset($_POST["logout"])){
+        session_destroy();
+        header("Location:home.php");
+    }
+    
+    ?>
     <body>
         <div class='login'>
             <span class='close'> X</span>
@@ -22,12 +30,45 @@
                 <p>Contraseña</p>
                 <p><input type="password" name='pass' /></p>
                 <p><input type="submit" name='login' value='LOG IN'/></p>
+                <?php
+                if (isset($_POST["login"])) {
+                    echo '<script>'
+                    . '$(document).ready(ini);'
+                    . 'function ini(){'
+                    . '$("#fondo, .login").show()
+                        
+    $("#login").off();
+    $(".close, #fondo").click(close);
+                            }'
+                    . '</script>';
+                    $user = $_POST["user"];
+                    if (verificaruser($user, $_POST["pass"])) {
+                        echo "<p> VAMOS A ENTRAR </p>";
+                        $type = getUserType($user);
+                        echo $type;
+
+                        $_SESSION["user"] = $user;
+                        $_SESSION["type"] = $type;
+                        if ($type == "Music") {
+                            header("Location:Music.php");
+                        } else if ($type == "Fan") {
+                            header("Location:fan.php");
+                        } else if ($type == "Local") {
+                            header("Location:Local.php");
+                        } else {
+                            
+                        }
+                    } else {
+                        echo "<p class='error'>Nom d'usuari o contrasenya incorrecte</p>";
+                    }
+                }
+                ?>
             </form>
         </div>
         <div id='fondo'></div>
-        <?php
-        require_once 'bbdd2.php';
-        ?>
+
+
+
         <header>
             <a href="home.php"><div id="esquerra"><img src="Logoyem.png" /></div></a>
             <div id="mig">
@@ -53,10 +94,18 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><span id='login'> Log in 
+                <div><?php if(isset($_SESSION["user"])){
+                    ?>
+                    <form action='' method='POST'>
+                        <button name='logout'>Log Out</button>
+                    </form>
+ <?php
+                }else{?>
+                    <span id='login'> Log in 
 
                     </span>
-                    /<a href="registre.php">Sing in</a> </div>
+                    ||<a href="registre.php">Sing in</a> </div>
+                <?php } ?>
             </div>
         </header>
         <div id="main">

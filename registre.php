@@ -182,8 +182,7 @@
 
 
                                             <p> IMG: </p>
-                                            <p> input imatge </p>
-                                        </div>
+                                            <p> <input type="file"  /> /<p>
                                         <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
                                     </form>
 

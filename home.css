@@ -9,9 +9,9 @@
     top: 40%;
     left: 40%;
     width: 20%;
-    background-color: blue;
+    background-color: chocolate;
     border-style: solid;
-    border-color: red;
+    border-color: brown;
     text-align: center;
 }
 
@@ -109,4 +109,7 @@ a{
 
 .mdiv, .publi{
     display: block;
+}
+.error{
+    color: darkred;
 }

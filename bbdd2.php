@@ -12,7 +12,7 @@ function desconectar($con) {
 
 /* Local */
 
-function selectConcertsLocal($local, $ordre){
+function selectConcertsLocal($local, $ordre) {
     $con = conectar("webmusica");
     $query = "select id_concert, nom, data_concert from concerts where nom_usuari = '$local' order by $ordre";
     $resultado = mysqli_query($con, $query);
@@ -135,10 +135,27 @@ function selectMusicsHome() {
     return $resultado;
 }
 
-function login($user, $pass){
-    
+function verificarUser($user, $pass) {
+    $con = conectar("webmusica");
+    $query = "select * from usuaris where nom_usuari='$user' and contrasenya='$pass'";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    $filas=  mysqli_num_rows($resultado);
+    if($filas=1){
+        return true;
+    }
+    return false;
 }
 
+function getUserType($user){
+    $con = conectar("webmusica");
+    $query = "select classe_usuari from usuaris where nom_usuari='$user'";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    $resultado= mysqli_fetch_array($resultado);
+    extract($resultado);
+    return $classe_usuari;
+}
 
 // Registre
 
