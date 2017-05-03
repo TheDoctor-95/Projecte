@@ -1,21 +1,24 @@
 <?php
-        session_start();
-        require_once './bbdd2.php';
-        if(!isset($_SESSION["ordre"])){
-            $_SESSION["ordre"] = "concert desc";
-          
-        }
-        echo $_SESSION["ordre"];
-        if(isset($_POST["ordre"])){
-            $_SESSION["ordre"]=$_POST["ordre"];
-            
-        }
-        echo $_SESSION["ordre"];
-        
-        
-        
-       
-        ?>
+session_start();
+require_once './bbdd2.php';
+if (!isset($_SESSION["ordre1"])) {
+    $_SESSION["ordre1"] = "concerts.nom desc";
+}
+
+if (isset($_POST["ordre1"])) {
+    $_SESSION["ordre1"] = $_POST["ordre1"];
+}
+echo $_SESSION["ordre1"];
+
+if (!isset($_SESSION["ordre2"])) {
+    $_SESSION["ordre2"] = "concerts.nom desc";
+}
+
+if (isset($_POST["ordre2"])) {
+    $_SESSION["ordre2"] = $_POST["ordre2"];
+}
+echo $_SESSION["ordre2"];
+?>
 <html>
     <head>
         <link href="Music.css" rel="stylesheet" type="text/css"/>
@@ -72,15 +75,14 @@
                     <div class="taula">
                         <table>
                             <tr id="toptable" class="center">
-                                <td><form action="" method="POST">Concert<button name="ordre" value="concert"><img src="flechaNegra2.png"/></button></form></td>
+                                <td><form action="" method="POST">Concert<button name="ordre" value="concerts.nom desc"><img src="flechaNegra2.png"/></button></form></td>
                                 <td><form action="" method="POST">Local<button name="ordre" value="nom_local"><img src="flechaNegra2.png"/></button></form></td>
                                 <td><form action="" method="POST">Direcció local<button name="ordre" value="direccio"><img src="flechaNegra2.png"/></button></form></td>
                                 <td><form action="" method="POST">Població<button name="ordre" value="nom"><img src="flechaNegra2.png"/></button></form></td>
                                 <td><form action="" method="POST">Data/Hora<button name="ordre" value="data_concert"><img src="flechaNegra2.png"/></button></form></td>
                             </tr>
                             <?php
-                            
-                            $musica = selectConcertsConfirm("music5", $_SESSION["ordre"]);
+                            $musica = selectConcertsConfirm("music5", $_SESSION["ordre1"]);
 
                             while ($fila = mysqli_fetch_array($musica)) {
                                 extract($fila);
@@ -104,15 +106,15 @@
                             <div class="taula">
                                 <table>
                                     <tr id="toptable">
-                                        <td>Concert</td>
-                                        <td>Local</td>
-                                        <td>Direcció local</td>
-                                        <td>Població</td>
-                                        <td>Data/Hora</td>
+                                        <td><form action="" method="POST">Concert<button name="ordre2" value="concerts.nom"><img src="flechaNegra2.png"/></button></form></td>
+                                        <td><form action="" method="POST">Local<button name="ordre2" value="nom_local"><img src="flechaNegra2.png"/></button></form></td>
+                                        <td><form action="" method="POST">Direcció local<button name="ordre2" value="direccio"><img src="flechaNegra2.png"/></button></form></td>
+                                        <td><form action="" method="POST">Població<button name="ordre2" value="nom"><img src="flechaNegra2.png"/></button></form></td>
+                                        <td><form action="" method="POST">Data/Hora<button name="ordre2" value="data_concert"><img src="flechaNegra2.png"/></button></form></td>
                                         <td>Estat</td>
                                     </tr>
                                     <?php
-                                    $musica = selectConcertsUnconfirm("music5",$_SESSION["ordre"]);
+                                    $musica = selectConcertsUnconfirm("music5", $_SESSION["ordre2"]);
 
                                     while ($fila = mysqli_fetch_array($musica)) {
                                         extract($fila);
@@ -130,7 +132,7 @@
                                             echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='baixa' value='baixa'>Baixa</button></form>";
                                         }
                                         echo"</td>";
-                                        
+
                                         echo "</tr>";
                                     }
                                     ?>

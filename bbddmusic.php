@@ -3,22 +3,22 @@ require_once './bbdd2.php';
 
 function selectConcertsUnconfirm($music,$ordre) {
     $con = conectar("webmusica");
-    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert, concerts.id_concert order by $ordre"
+    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert, concerts.id_concert "
             . " from concerts inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari"
             . " inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat"
             . " where id_concert not in (select id_concert from apuntar where apuntar.nom_usuari='$music'and confirmacio=1 )"
-            . " order by data_concert";
+            . " order by $ordre";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;
 }
 function selectConcertsConfirm($music, $ordre) {
     $con = conectar("webmusica");
-    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert order by $ordre"
+    $query = "select concerts.nom as concert, usuaris.nom_local, usuaris.direccio, ciutats.nom, concerts.data_concert "
             . " from concerts inner join apuntar on concerts.id_concert=apuntar.id_concert"
             . " inner join usuaris on concerts.nom_usuari=usuaris.nom_usuari"
             . " inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat"
-            . " where apuntar.nom_usuari='$music' and apuntar.confirmacio=1 order by data_concert";
+            . " where apuntar.nom_usuari='$music' and apuntar.confirmacio=1 order by $ordre";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;
