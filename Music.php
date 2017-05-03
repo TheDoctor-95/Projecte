@@ -8,7 +8,7 @@ if (!isset($_SESSION["ordre1"])) {
 if (isset($_POST["ordre1"])) {
     $_SESSION["ordre1"] = $_POST["ordre1"];
 }
-echo $_SESSION["ordre1"];
+
 
 if (!isset($_SESSION["ordre2"])) {
     $_SESSION["ordre2"] = "concerts.nom desc";
@@ -17,14 +17,14 @@ if (!isset($_SESSION["ordre2"])) {
 if (isset($_POST["ordre2"])) {
     $_SESSION["ordre2"] = $_POST["ordre2"];
 }
-echo $_SESSION["ordre2"];
+
 ?>
 <html>
     <head>
-        <link href="Music.css" rel="stylesheet" type="text/css"/>
         <title>Music</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">                
+        <link href="Music.css" rel="stylesheet" type="text/css"/>
         <link href="basic.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
