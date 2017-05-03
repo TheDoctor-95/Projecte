@@ -129,7 +129,7 @@ function selectConcertsHome() {
 
 function selectMusicsHome() {
     $con = conectar("webmusica");
-    $query = "select usuaris.nom_grup, estils.nom, (select count(*) from votarmusic where votacio=1)-(select count(*) from votarmusic where votacio=0) as nota from usuaris inner join estils on usuaris.id_estil=estils.id_estil inner join votarmusic on usuaris.nom_usuari=votarmusic.nom_music group by votarmusic.nom_music order by nota limit 5";
+    $query = "select usuaris.nom_grup, estils.nom, sum(votacio)*10/count(*) as nota from usuaris inner join estils on usuaris.id_estil=estils.id_estil inner join votarmusic on usuaris.nom_usuari=votarmusic.nom_music group by votarmusic.nom_music order by nota desc limit 5";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;

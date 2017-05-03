@@ -84,6 +84,7 @@
                         $grups = selectMusicsHome();
                         while ($grup = mysqli_fetch_array($grups)) {
                             extract($grup);
+                            $nota=  number_format($nota,1);
                             echo"<tr >
                                     <td>$nom_grup</td>
                                     <td>$nom</td>
