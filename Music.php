@@ -127,9 +127,9 @@ if (isset($_POST["ordre2"])) {
                                         echo "<td>$data_concert</td>";
                                         echo "<td>";
                                         if (checkapuntar("music5", $id_concert)) {
-                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='alta' value='alta'>Alta</button></form>";
+                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='alta' value='alta' id='green'>Alta</button></form>";
                                         } else {
-                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='baixa' value='baixa'>Baixa</button></form>";
+                                            echo "<form action='' method='POST'><input type='hidden' value='$id_concert' name='concert'/><button name='baixa' value='baixa' id='red'>Baixa</button></form>";
                                         }
                                         echo"</td>";
 
