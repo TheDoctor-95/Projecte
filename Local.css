@@ -6,7 +6,6 @@
     height: 50px;
     text-align: right;
     padding: 2px;
-    z-index: 20;
 
 }
 #content>header>div{
@@ -20,22 +19,29 @@
   
 }
 #desplegable{
-    position: absolute;
-    top:0;
-    left: 0;
+    position: fixed;
+    top:10%;
+    left: 40%;
+    width: 20%;
     text-align: center;
     background-color: #009999;
     border-color: darkred;
     border-style: solid;
     border-width: 2px;
-    display: none;
+    z-index: 2;
+    
 }
-#content>header>div:hover{
-    border-width: 0px;
+#fondo{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.8);
+    z-index: 1;
 }
-#content>header>div:hover #desplegable{
-    display: block;
-}
+
+
 /*TAULA*/
 #table{
   width: auto;
@@ -119,5 +125,22 @@ button{
 }
 button>img{
     height: 100%;
+}
+p>input,
+p>select{
+    width: 90%;
+    text-align: center;
+}
+
+#notifications{
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+}
+
+#notifications>p{
+    padding: 5px;
+    background-color: green;
+    color: white;
 }
 

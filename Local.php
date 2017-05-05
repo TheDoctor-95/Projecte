@@ -15,21 +15,20 @@
     <body>
         <?php
         session_start();
+        if (isset($_SESSION["user"])) {
+            $user = $_SESSION["user"];
+        } else {
+            header("Location:home.php");
+        }
+
         require_once './bbdd2.php';
-        if(!isset($_SESSION["ordre"])){
+        if (!isset($_SESSION["ordre"])) {
             $_SESSION["ordre"] = "nom desc";
-          
         }
-        echo $_SESSION["ordre"];
-        if(isset($_POST["ordre"])){
-            $_SESSION["ordre"]=$_POST["ordre"];
-            
+
+        if (isset($_POST["ordre"])) {
+            $_SESSION["ordre"] = $_POST["ordre"];
         }
-        echo $_SESSION["ordre"];
-        
-        
-        
-       
         ?>
 
         <header>
@@ -39,7 +38,6 @@
                 <nav>
                     <a href="Local.php"><div class="opcio">Local</div></a>
                     <a href="Perfil_Local.php"><div class="opcio">Perfil</div></a>
-                    <a href=""><div class="opcio">Notificacions</div></a>
                 </nav>
 
             </div>
@@ -54,14 +52,18 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="">log out</a> </div>
+                <div>
+                    <form action='home.php' method='POST'>
+                        <button name='logout'>Log Out</button>
+                    </form>
+                </div>
             </div>
         </header>
         <div id="main">
             <section class="banner left">
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
-                
+
                 <header>
                     <div>Afegir Concert
                         <div id="desplegable">
@@ -69,20 +71,23 @@
                                 <p>Nom </p><p><input type="text" name="name_concierto" /></p>
                                 <p>Data concierto </p><p><input type="datetime" name="data_concierto" /></p>
                                 <p>Preu </p><p> <input type="number" name="price" /></p>
-                                <p> GENERO </p><p>
+                                <p>GENERO </p><p>
                                     <select name="genero">
                                         <?php
-                                        
+                                        $generos = selectGenere();
+                                        while ($fila = mysqli_fetch_array($generos)) {
+                                            extract($fila);
+                                            echo "<option value='$id_estil'>$nom</option>";
+                                        }
                                         ?>
                                     </select></p>
                                 <p>Aforament Maxim </p><p> <input type="number" name="aforo" /></p>
-                                <p><input type="submit" value="Añadir" /></p>
+                                <p><input type="submit" value="Añadir" name="add" /></p>
                             </form>
                         </div>
                     </div>
 
                 </header>
-                <?phpecho $_SESSION["ordre"];?>
                 <div id="table">
                     <table>
                         <tr id="toptable">
@@ -93,7 +98,7 @@
                             <td></td>
                         </tr>
                         <?php
-                        $concerts = selectConcertsLocal("local2",$_SESSION["ordre"]);
+                        $concerts = selectConcertsLocal($user, $_SESSION["ordre"]);
                         while ($concert = mysqli_fetch_array($concerts)) {
                             extract($concert);
                             echo"<tr >
@@ -117,7 +122,7 @@
                                         </tr>";
                         }
                         ?>
-                       
+
                     </table>
                 </div>
             </section><section class="banner right">
@@ -127,5 +132,13 @@
         <footer>
             <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
         </footer>
+        <div id='fondo'></div>
+        <div id="notifications">
+            <?php
+            if (isset($_POST["add"])) {
+                echo "<p>Notificacio de prova</p>";
+            }
+            ?>
+        </div>
     </body>
 </html>

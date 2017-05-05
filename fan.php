@@ -33,7 +33,11 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="">log out</a> </div>
+                <div>
+                    <form action='home.php' method='POST'>
+                        <button name='logout'>Log Out</button>
+                    </form>
+                </div>
             </div>
         </header>
 
@@ -50,7 +54,7 @@
 
                         <div id="img">img_fan</div>
                         <div id="info">
-                            
+
                             <?php
                             require_once 'bbdd2.php';
                             $usu = selectUsu("fan1");
@@ -68,7 +72,6 @@
                     <!--id="toptable"-->
                     <div id="taulaconcerts">       
                         <?php
-                        
                         $matriz = ProximsConcerts();
                         echo" <table>
                             PROXIMS CONCERTS

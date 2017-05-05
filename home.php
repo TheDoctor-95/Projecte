@@ -45,7 +45,6 @@
                     if (verificaruser($user, $_POST["pass"])) {
                         echo "<p> VAMOS A ENTRAR </p>";
                         $type = getUserType($user);
-                        echo $type;
 
                         $_SESSION["user"] = $user;
                         $_SESSION["type"] = $type;

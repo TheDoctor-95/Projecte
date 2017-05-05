@@ -4,7 +4,7 @@ function start(){
     $("#fondo, .login").hide();
     $("#login").click(show);
     $(".publi").slick({autoplay: true,
-  autoplaySpeed: 2000});
+  autoplaySpeed: 2000, dots:true});
 }
 
 function show(){
