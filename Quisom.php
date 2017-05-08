@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="home.css" rel="stylesheet" type="text/css"/>
+        <link href="basic.css" rel="stylesheet" type="text/css"/>
         <link href="quisom.css" rel="stylesheet" type="text/css" />
         <link href="basic.css" rel="stylesheet" type="text/css"/>
         <title>Qui Som</title>
@@ -20,11 +14,9 @@ and open the template in the editor.
             <div id="mig">
                 <div><img src="lletra.png" /></div>
                 <nav>
-
-                    <div class="opcio">Qui sóm</div>
-                    <div class="opcio">Concerts</div>
-                    <div class="opcio">Notícies</div>
-                    <div class="opcio">Botiga</div>
+                    <a href="Music.php"><div class="opcio">Qui sóm</div></a>
+                    <a href="Perfil_Local.php"><div class="opcio">Notícies</div></a>
+                    <a href="Local.php"><div class="opcio">Concerts</div></a>
 
                 </nav>
 
@@ -63,7 +55,7 @@ and open the template in the editor.
             </section>
         </div>
         <footer>
-            <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
+            <span>Your Easy Music</span> <a href='Quisom.php'>Qui Som</a> | <a href=''> Copyright</a>
         </footer>
         
         <?php
