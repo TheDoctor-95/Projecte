@@ -36,7 +36,9 @@ and open the template in the editor.
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="">Sortir</a> </div>
+                <div><form action='home.php' method='POST'>
+                        <button name='logout'>Sortir</button>
+                    </form></div>
             </div>
         </header>
         <div id="main">

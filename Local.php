@@ -54,7 +54,7 @@
                 <div><input type="text" placeHolder="buscar..."/></div>
                 <div>
                     <form action='home.php' method='POST'>
-                        <button name='logout'>Log Out</button>
+                        <button name='logout'>Sortir</button>
                     </form>
                 </div>
             </div>
