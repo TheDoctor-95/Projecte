@@ -36,8 +36,8 @@
             <div id="mig">
                 <div><img src="lletra.png" /></div>
                 <nav>
-                    <a href="Local.php"><div class="opcio">Local</div></a>
                     <a href="Perfil_Local.php"><div class="opcio">Perfil</div></a>
+                    <a href=""><div class="opcio">Notificacions</div></a>
                 </nav>
 
             </div>

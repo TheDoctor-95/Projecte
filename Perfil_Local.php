@@ -19,7 +19,6 @@ and open the template in the editor.
                 <div><img src="lletra.png" /></div>
                 <nav>
                     <a href="Local.php"><div class="opcio">Local</div></a>
-                    <a href="Perfil_Local.php"><div class="opcio">Perfil</div></a>
                     <a href=""><div class="opcio">Notificacions</div></a>
                 </nav>
 
@@ -37,7 +36,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="">log out</a> </div>
+                <div><a href="">Sortir</a> </div>
             </div>
         </header>
         <div id="main">
@@ -74,7 +73,7 @@ and open the template in the editor.
                             </p>
                             <p>Aforo: </p><p> <input type="number" name="aforo"></p>
                         </div>
-                        <div><input type="submit" value="Registrate" name="local" /></div>
+                        <div><input type="submit" value="Guardar Cambios" name="local" /></div>
                     </form>
                 </div>
 
