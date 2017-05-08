@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+session_start();
+require_once './bbdd2.php';
+if (!isset($_SESSION["ordre1"])) {
+    $_SESSION["ordre1"] = "concerts.nom desc";
+}
+
+if (isset($_POST["ordre1"])) {
+    $_SESSION["ordre1"] = $_POST["ordre1"];
+}
+
+
+if (!isset($_SESSION["ordre2"])) {
+    $_SESSION["ordre2"] = "concerts.nom desc";
+}
+
+if (isset($_POST["ordre2"])) {
+    $_SESSION["ordre2"] = $_POST["ordre2"];
+}
+?>
 <html>
     <head>
         <link href="Perfil_Local.css" rel="stylesheet" type="text/css"/>
         <link href="basic.css" rel="stylesheet" type="text/css"/>
-        <title>TODO supply a title</title>
+        <title>Perfil del Music</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -18,8 +32,7 @@ and open the template in the editor.
             <div id="mig">
                 <div><img src="lletra.png" /></div>
                 <nav>
-                    <a href="Local.php"><div class="opcio">Local</div></a>
-                    <a href="Perfil_Local.php"><div class="opcio">Perfil</div></a>
+                    <a href="Music.php"><div class="opcio">Music</div></a>
                     <a href=""><div class="opcio">Notificacions</div></a>
                 </nav>
 
@@ -37,7 +50,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="">log out</a> </div>
+                <div><a href="">Sortir</a> </div>
             </div>
         </header>
         <div id="main">
@@ -52,14 +65,14 @@ and open the template in the editor.
                             <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
                             <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
                             <p>Email*: </p><p><input type="email"  name="email" required /> </p>
-                            <p>Nom del local*: </p><p> <input type="text"  name="nomlocal" required /></p>
-                            <p>Ciutat*: </p><p> <input type="text" name="ciutat" required /></p> 
+                            <p>Nom del Grup*: </p><p> <input type="text"  name="nom_grup" required /></p>
+                            <p>Numero de components*: </p><p> <input type="text"  name="numero_components" required /></p>
+                            <p>Web del Grup: </p><p> <input type="text" name="web"/></p>
                             <p> IMG:  </p>
                         </div>
-                        <div>
-                            <p>Direcció*: </p><p><input type="text" name="direccio" /></p>                             
-                            <p>Telèfon*: </p><p> <input type="tel" name="tel"></p>
-                            <p>Gènere que es toca al local*:   
+                        <div>                            
+                            <p>Telefon de Contacte: </p><p> <input type="tel" name="tel"></p>
+                            <p>Gèneres musicals del grup*:   
                                 <br />
                                 <input type="checkbox" name="generes" value="pop">Pop 
                                 <br />
@@ -72,9 +85,8 @@ and open the template in the editor.
                                 <input type="checkbox" name="generes" value="indie">Indie
                                 <br<input type="checkbox" name="generes" value="electro">Electrònica
                             </p>
-                            <p>Aforo: </p><p> <input type="number" name="aforo"></p>
                         </div>
-                        <div><input type="submit" value="Registrate" name="local" /></div>
+                        <div><input type="submit" value="Guardar Cambios" name="music" /></div>
                     </form>
                 </div>
 

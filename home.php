@@ -75,9 +75,7 @@
                 <nav>
 
                     <div class="opcio"><a href="Quisom.php" >Qui sóm</a></div>
-                    <div class="opcio">Concerts</div>
                     <div class="opcio">Notícies</div>
-                    <div class="opcio">Botiga</div>
 
                 </nav>
 
@@ -100,10 +98,10 @@
                     </form>
  <?php
                 }else{?>
-                    <span id='login'> Log in 
+                    <span id='login'> Entra 
 
                     </span>
-                    ||<a href="registre.php">Sing in</a> </div>
+                    ||<a href="registre.php">Registra't</a> </div>
                 <?php } ?>
             </div>
         </header>

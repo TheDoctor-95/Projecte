@@ -29,15 +29,12 @@ if (isset($_POST["ordre2"])) {
     <body>
         <header>
             <div id="esquerra">
-                <img src= "logoyem.png" alt="logoyem" title="logoyem"/>
+                <a href="home.php"><img src= "logoyem.png" alt="logoyem" title="Homepage"/></a>
             </div><div id="mig">
                 <div><img src="lletra.png" alt="titul" /></div>
                 <nav>
-                    <div class="opcio">Music</div>
-                    <div class="opcio">Perfil</div>
-                    <div class="opcio">Concerts</div>
-                    <div class="opcio">Botiga</div>
-                    <div class="opcio">Notificacions/Avisos</div>
+                    <a href="Perfil_Music.php"><div class="opcio">Perfil</div></a>
+                    <a href="music.php"><div class="opcio">Notificacions/Avisos</div></a>
                 </nav>
             </div>
             <div id="dreta">
@@ -53,7 +50,7 @@ if (isset($_POST["ordre2"])) {
                 <div>search</div>
                 <div>
                     <form action='home.php' method='POST'>
-                        <button name='logout'>Log Out</button>
+                        <button name='logout'>Sortir</button>
                     </form>
                 </div>
             </div>
@@ -150,7 +147,7 @@ if (isset($_POST["ordre2"])) {
             </section>
         </div>
         <footer>
-            <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
+            <span>Your Easy Music</span> <a href='Quisom.php'>Qui Som</a> | <a href=''> Copyright</a>
         </footer>
     </body>
 </html>

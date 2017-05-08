@@ -23,9 +23,7 @@
                 <nav>
 
                     <div class="opcio">Qui sóm</div>
-                    <div class="opcio">Concerts</div>
                     <div class="opcio">Notícies</div>
-                    <div class="opcio">Botiga</div>
 
                 </nav>
 
