@@ -14,10 +14,8 @@
             <div id="mig">
                 <div><img src="lletra.png" /></div>
                 <nav>
-                    <a href="Music.php"><div class="opcio">Qui sóm</div></a>
-                    <a href="Perfil_Local.php"><div class="opcio">Notícies</div></a>
-                    <a href="Local.php"><div class="opcio">Concerts</div></a>
-
+                    <a href="Home.php"><div class="opcio">Home</div></a>
+                    <a href=""><div class="opcio">Notícies</div></a>
                 </nav>
 
             </div>
@@ -32,7 +30,7 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="registre.php">Sing in</a> </div>
+                <div><a href="registre.php">Entra</a> </div>
             </div>
         </header>
         <div id="main">
