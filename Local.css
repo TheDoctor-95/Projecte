@@ -142,5 +142,6 @@ p>select{
     padding: 5px;
     background-color: green;
     color: white;
+    z-index: 1000;
 }
 

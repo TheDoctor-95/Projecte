@@ -20,6 +20,34 @@ function selectConcertsLocal($local, $ordre) {
     return $resultado;
 }
 
+function selectConcertState($id_concert) {
+    $con = conectar("webmusica");
+    $query = "select count(*)as count from apuntar where id_concert='$id_concert' and confirmacio=1";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    $result = mysqli_fetch_array($resultado);
+    extract($result);
+    if ($count == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function selectMusicConfirmat($id_concert) {
+    $con = conectar("webmusica");
+    $$query = "select nom_usuari from usuaris where nom_usuari in (select nom_usuari from apuntar where id_concert='$id_concert' and confirmacio=1)";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    $result = mysqli_fetch_array($resultado);
+    extract($result);
+    if ($count == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function contaApuntats($id_concert) {
     $con = conectar("webmusica");
     $query = "select count(*) as apun from apuntar where id_concert='$id_concert'";
@@ -31,6 +59,26 @@ function contaApuntats($id_concert) {
 function selectApuntats($id_concert) {
     $con = conectar("webmusica");
     $query = "select nom_usuari from usuaris where nom_usuari in (select nom_usuari from apuntar where id_concert='$id_concert')";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    return $resultado;
+}
+
+function updateMusicConcert($id_concert, $nom_usuari) {
+    $con = conectar("webmusica");
+    $query = "UPDATE apuntar SET confirmacio=1 WHERE nom_usuari='$nom_usuari' and id_concert='$id_concert'";
+    if (mysqli_query($con, $query)) {
+        echo "<p>$nom_usuari acceptat per el concert</p>";
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
+}
+
+function selectMusicConcert($id_concert) {
+
+    $con = conectar("webmusica");
+    $query = "select nom_usuari from apuntar where id_concert='$id_concert'";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;
@@ -140,19 +188,19 @@ function verificarUser($user, $pass) {
     $query = "select * from usuaris where nom_usuari='$user' and contrasenya='$pass'";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
-    $filas=  mysqli_num_rows($resultado);
-    if($filas=1){
+    $filas = mysqli_num_rows($resultado);
+    if ($filas = 1) {
         return true;
     }
     return false;
 }
 
-function getUserType($user){
+function getUserType($user) {
     $con = conectar("webmusica");
     $query = "select classe_usuari from usuaris where nom_usuari='$user'";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
-    $resultado= mysqli_fetch_array($resultado);
+    $resultado = mysqli_fetch_array($resultado);
     extract($resultado);
     return $classe_usuari;
 }

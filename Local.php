@@ -30,7 +30,16 @@
             $_SESSION["ordre"] = $_POST["ordre"];
         }
         ?>
-
+        <div id="notifications">
+            <?php
+            if (isset($_POST["add"])) {
+                echo "<p>Notificacio de prova</p>";
+            }
+            if (isset($_POST["conf"])) {
+                updateMusicConcert($_POST["conconf"], $_POST["conf"]);
+            }
+            ?>
+        </div>
         <header>
             <a href="home.php"><div id="esquerra"><img src="Logoyem.png" /></div></a>
             <div id="mig">
@@ -105,17 +114,23 @@
                                     <td>$nom</td>
                                     <td>$data_concert</td>
                                     <td>";
-                            $apuntats = mysqli_fetch_array(contaApuntats($id_concert));
-                            extract($apuntats);
-                            echo "$apun Musics Apuntas";
-                            if ($apun != 0) {
-                                echo "<div>";
-                                $nom_apuntats = selectApuntats($id_concert);
-                                while ($nom_apuntat = mysqli_fetch_array($nom_apuntats)) {
-                                    extract($nom_apuntat);
-                                    echo "<p>$nom_usuari</p>";
+                            if (selectConcertState($id_concert)) {
+                                $music=  mysqli_fetch_array(selectMusicConcert($id_concert));
+                                extract($music);
+                                echo "$nom_usuari";
+                            } else {
+                                $apuntats = mysqli_fetch_array(contaApuntats($id_concert));
+                                extract($apuntats);
+                                echo "$apun Musics Apuntas";
+                                if ($apun != 0) {
+                                    echo "<div>";
+                                    $nom_apuntats = selectApuntats($id_concert);
+                                    while ($nom_apuntat = mysqli_fetch_array($nom_apuntats)) {
+                                        extract($nom_apuntat);
+                                        echo "<p><form action='' method='POST' ><input type='hidden' name='conconf' value='$id_concert' /> $nom_usuari <button name='conf' value='$nom_usuari'><img src='flechaNegra.png' /></button></form></p>";
+                                    }
+                                    echo "</div>";
                                 }
-                                echo "</div>";
                             }
                             echo "</td><td>Modificar</td>
                                             <td>x</td>
@@ -133,12 +148,6 @@
             <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
         </footer>
         <div id='fondo'></div>
-        <div id="notifications">
-            <?php
-            if (isset($_POST["add"])) {
-                echo "<p>Notificacio de prova</p>";
-            }
-            ?>
-        </div>
+
     </body>
 </html>
