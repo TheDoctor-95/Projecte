@@ -101,7 +101,7 @@
                     <span id='login'> Entra 
 
                     </span>
-                    ||<a href="registre.php">Registra't</a> </div>
+                    || <a href="registre.php">Registra't</a> </div>
                 <?php } ?>
             </div>
         </header>
@@ -163,8 +163,8 @@
                 </div>
                 <div class="publi">
                     <div><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
-                    <div><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
-                    <div><img src= "cover_blank.png" alt="publicitat" title="publicitat"/></div>
+                    <div><img src= "musik.jpg" alt="publicitat" title="publicitat"/></div>
+                    <div><img src= "rock.jpg" alt="publicitat" title="publicitat"/></div>
                 </div>
             </section><section class="banner right">
                 <img src= "musica.png" alt="musica" title="musica" width="10" height="500"/>

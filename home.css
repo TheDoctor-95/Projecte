@@ -14,7 +14,28 @@
     border-color: brown;
     text-align: center;
 }
-
+.mixlogin{
+    position: absolute;
+    z-index: 50;
+    top: 40%;
+    left: 40%;
+    width: 10%;
+    background-color: chocolate;
+    border-style: solid;
+    border-color: brown;
+    text-align: center;
+}
+.minilogin{
+    position: absolute;
+    z-index: 50;
+    top: 40%;
+    left: 40%;
+    width: 10%;
+    background-color: chocolate;
+    border-style: solid;
+    border-color: brown;
+    text-align: center;
+}
 #fondo{
     position: fixed;
     top:0;
@@ -80,7 +101,7 @@
 
 .table{
     background-color: transparent;
-    border-color: black;
+    border-color: brown;
     border-style: solid;
     border-collapse: collapse;
     display: inline-block;
@@ -88,7 +109,7 @@
 }
 
 td{
-    border-color: black;
+    border-color: brown;
     border-style: solid;
 
 }
