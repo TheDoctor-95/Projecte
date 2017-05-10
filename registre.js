@@ -3,6 +3,8 @@ $(document).ready(start);
 function start(){
     $(".preguntes>div").hide();
     $("#botons>button").click(show);
+    
+      $("#notifications").animate({top : 0},{duration:2000,complete:disapear});
 }
 
 function show(){
@@ -15,4 +17,10 @@ function show(){
     $("#formfan").validate();
     $("#formlocal").validate();
     $("#formmusic").validate();
+}
+
+function disapear(){
+    
+    console.log("hola");
+    $("#notifications").empty();
 }

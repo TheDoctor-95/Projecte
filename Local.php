@@ -127,7 +127,7 @@
                                     $nom_apuntats = selectApuntats($id_concert);
                                     while ($nom_apuntat = mysqli_fetch_array($nom_apuntats)) {
                                         extract($nom_apuntat);
-                                        echo "<p><form action='' method='POST' ><input type='hidden' name='conconf' value='$id_concert' /> $nom_usuari <button name='conf' value='$nom_usuari'><img src='flechaNegra.png' /></button></form></p>";
+                                        echo "<p><form action='' method='POST' ><input type='hidden' name='conconf' value='$id_concert' /> $nom_usuari <button name='conf' value='$nom_usuari'><img src='tick.png' /></button></form></p>";
                                     }
                                     echo "</div>";
                                 }

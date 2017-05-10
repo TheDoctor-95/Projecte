@@ -3,7 +3,7 @@ $(document).ready(start);
 function start(){
     $("#desplegable, #fondo").hide();
     $("#content>header>div").click(show);
-    $("#notifications").animate({bottom:0},{duration:2000,complete:disapear});
+    $("#notifications").animate({top : 0},{duration:2000,complete:disapear});
 }
 function show(){
     $("#desplegable, #fondo").show();

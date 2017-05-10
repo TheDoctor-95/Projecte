@@ -14,7 +14,6 @@
     <body>
         <?php
         require_once './BBDD_registre.php';
-        
         ?>
         <header>
             <a href="home.php"><div id="esquerra"><img src="Logoyem.png" /></div></a>
@@ -53,7 +52,7 @@
             <section class="banner left">
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
-
+                <div class='notifications'>
                 <?php
                 if (isset($_POST["fan"])) {
                     $usu = $_POST["usu"];
@@ -126,7 +125,7 @@
                     }
                 }
                 ?>
-
+        </div>
                 <div id="botons">
                     <button id="fan">FAN</button><button id="local">LOCAL</button><button id="music">MUSIC</button>
                 </div>
@@ -181,118 +180,119 @@
 
                                             <p> IMG: </p>
                                             <p> <input type="file"  /> /<p>
-                                        <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
+                                            <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
                                     </form>
 
 
 
-
-
-                                </div>
-
-
-                                <div class ="local" >
-                                    <form id ="formlocal" action="" method="POST" >
-                                        <div>
-                                            <p><input type="hidden" value="local" name="type" /></p>
-                                            <p>Nick o nom d'usuari*:</p><p> <input type="text"  name="usu" required /> </p>
-                                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
-                                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
-                                            <p>Email*: </p><p><input type="email"  name="email" required /> </p>
-                                            <p>Nom del local*: </p><p> <input type="text"  name="nomlocal" required /></p>
-
-
-                                        </div>
-                                        <div>
-                                            <p>Direcció*: </p><p><input type="text" name="direccio" /></p> 
-                                            <p>Ciutat</p>
-                                            <p><select name="ciutat">
-                                                    <?php
-                                                    $ciutats = selectCiutats();
-                                                    while ($fila = mysqli_fetch_array($ciutats)) {
-                                                        extract($fila);
-                                                        echo "<option value='$id_ciutat'>$nom</option>";
-                                                    }
-                                                    ?>
-                                                </select></p> 
-                                            <p>Telèfon*: </p><p> <input type="tel" name="tel"></p>
-                                            <p>Genere:</p>
-                                            <p><select name="genero" >
-                                                    <?php
-                                                    $generos = selectGenere();
-                                                    while ($fila = mysqli_fetch_array($generos)) {
-                                                        extract($fila);
-                                                        echo "<option value='$id_estil'>$nom</option>";
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </p>
-                                            <p> IMG:  </p>
-                                            <p> input imatge </p>
-                                        </div>
-                                        <div><input type="submit" value="Registrate" name="local" /></div>
-                                    </form>
-
-                                </div>
-
-                                <div class="music">
-                                    <form id ="formmusic" action="" method="POST" >
-                                        <div><p><input type="hidden" value="music" name="type" /></p>
-                                            <p>Nick o nom d'usuari*:</p><p><input type="text"  name="usu" required> <label> </label></p>
-                                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" required><label></label> </p>
-                                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required><label></label><p>
-                                            <p>Email*: </p><p><input type="email"  name="email" required><label></label> </p>    
-                                            <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup"> <label></label>   </p>
-                                            <p>Web*: </p><p><input type="url"  name="web"><label></label></p>
-                                        </div>
-                                        <div>
-
-
-                                            <p>Discogràfica*: </p><p><input type="text"  name="discografica"><label></label></p>
-                                            <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"><label></label></p>
-                                            <p>Ciutat</p>
-                                            <p><select name="ciutat">
-                                                    <?php
-                                                    $ciutats = selectCiutats();
-                                                    while ($fila = mysqli_fetch_array($ciutats)) {
-                                                        extract($fila);
-                                                        echo "<option value='$id_ciutat'>$nom</option>";
-                                                    }
-                                                    ?>
-                                                </select></p>
-                                            <p>Gènere del grup*:</p>
-                                            <p><select name="genere">
-                                                    <?php
-                                                    $generos = selectGenere();
-                                                    while ($fila = mysqli_fetch_array($generos)) {
-                                                        extract($fila);
-                                                        echo "<option value='$id_estil'>$nom</option>";
-                                                    }
-                                                    ?>
-                                                </select><label></label>
-                                            </p>
-                                            <p>Imatge:</p>
-                                            <p>insertar aqui imagen<label></label></p>
-
-                                        </div>
-                                        <div><input type="submit" value="Registrate" name="music" /></div>
-                                    </form>
 
 
                                 </div>
                             </div>
+
+
+                            <div class ="local" >
+                                <form id ="formlocal" action="" method="POST" >
+                                    <div>
+                                        <p><input type="hidden" value="local" name="type" /></p>
+                                        <p>Nick o nom d'usuari*:</p><p> <input type="text"  name="usu" required /> </p>
+                                        <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
+                                        <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
+                                        <p>Email*: </p><p><input type="email"  name="email" required /> </p>
+                                        <p>Nom del local*: </p><p> <input type="text"  name="nomlocal" required /></p>
+
+
+                                    </div>
+                                    <div>
+                                        <p>Direcció*: </p><p><input type="text" name="direccio" /></p> 
+                                        <p>Ciutat</p>
+                                        <p><select name="ciutat">
+                                                <?php
+                                                $ciutats = selectCiutats();
+                                                while ($fila = mysqli_fetch_array($ciutats)) {
+                                                    extract($fila);
+                                                    echo "<option value='$id_ciutat'>$nom</option>";
+                                                }
+                                                ?>
+                                            </select></p> 
+                                        <p>Telèfon*: </p><p> <input type="tel" name="tel"></p>
+                                        <p>Genere:</p>
+                                        <p><select name="genero" >
+                                                <?php
+                                                $generos = selectGenere();
+                                                while ($fila = mysqli_fetch_array($generos)) {
+                                                    extract($fila);
+                                                    echo "<option value='$id_estil'>$nom</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </p>
+                                        <p> IMG:  </p>
+                                        <p> input imatge </p>
+                                    </div>
+                                    <div><input type="submit" value="Registrate" name="local" /></div>
+                                </form>
+
+                            </div>
+
+                            <div class="music">
+                                <form id ="formmusic" action="" method="POST" >
+                                    <div><p><input type="hidden" value="music" name="type" /></p>
+                                        <p>Nick o nom d'usuari*:</p><p><input type="text"  name="usu" required> <label> </label></p>
+                                        <p>Contrasenya*:</p><p><input type="password" name="fpasswd" required><label></label> </p>
+                                        <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required><label></label><p>
+                                        <p>Email*: </p><p><input type="email"  name="email" required><label></label> </p>    
+                                        <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup"> <label></label>   </p>
+                                        <p>Web*: </p><p><input type="url"  name="web"><label></label></p>
+                                    </div>
+                                    <div>
+
+
+                                        <p>Discogràfica*: </p><p><input type="text"  name="discografica"><label></label></p>
+                                        <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"><label></label></p>
+                                        <p>Ciutat</p>
+                                        <p><select name="ciutat">
+                                                <?php
+                                                $ciutats = selectCiutats();
+                                                while ($fila = mysqli_fetch_array($ciutats)) {
+                                                    extract($fila);
+                                                    echo "<option value='$id_ciutat'>$nom</option>";
+                                                }
+                                                ?>
+                                            </select></p>
+                                        <p>Gènere del grup*:</p>
+                                        <p><select name="genere">
+                                                <?php
+                                                $generos = selectGenere();
+                                                while ($fila = mysqli_fetch_array($generos)) {
+                                                    extract($fila);
+                                                    echo "<option value='$id_estil'>$nom</option>";
+                                                }
+                                                ?>
+                                            </select><label></label>
+                                        </p>
+                                        <p>Imatge:</p>
+                                        <p>insertar aqui imagen<label></label></p>
+
+                                    </div>
+                                    <div><input type="submit" value="Registrate" name="music" /></div>
+                                </form>
+
+
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                </div>       
+             
 
 
-            </section><section class="banner right">
-                <img src= "musica.png" alt="musica" title="musica"/>
-            </section>
-        </div>
-        <footer>
-            <span>Your Easy Music</span> <a href='Quisom.php'>Qui Som</a> | <a href=''> Copyright</a>
-        </footer>
-    </body>
+    </section><section class="banner right">
+        <img src= "musica.png" alt="musica" title="musica"/>
+    </section>
+</div>
+<footer>
+    <span>Your Easy Music</span> <a href='Quisom.php'>Qui Som</a> | <a href=''> Copyright</a>
+</footer>
+</body>
 </html>
