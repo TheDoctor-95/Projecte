@@ -91,8 +91,17 @@ if (isset($_POST["ordre2"])) {
                         <div><input type="submit" value="Guardar Cambios" name="music" /></div>
                     </form>
                 </div>
-
-
+                <?php
+                if(isset($_POST["music"])) {
+                    $user = $_POST["usu"];
+                    $passw = $_POST["fpasswd"];
+                    $email = $_POST["email"];
+                    $ngrup = $_POST["nom_grup"];
+                    $ncomp = $_POST["numero_components"];
+                    $web = $_POST["web"];
+                    editprofil($passw,$email,$ngrup,$ncomp,$web,$user);
+                }
+                ?>
             </section><section class="banner right">
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section>
