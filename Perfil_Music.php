@@ -63,7 +63,6 @@ if (isset($_POST["ordre2"])) {
                     <form id ="formlocal" action="" method="POST" >
                         <div>
                             <p><input type="hidden" value="local" name="type" /></p>
-                            <p>Nick o nom d'usuari*:</p><p> <input type="text"  name="usu" required /> </p>
                             <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
                             <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
                             <p>Email*: </p><p><input type="email"  name="email" required /> </p>
@@ -85,21 +84,26 @@ if (isset($_POST["ordre2"])) {
                                 <input type="checkbox" name="generes" value="classica">Clàssica
                                 <br />
                                 <input type="checkbox" name="generes" value="indie">Indie
-                                <br<input type="checkbox" name="generes" value="electro">Electrònica
+                                <br />
+                                <input type="checkbox" name="generes" value="electro">Electrònica
                             </p>
                         </div>
                         <div><input type="submit" value="Guardar Cambios" name="music" /></div>
                     </form>
                 </div>
                 <?php
+                require_once './bbddmusic.php';
                 if(isset($_POST["music"])) {
-                    $user = $_POST["usu"];
+                    $user = $_SESSION["user"];
                     $passw = $_POST["fpasswd"];
                     $email = $_POST["email"];
                     $ngrup = $_POST["nom_grup"];
                     $ncomp = $_POST["numero_components"];
                     $web = $_POST["web"];
-                    editprofil($passw,$email,$ngrup,$ncomp,$web,$user);
+                    $tel = $_POST["tel"];
+                    $genere = $_POST["generes"];
+                    editprofil($passw,$email,$ngrup,$ncomp,$web,$tel,$genere,$user);
+                    echo "<p>Dades modificades</p>";
                 }
                 ?>
             </section><section class="banner right">

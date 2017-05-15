@@ -61,7 +61,7 @@ function editprofil ($passw,$email,$ngrup,$ncomp,$web,$user){
     $con = conectar("webmusica");
     $update = "update usuaris set contrasenya='$passw', email='$email', nom_grup='$ngrup', numero_components='$ncomp', web='$web' where nom_usuari='$username'";
     if (mysqli_query($con, $update)) {
-        echo "<p>Dades modificades</p>";
+
     } else {
         echo mysqli_error($con);
     }
