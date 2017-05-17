@@ -22,6 +22,8 @@ if (isset($_POST["ordre2"])) {
     <head>
         <link href="Perfil_Local.css" rel="stylesheet" type="text/css"/>
         <link href="basic.css" rel="stylesheet" type="text/css"/>
+        <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="perfil.js" type="text/javascript"></script>
         <title>Perfil del Music</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,58 +62,74 @@ if (isset($_POST["ordre2"])) {
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
                 <div class ="local" >
-                    <form id ="formlocal" action="" method="POST" >
-                        <div>
-                            <p><input type="hidden" value="local" name="type" /></p>
-                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
-                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
-                            <p>Email*: </p><p><input type="email"  name="email" required /> </p>
-                            <p>Nom del Grup*: </p><p> <input type="text"  name="nom_grup" required /></p>
-                            <p>Numero de components*: </p><p> <input type="text"  name="numero_components" required /></p>
-                            <p>Web del Grup: </p><p> <input type="text" name="web"/></p>
-                            <p> IMG:  </p>
+
+                    <?php
+                    require_once './bbddmusic.php';
+                    $user = $_SESSION["user"];
+                    $datos = selectUsubyName($user);
+                    echo '<form id ="formlocal" action="" method="POST" >';
+                    $fila = mysqli_fetch_array($datos);
+                    extract($fila);
+
+                    echo '<div>
+                            <p><input type="hidden" value="music" name="type" /></p>
+                            <button type="button" id="pasreq" name="pasreq" value="pasreq">Cambiar contrasenya</button><br>
+                            <div id="passchange">
+                            <p>Contrasenya Actual:</p><p><input type="password" value="' . $contrasenya . '" name="oldpasswd" /> </p>
+                            <p>Nova Contrasenya:</p><p><input type="password"  name="fpasswd" /> </p>
+                            <p>Repeteix la nova contrasenya:</p><p><input type="password" name="fpasswd2" /></p>
+                            </div>
+                            <p>Email*: </p><p><input type="email"  value="' . $email . '" name="email" required /> </p>
+                            <p>Nom del Grup*: </p><p> <input type="text" value="' . $nom_grup . '" name="nom_grup" required /></p>
+                            <p>Numero de components*: </p><p> <input type="number" value="' . $numero_components . '" name="numero_components" required /></p>
+                            <p>Web del Grup: </p><p> <input type="text" value="' . $web . '" name="web"/></p>
                         </div>
                         <div>                            
-                            <p>Telefon de Contacte: </p><p> <input type="tel" name="tel"></p>
-                            <p>Gèneres musicals del grup*:   
-                                <br />
-                                <input type="checkbox" name="generes" value="pop">Pop 
-                                <br />
-                                <input type="checkbox" name="generes" value="rock">Rock 
-                                <br />
-                                <input type="checkbox" name="generes" value="jazz">Jazz  
-                                <br />
-                                <input type="checkbox" name="generes" value="classica">Clàssica
-                                <br />
-                                <input type="checkbox" name="generes" value="indie">Indie
-                                <br />
-                                <input type="checkbox" name="generes" value="electro">Electrònica
-                            </p>
-                        </div>
-                        <div><input type="submit" value="Guardar Cambios" name="music" /></div>
-                    </form>
+                            <p>Telefon de Contacte: </p><p> <input type="tel" value="' . $telefon . '" name="tel"></p>
+                            <p>Data formació: </p><p> <input type="date" value="' . $data_formacio . '" name="datform"></p>   
+                            <p>IMG: </p>
+                            <p>Gènere musical del grup*:</p><p>    
+                                <select name="genero" >';
+                    $generos = selectGenere();
+                    while ($fila = mysqli_fetch_array($generos)) {
+                        extract($fila);
+                        echo "<option value='$id_estil'>$nom</option>";
+                    }
+                    ?>
+                    
+                    </select>
+                    </p>
                 </div>
-                <?php
-                require_once './bbddmusic.php';
-                if(isset($_POST["music"])) {
-                    $user = $_SESSION["user"];
-                    $passw = $_POST["fpasswd"];
-                    $email = $_POST["email"];
-                    $ngrup = $_POST["nom_grup"];
-                    $ncomp = $_POST["numero_components"];
-                    $web = $_POST["web"];
-                    $tel = $_POST["tel"];
-                    $genere = $_POST["generes"];
-                    editprofil($passw,$email,$ngrup,$ncomp,$web,$tel,$genere,$user);
-                    echo "<p>Dades modificades</p>";
-                }
-                ?>
-            </section><section class="banner right">
-                <img src= "musica.png" alt="musica" title="musica"/>
-            </section>
+                <div><input type="submit" value="Guardar Cambios" name="music" /></div>
+                </form>
         </div>
-        <footer>
-            <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
-        </footer>
-    </body>
+        <?php
+        require_once './bbddmusic.php';
+        if (isset($_POST["music"])) {
+            $user = $_SESSION["user"];
+            $passw = $_POST["fpasswd"];
+            $passw2 = $_POST["fpasswd2"];
+            $email = $_POST["email"];
+            $ngrup = $_POST["nom_grup"];
+            $ncomp = $_POST["numero_components"];
+            $web = $_POST["web"];
+            $tel = $_POST["tel"];
+            $datform = $_POST["datform"];
+            $genere = $_POST["genero"];
+            if ($passw != $passw2) {
+                echo "Error, las dos contraseñas deben ser iguales";
+            } else {
+                editprofil($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);
+                echo "<p>Dades modificades</p>";
+            }
+        }
+        ?>
+    </section><section class="banner right">
+        <img src= "musica.png" alt="musica" title="musica"/>
+    </section>
+</div>
+<footer>
+    <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
+</footer>
+</body>
 </html>

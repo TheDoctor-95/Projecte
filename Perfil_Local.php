@@ -1,9 +1,23 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+session_start();
+require_once './bbdd2.php';
+if (!isset($_SESSION["ordre1"])) {
+    $_SESSION["ordre1"] = "concerts.nom desc";
+}
+
+if (isset($_POST["ordre1"])) {
+    $_SESSION["ordre1"] = $_POST["ordre1"];
+}
+
+
+if (!isset($_SESSION["ordre2"])) {
+    $_SESSION["ordre2"] = "concerts.nom desc";
+}
+
+if (isset($_POST["ordre2"])) {
+    $_SESSION["ordre2"] = $_POST["ordre2"];
+}
+?>
 <html>
     <head>
         <link href="Perfil_Local.css" rel="stylesheet" type="text/css"/>
@@ -60,19 +74,16 @@ and open the template in the editor.
                         <div>
                             <p>Direcció*: </p><p><input type="text" name="direccio" /></p>                             
                             <p>Telèfon*: </p><p> <input type="tel" name="tel"></p>
-                            <p>Gènere que es toca al local*:   
-                                <br />
-                                <input type="checkbox" name="generes" value="pop">Pop 
-                                <br />
-                                <input type="checkbox" name="generes" value="rock">Rock 
-                                <br />
-                                <input type="checkbox" name="generes" value="jazz">Jazz  
-                                <br />
-                                <input type="checkbox" name="generes" value="classica">Clàssica
-                                <br />
-                                <input type="checkbox" name="generes" value="indie">Indie
-                                <br/>
-                                <input type="checkbox" name="generes" value="electro">Electrònica
+                            <p>Gènere que es toca al local*:</p>   
+                            <p><select name="genero" >
+                                    <?php
+                                    $generos = selectGenere();
+                                    while ($fila = mysqli_fetch_array($generos)) {
+                                        extract($fila);
+                                        echo "<option value='$id_estil'>$nom</option>";
+                                    }
+                                    ?>
+                                </select>
                             </p>
                             <p>Aforo: </p><p> <input type="number" name="aforo"></p>
                         </div>
@@ -81,7 +92,7 @@ and open the template in the editor.
                 </div>
                 <?php
                 require_once './bbddmusic.php';
-                if(isset($_POST["music"])) {
+                if (isset($_POST["music"])) {
                     $user = $_SESSION["user"];
                     $passw = $_POST["fpasswd"];
                     $email = $_POST["email"];
@@ -90,9 +101,9 @@ and open the template in the editor.
                     $web = $_POST["web"];
                     $direccio = $_POST["direccio"];
                     $tel = $_POST["tel"];
-                    $genere = $_POST["generes"];
+                    $genere = $_POST["genero"];
                     $aforo = $_POST["aforo"];
-                    editprofil($passw,$email,$nlocal,$ciutat,$web,$direccio,$tel,$genere,$aforo,$user);
+                    editprofil($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $genere, $aforo, $user);
                     echo "<p>Dades modificades</p>";
                 }
                 ?>
