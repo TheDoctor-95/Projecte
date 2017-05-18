@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><a href="registre.php">Entra</a> </div>
+                <div><a href="registre.php">Registra't</a> </div>
             </div>
         </header>
         <div id="main">

@@ -123,7 +123,7 @@ if (isset($_POST["ordre2"])) {
             } else if ($passw == $oldpassw) {
                 echo "Error, la contraseña nueva no puede ser igual que la anterior";
             } else {
-                editprofil($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);
+                editprofilm($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);
                 echo "<p>Dades modificades</p>";
             }
         }

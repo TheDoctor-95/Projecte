@@ -61,7 +61,7 @@ function deleteapuntar($nusuario, $id_concert) {
     desconectar($con);
 }
 
-function editprofil($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user) {
+function editprofilm($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user) {
     $con = conectar("webmusica");
     $update = "update usuaris set contrasenya='$passw', email='$email', nom_grup='$ngrup', numero_components='$ncomp', web='$web', telefon='$tel', data_formacio='$datform' ,id_estil='$genere' where nom_usuari='$user'";
     if (mysqli_query($con, $update)) {
@@ -74,8 +74,19 @@ function editprofil($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $gener
 
 function selectUsubyName($name) {
     $con = conectar("webmusica");
-    $query = "select * from usuaris where nom_usuari='$name'";
+    $query = "select * from usuaris inner join concerts on usuaris.nom_usuari=concerts.nom_usuari inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat where usuaris.nom_usuari='$name'";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;
+}
+
+function editprofill($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $aforo, $user) {
+    $con = conectar("webmusica");
+    $update = "update usuaris set contrasenya='$passw', email='$email', nom_local='$nlocal', id_ciutat='$ciutat', web='$web', direccio='$direccio', telefon='$tel', data_inauguracio='$datinau' ,id_estil='$genere', aforament_max='$aforo' where nom_usuari='$user'";
+    if (mysqli_query($con, $update)) {
+        
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
 }

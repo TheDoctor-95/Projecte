@@ -44,7 +44,7 @@ if (isset($_POST["ordre2"])) {
                     <div class="idiomes">
                         <p><img src="cat.jpg"> Català</p>
                         <p><img src="cas.jpg"> Castellà</p>
-                        <p><img src="eng.jpg"> Angles</p>
+                        <p><img src="eng.jpg"> Anglès</p>
                     </div>
                 </div>
                 <div>search</div>

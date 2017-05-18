@@ -19,12 +19,6 @@
             <a href="home.php"><div id="esquerra"><img src="Logoyem.png" /></div></a>
             <div id="mig">
                 <div><img src="lletra.png" /></div>
-                <nav>
-
-                    <div class="opcio">Qui sóm</div>
-                    <div class="opcio">Notícies</div>
-
-                </nav>
 
             </div>
 
@@ -40,7 +34,7 @@
                     </div>
                 </div>
                 <div><input type="search" placeHolder="buscar..."/></div>
-                <div><a href="">log out</a> </div>
+                <div><a href="home.php">Sortir</a> </div>
             </div>
         </header>
 
