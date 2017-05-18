@@ -66,6 +66,7 @@ if (isset($_POST["ordre2"])) {
                     <?php
                     require_once './bbddmusic.php';
                     $user = $_SESSION["user"];
+                    
                     $datos = selectUsubyName($user);
                     echo '<form id ="formlocal" action="" method="POST" >';
                     $fila = mysqli_fetch_array($datos);
@@ -75,7 +76,7 @@ if (isset($_POST["ordre2"])) {
                             <p><input type="hidden" value="music" name="type" /></p>
                             <button type="button" id="pasreq" name="pasreq" value="pasreq">Cambiar contrasenya</button><br>
                             <div id="passchange">
-                            <p>Contrasenya Actual:</p><p><input type="password" value="' . $contrasenya . '" name="oldpasswd" /> </p>
+                            <p>Contrasenya Actual:</p><p><input type="password" name="oldpasswd" /> </p>
                             <p>Nova Contrasenya:</p><p><input type="password"  name="fpasswd" /> </p>
                             <p>Repeteix la nova contrasenya:</p><p><input type="password" name="fpasswd2" /></p>
                             </div>
@@ -85,7 +86,7 @@ if (isset($_POST["ordre2"])) {
                             <p>Web del Grup: </p><p> <input type="text" value="' . $web . '" name="web"/></p>
                         </div>
                         <div>                            
-                            <p>Telefon de Contacte: </p><p> <input type="tel" value="' . $telefon . '" name="tel"></p>
+                            <p>Telefon de Contacte: </p><p> <input type="tel" value="' . $telefon . '" name="tel" maxlength="9"></p>
                             <p>Data formació: </p><p> <input type="date" value="' . $data_formacio . '" name="datform"></p>   
                             <p>IMG: </p>
                             <p>Gènere musical del grup*:</p><p>    
@@ -107,6 +108,7 @@ if (isset($_POST["ordre2"])) {
         require_once './bbddmusic.php';
         if (isset($_POST["music"])) {
             $user = $_SESSION["user"];
+            $oldpassw = $_POST["oldpasswd"];
             $passw = $_POST["fpasswd"];
             $passw2 = $_POST["fpasswd2"];
             $email = $_POST["email"];
@@ -118,7 +120,11 @@ if (isset($_POST["ordre2"])) {
             $genere = $_POST["genero"];
             if ($passw != $passw2) {
                 echo "Error, las dos contraseñas deben ser iguales";
-            } else {
+            } 
+            else if($passw == $oldpassw){
+                echo "Error, la contraseña nueva no puede ser igual que la anterior";
+            }
+            else {
                 editprofil($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);
                 echo "<p>Dades modificades</p>";
             }
