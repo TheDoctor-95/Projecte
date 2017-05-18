@@ -26,10 +26,10 @@ function insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel
     desconectar($con);
 }
 
-function insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $ciutat, $genere) {
+function insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere) {
 
     $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_grup,web,numero_components,id_ciutat,id_estil) values ('$usu', '$fpasswd', '$email', '$nomgrup', '$web', $nummembres, '$ciutat', '$genere')";
+    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_grup,web,numero_components, data_formacio, id_ciutat,usuaris.id_estil) values ('$usu', '$fpasswd', '$email', '$nomgrup', '$web', $nummembres, '$dformacio', '$ciutat', '$genere')";
     if (mysqli_query($con, $insert)) {
         echo "<p>Usuari music registrat </p>";
     } else {

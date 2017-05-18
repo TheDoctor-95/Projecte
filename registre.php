@@ -113,14 +113,15 @@
                         $nomgrup = $_POST["nomgrup"];
                         $web = $_POST["web"];
                         $nummembres = $_POST["nummembres"];
+                        $dformacio = $_POST["dformacio"];
                         $ciutat = $_POST["ciutat"];
-                        $genere = $_POST["genero"];
+                        $genere = $_POST["genere"];
 
                         // Registramos el usuario en la bbdd
                         if ($fpasswd != $fpasswd2) {
                             echo "Error, las dos contraseñas deben ser iguales";
                         } else {
-                            insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $ciutat, $genere);
+                            insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere);
                         }
                     }
                 }
@@ -248,7 +249,7 @@
                                     <div>
 
 
-                                        <p>Discogràfica*: </p><p><input type="text"  name="discografica"><label></label></p>
+                                        <p>Data formacio: </p><p><input type="date"  name="dformacio"><label></label></p>
                                         <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"><label></label></p>
                                         <p>Ciutat</p>
                                         <p><select name="ciutat">
