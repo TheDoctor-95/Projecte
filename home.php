@@ -15,11 +15,10 @@
     <?php
     require_once 'bbdd2.php';
     session_start();
-    if(isset($_POST["logout"])){
+    if (isset($_POST["logout"])) {
         session_destroy();
         header("Location:home.php");
     }
-    
     ?>
     <body>
         <div class='login'>
@@ -91,17 +90,17 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
-                <div><?php if(isset($_SESSION["user"])){
+                <div><?php if (isset($_SESSION["user"])) {
                     ?>
-                    <form action='' method='POST'>
-                        <button name='logout'>Log Out</button>
-                    </form>
- <?php
-                }else{?>
-                    <span id='login'> Entra 
+                        <form action='' method='POST'>
+                            <button name='logout'>Log Out</button>
+                        </form>
+                        <?php } else {
+                        ?>
+                        <span id='login'> Entra 
 
-                    </span>
-                    || <a href="registre.php">Registra't</a> </div>
+                        </span>
+                        || <a href="registre.php">Registra't</a> </div>
                 <?php } ?>
             </div>
         </header>

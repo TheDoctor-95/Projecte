@@ -179,7 +179,7 @@
 
 
                                             <p> IMG: </p>
-                                            <p> <input type="file"  /> /<p>
+                                            <p> <input type="file"  /> </p>
                                             <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
                                     </form>
 
@@ -227,8 +227,8 @@
                                                 ?>
                                             </select>
                                         </p>
-                                        <p> IMG:  </p>
-                                        <p> input imatge </p>
+                                            <p> IMG: </p>
+                                            <p> <input type="file"  /> </p>
                                     </div>
                                     <div><input type="submit" value="Registrate" name="local" /></div>
                                 </form>
@@ -271,8 +271,8 @@
                                                 ?>
                                             </select><label></label>
                                         </p>
-                                        <p>Imatge:</p>
-                                        <p>insertar aqui imagen<label></label></p>
+                                            <p> IMG: </p>
+                                            <p> <input type="file"  /> </p>
 
                                     </div>
                                     <div><input type="submit" value="Registrate" name="music" /></div>
