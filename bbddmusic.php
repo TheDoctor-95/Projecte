@@ -107,3 +107,28 @@ function editprofill2($aforo, $user) {
     }
     desconectar($con);
 }
+
+function verificarUser2($username, $pass) {
+    $con = conectar("webmusica");
+    $query = "select contrasenya from usuaris where username='$username'";
+    $resultado = mysqli_query($con, $query);
+    $filas = mysqli_num_rows($resultado);
+    desconectar($con);
+    if ($filas > 0) {
+        $fila = mysqli_fetch_array($resultado);
+        extract($fila);
+        return password_verify($pass, $password);
+    } else {    
+        return false;
+    }
+}
+
+function updatePassword2($username, $pass) {
+    $con = conectar("webmusica");
+    $update = "update usuaris set contrasenya='$pass' where username='$username'";
+    if (mysqli_query($con, $update)) {
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
+}

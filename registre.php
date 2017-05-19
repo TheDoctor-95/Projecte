@@ -47,80 +47,104 @@
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
                 <div class='notifications'>
-                <?php
-                if (isset($_POST["fan"])) {
-                    $usu = $_POST["usu"];
-                    if (existeUsuario($usu)) {
-                        echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
-                    } else {
-                        $fpasswd = $_POST["fpasswd"];
-                        $fpasswd2 = $_POST["fpasswd2"];
-                        $fname = $_POST["fname"];
-                        $fsurname = $_POST["fsurname"];
-                        $email = $_POST["email"];
-                        $fnac = $_POST["fnac"];
-                        $tel = $_POST["tel"];
-                        $direccio = $_POST["direccio"];
-                        $ciutat = $_POST["ciutat"];
-                        $genero = $_POST["genero"];
-                        // Registramos el usuario en la bbdd
-                        if ($fpasswd != $fpasswd2) {
-                            echo "Error, las dos contraseñas deben ser iguales";
+                    <?php
+                    if (isset($_POST["fan"])) {
+                        $usu = $_POST["usu"];
+                        if (existeUsuario($usu)) {
+                            echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
                         } else {
-                            insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $direccio, $ciutat, $genero);
-                        }
-                    }
-                }
-                ?>
-                <?php
-                if (isset($_POST["local"])) {
-                    $usu = $_POST["usu"];
-                    if (existeUsuario($usu == true)) {
-                        echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
-                    } else {
-                        $fpasswd = $_POST["fpasswd"];
-                        $fpasswd2 = $_POST["fpasswd2"];
-                        $email = $_POST["email"];
-                        $nomlocal = $_POST["nomlocal"];
-                        $direccio = $_POST["direccio"];
-                        $ciutat = $_POST["ciutat"];
-                        $tel = $_POST["tel"];
-                        $genero = $_POST["genero"];
-                        // Registramos el usuario en la bbdd
-                        if ($fpasswd != $fpasswd2) {
-                            echo "Error, las dos contraseñas deben ser iguales";
-                        } else {
-                            insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero);
-                        }
-                    }
-                }
-                ?>
-                <?php
-                if (isset($_POST["music"])) {
-                    $usu = $_POST["usu"];
-                    if (existeUsuario($usu == true)) {
-                        echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
-                    } else {
-                        $fpasswd = $_POST["fpasswd"];
-                        $fpasswd2 = $_POST["fpasswd2"];
-                        $email = $_POST["email"];
-                        $nomgrup = $_POST["nomgrup"];
-                        $web = $_POST["web"];
-                        $nummembres = $_POST["nummembres"];
-                        $dformacio = $_POST["dformacio"];
-                        $ciutat = $_POST["ciutat"];
-                        $genere = $_POST["genere"];
+                            $fpasswd = $_POST["fpasswd"];
+                            $fpasswd2 = $_POST["fpasswd2"];
+                            $fname = $_POST["fname"];
+                            $fsurname = $_POST["fsurname"];
+                            $email = $_POST["email"];
+                            $fnac = $_POST["fnac"];
+                            $tel = $_POST["tel"];
+                            $direccio = $_POST["direccio"];
+                            $ciutat = $_POST["ciutat"];
+                            $genero = $_POST["genero"];
+                            // Registramos el usuario en la bbdd
+                            $fpasswd = $_POST["fpasswd"];
+                            $fpasswd2 = $_POST["fpasswd2"];
+                            $passcif = password_hash($fpasswd, PASSWORD_DEFAULT);
 
-                        // Registramos el usuario en la bbdd
-                        if ($fpasswd != $fpasswd2) {
-                            echo "Error, las dos contraseñas deben ser iguales";
-                        } else {
-                            insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere);
+                            if ($fpasswd != $fpasswd2) {
+                                echo "Error, las dos contraseñas deben ser iguales";
+                            } else {
+                                insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $direccio, $ciutat, $genero);
+                                session_start();
+                                $_SESSION["user"] = $user;
+                                $_SESSION["type"] = $type;
+                                header("Location: fan.php");
+                            }
                         }
                     }
-                }
-                ?>
-        </div>
+                    ?>
+                    <?php
+                    if (isset($_POST["local"])) {
+                        $usu = $_POST["usu"];
+                        if (existeUsuario($usu == true)) {
+                            echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
+                        } else {
+                            $fpasswd = $_POST["fpasswd"];
+                            $fpasswd2 = $_POST["fpasswd2"];
+                            $email = $_POST["email"];
+                            $nomlocal = $_POST["nomlocal"];
+                            $direccio = $_POST["direccio"];
+                            $ciutat = $_POST["ciutat"];
+                            $tel = $_POST["tel"];
+                            $genero = $_POST["genero"];
+                            // Registramos el usuario en la bbdd
+
+                            $fpasswd = $_POST["fpasswd"];
+                            $fpasswd2 = $_POST["fpasswd2"];
+                            $passcif = password_hash($fpasswd, PASSWORD_DEFAULT);
+
+                            if ($fpasswd != $fpasswd2) {
+                                echo "Error, las dos contraseñas deben ser iguales";
+                            } else {
+                                insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero);
+                                session_start();
+                                $_SESSION["user"] = $user;
+                                $_SESSION["type"] = $type;
+                                header("Location: Local.php");
+                            }
+                        }
+                    }
+                    ?>
+                    <?php
+                    if (isset($_POST["music"])) {
+                        $usu = $_POST["usu"];
+                        if (existeUsuario($usu == true)) {
+                            echo "<p>Ya existe ese nombre de usuario en la bbdd</p>";
+                        } else {
+
+                            $email = $_POST["email"];
+                            $nomgrup = $_POST["nomgrup"];
+                            $web = $_POST["web"];
+                            $nummembres = $_POST["nummembres"];
+                            $dformacio = $_POST["dformacio"];
+                            $ciutat = $_POST["ciutat"];
+                            $genere = $_POST["genere"];
+
+                            // Registramos el usuario en la bbdd
+                            $fpasswd = $_POST["fpasswd"];
+                            $fpasswd2 = $_POST["fpasswd2"];
+                            $passcif = password_hash($fpasswd, PASSWORD_DEFAULT);
+
+                            if ($fpasswd != $fpasswd2) {
+                                echo "Error, las dos contraseñas deben ser iguales";
+                            } else {
+                                insertMusic($usu, $passcif, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere);
+                                session_start();
+                                $_SESSION["user"] = $user;
+                                $_SESSION["type"] = $type;
+                                header("Location: Music.php");
+                            }
+                        }
+                    }
+                    ?>
+                </div>
                 <div id="botons">
                     <button id="fan">FAN</button><button id="local">LOCAL</button><button id="music">MUSIC</button>
                 </div>
@@ -222,8 +246,8 @@
                                                 ?>
                                             </select>
                                         </p>
-                                            <p> IMG: </p>
-                                            <p> <input type="file"  /> </p>
+                                        <p> IMG: </p>
+                                        <p> <input type="file"  /> </p>
                                     </div>
                                     <div><input type="submit" value="Registrate" name="local" /></div>
                                 </form>
@@ -266,8 +290,8 @@
                                                 ?>
                                             </select><label></label>
                                         </p>
-                                            <p> IMG: </p>
-                                            <p> <input type="file"  /> </p>
+                                        <p> IMG: </p>
+                                        <p> <input type="file"  /> </p>
 
                                     </div>
                                     <div><input type="submit" value="Registrate" name="music" /></div>
@@ -279,15 +303,15 @@
                     </div>
                 </div>
 
-             
 
 
-    </section><section class="banner right">
-        <img src= "musica.png" alt="musica" title="musica"/>
-    </section>
-</div>
-<footer>
-    <span>Your Easy Music</span> <a href='Quisom.php'>Qui Som</a> | <a href=''> Copyright</a>
-</footer>
-</body>
+
+            </section><section class="banner right">
+                <img src= "musica.png" alt="musica" title="musica"/>
+            </section>
+        </div>
+        <footer>
+            <span>Your Easy Music</span> <a href='Quisom.php'>Qui Som</a> | <a href=''> Copyright</a>
+        </footer>
+    </body>
 </html>

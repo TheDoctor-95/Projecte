@@ -74,6 +74,25 @@
                 <nav>
 
                     <div class="opcio"><a href="Quisom.php" >Qui sóm</a></div>
+
+                    <div class="opcio"><?php 
+                    if(isset($_SESSION["type"])){
+                    $type = $_SESSION["type"];
+                    if ($type == "Fan") {
+                            echo '<a href="fan.php" >';
+                        } else if ($type == "Local") {
+                            echo '<a href="Local.php" >';
+                        } else if ($type == "Music") {
+                            echo '<a href="Music.php" >';
+                        }                  
+                     echo $type;
+                    }else{
+                        echo '<a href="Benvingut.php" >';
+                        echo "Benvingut";
+                    }
+                        ?></div>
+
+
                     <div class="opcio">Notícies</div>
 
                 </nav>
@@ -91,11 +110,11 @@
                 </div>
                 <div><input type="text" placeHolder="buscar..."/></div>
                 <div><?php if (isset($_SESSION["user"])) {
-                    ?>
+                            ?>
                         <form action='' method='POST'>
                             <button name='logout'>Log Out</button>
                         </form>
-                        <?php } else {
+                    <?php } else {
                         ?>
                         <span id='login'> Entra 
 

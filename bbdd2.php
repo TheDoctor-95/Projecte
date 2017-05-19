@@ -185,14 +185,17 @@ function selectMusicsHome() {
 
 function verificarUser($user, $pass) {
     $con = conectar("webmusica");
-    $query = "select * from usuaris where nom_usuari='$user' and contrasenya='$pass'";
+    $query = "select contrasenya from usuaris where username='$username'";
     $resultado = mysqli_query($con, $query);
-    desconectar($con);
     $filas = mysqli_num_rows($resultado);
-    if ($filas = 1) {
-        return true;
+    desconectar($con);
+    if ($filas > 0) {
+        $fila = mysqli_fetch_array($resultado);
+        extract($fila);
+        return password_verify($pass, $password);
+    } else {    
+        return false;
     }
-    return false;
 }
 
 function getUserType($user) {
