@@ -67,7 +67,7 @@ if (isset($_POST["ordre2"])) {
                     require_once './bbddmusic.php';
                     $user = $_SESSION["user"];
 
-                    $datos = selectUsubyName($user);
+                    $datos = selectUsubyNameM($user);
                     echo '<form id ="formlocal" action="" method="POST" >';
                     $fila = mysqli_fetch_array($datos);
                     extract($fila);
@@ -118,9 +118,9 @@ if (isset($_POST["ordre2"])) {
             $tel = $_POST["tel"];
             $datform = $_POST["datform"];
             $genere = $_POST["genero"];
-            if ($passw != $passw2) {
+            if ($passw != $passw2 && $oldpassw != null) {
                 echo "Error, las dos contraseñas deben ser iguales";
-            } else if ($passw == $oldpassw) {
+            } else if ($passw == $oldpassw && $oldpassw != null) {
                 echo "Error, la contraseña nueva no puede ser igual que la anterior";
             } else {
                 editprofilm($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);

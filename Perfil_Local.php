@@ -66,7 +66,7 @@ if (isset($_POST["ordre2"])) {
                     require_once './bbddmusic.php';
                     $user = $_SESSION["user"];
 
-                    $datos = selectUsubyName($user);
+                    $datos = selectUsubyNameL($user);
                     echo '<form id ="formlocal" action="" method="POST" >';
                     $fila = mysqli_fetch_array($datos);
                     extract($fila);
@@ -82,7 +82,13 @@ if (isset($_POST["ordre2"])) {
                             <p>Email*: </p><p><input type="email"  value="' . $email . '" name="email" required /> </p>
                             <p>Nom del local*: </p><p> <input type="text"  name="nomlocal" value="' . $nom_local . '" required /></p>
                             <p>Direcció*: </p><p><input type="text" name="direccio" value="' . $direccio . '" required/></p>   
-                            <p>Ciutat*: </p><p> <input type="text" name="ciutat" value="' . $nom . '" required /></p> 
+                            <p>Ciutat*: <select name="ciutat" value="' . $nom . '" required>';
+                                                $ciutats = selectCiutats();
+                                                while ($fila = mysqli_fetch_array($ciutats)) {
+                                                    extract($fila);
+                                                    echo "<option value='$id_ciutat'>$nom</option>";
+                                                }
+                    echo '</select></p>
                             <p>Web del local: </p><p> <input type="text" value="' . $web . '" name="web"/></p>
                         </div>
                         <div>                            
@@ -90,7 +96,7 @@ if (isset($_POST["ordre2"])) {
                             <p>Data inauguració: </p><p> <input type="date" value="' . $data_inauguracio . '" name="datinau"></p>
                             <p>IMG: </p>
                             <p>Gènere que es toca al local*:</p><p>    
-                                <select name="genero" >';
+                                <select name="genero" value="' . $nom . '">';
                     $generos = selectGenere();
                     while ($fila = mysqli_fetch_array($generos)) {
                         extract($fila);
@@ -108,7 +114,7 @@ if (isset($_POST["ordre2"])) {
         </div>
         <?php
         require_once './bbddmusic.php';
-        if (isset($_POST["music"])) {
+        if (isset($_POST["local"])) {
             $user = $_SESSION["user"];
             $oldpassw = $_POST["oldpasswd"];
             $passw = $_POST["fpasswd"];
@@ -122,12 +128,13 @@ if (isset($_POST["ordre2"])) {
             $datinau = $_POST["datinau"];
             $genere = $_POST["genero"];
             $aforo = $_POST["aforo"];
-            if ($passw != $passw2) {
+            if ($passw != $passw2 && $oldpassw != null) {
                 echo "Error, las dos contraseñas deben ser iguales";
-            } else if ($passw == $oldpassw) {
+            } else if ($passw == $oldpassw && $oldpassw != null) {
                 echo "Error, la contraseña nueva no puede ser igual que la anterior";
             } else {
-                editprofill($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $aforo, $user);
+                editprofill1($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user);
+                editprofill2($aforo, $user);
                 echo "<p>Dades modificades</p>";
             }
         }

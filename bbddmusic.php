@@ -60,6 +60,13 @@ function deleteapuntar($nusuario, $id_concert) {
     }
     desconectar($con);
 }
+function selectUsubyNameM($name) {
+    $con = conectar("webmusica");
+    $query = "select * from usuaris where usuaris.nom_usuari='$name'";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    return $resultado;
+}
 
 function editprofilm($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user) {
     $con = conectar("webmusica");
@@ -72,7 +79,7 @@ function editprofilm($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $gene
     desconectar($con);
 }
 
-function selectUsubyName($name) {
+function selectUsubyNameL($name) {
     $con = conectar("webmusica");
     $query = "select * from usuaris inner join concerts on usuaris.nom_usuari=concerts.nom_usuari inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat where usuaris.nom_usuari='$name'";
     $resultado = mysqli_query($con, $query);
@@ -80,9 +87,19 @@ function selectUsubyName($name) {
     return $resultado;
 }
 
-function editprofill($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $aforo, $user) {
+function editprofill1($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user) {
     $con = conectar("webmusica");
-    $update = "update usuaris set contrasenya='$passw', email='$email', nom_local='$nlocal', id_ciutat='$ciutat', web='$web', direccio='$direccio', telefon='$tel', data_inauguracio='$datinau' ,id_estil='$genere', aforament_max='$aforo' where nom_usuari='$user'";
+    $update = "update usuaris set usuaris.contrasenya='$passw', usuaris.email='$email', usuaris.nom_local='$nlocal', usuaris.id_ciutat='$ciutat', usuaris.web='$web', usuaris.direccio='$direccio', usuaris.telefon='$tel', usuaris.data_inauguracio='$datinau' ,usuaris.id_estil='$genere' where usuaris.nom_usuari='$user'";
+    if (mysqli_query($con, $update)) {
+        
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
+}
+function editprofill2($aforo, $user) {
+    $con = conectar("webmusica");
+    $update = "update concerts set aforament_max='$aforo' where nom_usuari='$user'";
     if (mysqli_query($con, $update)) {
         
     } else {
