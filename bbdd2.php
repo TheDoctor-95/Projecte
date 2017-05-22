@@ -85,17 +85,11 @@ function selectMusicConcert($id_concert) {
 }
 
 /* fan */
-
-function ProximsConcerts() {
-//Conectamos con la bbdd
+function selectDadesUsu($username) {
     $con = conectar("webmusica");
-//Definimos la consulta
-    $query = "select nom,data_concert from concerts order by data_concert desc";
-//Ejecutamos la consulta, recogiendo el resultado
+    $query = "select * from usuaris where nom_usuari='$username'";
     $resultado = mysqli_query($con, $query);
-//desconectamos de la bbdd
     desconectar($con);
-//devolvemos el resultado de la consulta
     return $resultado;
 }
 
@@ -138,33 +132,126 @@ function VotarLocalConcert() {
     return $resultado;
 }
 
-function insertarVotacioConcert($votacio) {
+function ProximsConcerts() {
+    //Conectamos con la bbdd
+    $con = conectar("webmusica");
+    //Definimos la consulta
+    $query = "select nom,data_concert from concerts order by data_concert desc";
+    //Ejecutamos la consulta, recogiendo el resultado
+    $resultado = mysqli_query($con, $query);
+    //desconectamos de la bbdd
+    desconectar($con);
+    //devolvemos el resultado de la consulta
+    return $resultado;
+}
+
+function VotarConcert() {
+    //Conectamos con la bbdd
+    $con = conectar("webmusica");
+    //Definimos la consulta
+    $query = "select nom_usuari,nom, data_concert, id_concert from concerts ;";
+
+    //Ejecutamos la consulta, recogiendo el resultado
+    $resultado = mysqli_query($con, $query);
+    //desconectamos de la bbdd
+    desconectar($con);
+    //devolvemos el resultado de la consulta
+    return $resultado;
+}
+
+function VotarMusic() {
+    //Conectamos con la bbdd
+    $con = conectar("webmusica");
+    //Definimos la consulta
+    $query = "select * from usuaris where classe_usuari='Music'";
+    //Ejecutamos la consulta, recogiendo el resultado
+    $resultado = mysqli_query($con, $query);
+    //desconectamos de la bbdd
+    desconectar($con);
+    //devolvemos el resultado de la consulta
+    return $resultado;
+}
+
+function insertarVotacioMusic($username, $nom_music) {
 
 
     $con = conectar("webmusica");
-    $insert = "insert into votarconcert values ('fan1', 2, '$votacio')";
+    $insert = "insert into votarmusic values('$username','$nom_music',1)";
+
     if (mysqli_query($con, $insert)) {
-        echo "<p>Votació correcte</p>";
+     
     } else {
         echo mysqli_error($con);
     }
     desconectar($con);
 }
 
-function insertarVotacioMusic($nom_usuari, $votacio) {
-
+function insertarVotacioConcert($username, $id_concert) {
 
     $con = conectar("webmusica");
-    $insert = "update user set votacio=(votacio+$votacio) where nom_usuari='$nom_usuari'";
+    $insert = "insert into votarconcert values" . "('$username', '$id_concert',1)";
 
     if (mysqli_query($con, $insert)) {
-        echo "<p>Votació correcte</p>";
     } else {
         echo mysqli_error($con);
     }
     desconectar($con);
 }
 
+function eliminarVotacioConcert($username, $id_concert) {
+
+    $con = conectar("webmusica");
+
+    $insert = "delete from votarconcert where nom_usuari='$username' and id_concert='$id_concert' ";
+  
+    if (mysqli_query($con, $insert)) {
+       
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
+}
+
+function eliminarVotacioMusic($username, $nom_music) {
+
+    $con = conectar("webmusica");
+
+    $insert = "delete from votarmusic where nom_usuari='$username' and nom_music='$nom_music' ";
+   
+    if (mysqli_query($con, $insert)) {
+       
+    } else {
+        echo mysqli_error($con);
+    }
+    desconectar($con);
+}
+
+function checkvotacioconcert($nom_usuari, $id_concert) {
+    $conexion = conectar("webmusica");
+    $consulta = "select * from votarconcert where nom_usuari='$nom_usuari' and id_concert='$id_concert'";
+    
+    $resultado = mysqli_query($conexion, $consulta);
+    $contador = mysqli_num_rows($resultado);
+    desconectar($conexion);
+    if ($contador == 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkvotaciomusic($nom_usuari, $nom_music) {
+    $conexion = conectar("webmusica");
+    $consulta = "select * from votarmusic where nom_usuari='$nom_usuari' and nom_music='$nom_music'";
+    $resultado = mysqli_query($conexion, $consulta);
+    $contador = mysqli_num_rows($resultado);
+    desconectar($conexion);
+    if ($contador == 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
 //Home
 
 function selectConcertsHome() {
