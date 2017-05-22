@@ -164,8 +164,6 @@
                             $nom_music = $_POST ["nom_usuari"];
 
                             insertarVotacioMusic($username, $nom_music);
-                            
-                            
                         } else if (isset($_POST["borrarmusic"])) {
 
 
@@ -196,7 +194,7 @@
                             } else {
                                 echo "<form action='' method='POST'>"
                                 . "<input type='hidden' name='nom_usuari' value='$nom_usuari'>";
-                                
+
                                 echo '<input type = "submit" name = "borrarmusic" value = "Dislike">';
                                 echo "</form>";
                             }
@@ -204,18 +202,19 @@
 
                             echo "</tr>";
                         }
+                        echo '</table>';
                         ?>
 
                     </div>                    
                 </div>
-                <?php
+<?php
 //                    } else {
 //                        echo "No eres fan.";
 //                    }
 //                } else {
 //                    echo "No estás autentificado.";
 //                }
-                ?>
+?>
 
             </section><section class="banner right">
                 <img src="musica.png" alt="baner"/>
