@@ -5,7 +5,7 @@ require_once './bbdd2.php';
 function insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $direccio, $ciutat, $genero) {
 
     $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,nom,cognoms,email,data_naixement,telefon,direccio,id_ciutat,id_estil) values ('$usu','$fpasswd','$fname','$fsurname','$email','$fnac','$tel','$direccio','$ciutat','$genero')";
+    $insert = "insert into usuaris(nom_usuari,contrasenya,nom,cognoms,email,data_naixement,telefon,direccio,id_ciutat,id_estil,classe_usuari) values ('$usu','$fpasswd','$fname','$fsurname','$email','$fnac','$tel','$direccio','$ciutat','$genero','Fan')";
     if (mysqli_query($con, $insert)) {
         echo "<p>Usuari fan registrat </p>";
     } else {
@@ -17,7 +17,7 @@ function insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $dire
 function insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero) {
 
     $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_local,direccio,id_ciutat,telefon,id_estil) values ('$usu', '$fpasswd', '$email', '$nomlocal', '$direccio', '$ciutat', '$tel', '$genero')";
+    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_local,direccio,id_ciutat,telefon,id_estil,classe_usuari) values ('$usu', '$fpasswd', '$email', '$nomlocal', '$direccio', '$ciutat', '$tel', '$genero','Local')";
     if (mysqli_query($con, $insert)) {
         echo "<p>Usuari local registrat </p>";
     } else {
@@ -26,10 +26,10 @@ function insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel
     desconectar($con);
 }
 
-function insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere) {
+function insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $ciutat, $genere) {
 
     $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_grup,web,numero_components, data_formacio, id_ciutat,usuaris.id_estil) values ('$usu', '$fpasswd', '$email', '$nomgrup', '$web', $nummembres, '$dformacio', '$ciutat', '$genere')";
+    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_grup,web,numero_components,id_ciutat,id_estil,classe_usuari) values ('$usu', '$fpasswd', '$email', '$nomgrup', '$web', $nummembres, '$ciutat', '$genere','Music')";
     if (mysqli_query($con, $insert)) {
         echo "<p>Usuari music registrat </p>";
     } else {
