@@ -88,7 +88,7 @@ function selectUsubyNameL($name) {
     return $resultado;
 }
 
-function editprofill1($email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user) {
+function editprofill($email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user) {
     $con = conectar("webmusica");
     $update = "update usuaris set usuaris.email='$email', usuaris.nom_local='$nlocal', usuaris.id_ciutat='$ciutat', usuaris.web='$web', usuaris.direccio='$direccio', usuaris.telefon='$tel', usuaris.data_inauguracio='$datinau' ,usuaris.id_estil='$genere' where usuaris.nom_usuari='$user'";
     if (mysqli_query($con, $update)) {
@@ -98,9 +98,9 @@ function editprofill1($email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau,
     }
     desconectar($con);
 }
-function editprofill2($aforo, $user) {
+function editprofilf($email, $fname, $fsurname, $direccio, $tel, $data_naixement, $genere, $ciutat, $user) {
     $con = conectar("webmusica");
-    $update = "update concerts set aforament_max='$aforo' where nom_usuari='$user'";
+    $update = "update usuaris set email='$email', nom='$fname', cognoms='$fsurname', direccio='$direccio', telefon='$tel', data_inauguracio='$data_naixement', id_estil='$genere', id_ciutat='$ciutat' where nom_usuari='$user'";
     if (mysqli_query($con, $update)) {
         
     } else {

@@ -62,6 +62,41 @@ if (isset($_POST["ordre2"])) {
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
                 <div class ="local" >
+                    <?php
+                require_once './bbddmusic.php';
+                if (isset($_POST["fan"])) {
+                    $user = $_SESSION["user"];
+
+                    $email = $_POST["email"];
+                    $fname = $_POST["fname"];
+                    $fsurname = $_POST["fsurname"];
+                    $direccio = $_POST["direccio"];
+                    $tel = $_POST["tel"];
+                    $data_naixement = $_POST["fnac"];
+                    $genere = $_POST["genero"];
+                    $ciutat = $_POST["ciutat"];
+                    
+                    $oldpassw = $_POST["oldpasswd"];
+                    if (verificarUser($user, $oldpassw)) {
+                        $passw = $_POST["fpasswd"];
+                        $passw2 = $_POST["fpasswd2"];
+                        $passcif = password_hash($passw, PASSWORD_DEFAULT);
+
+                        if ($passw != $passw2 && $oldpassw != null) {
+                            echo "Error, las dos contraseñas deben ser iguales";
+                        } else if ($passw == $oldpassw && $oldpassw != null) {
+                            echo "Error, la contraseña nueva no puede ser igual que la anterior";
+                        } else {
+                            updatePassword2($user, $passcif);
+                            editprofilf($email, $fname, $fsurname, $direccio, $tel, $data_naixement, $genere, $ciutat, $user);
+                            echo "<p>Dades modificades</p>";
+                            
+                        }
+                    } else {
+                        echo "Contraseña incorrecta";
+                    }
+                }
+                ?>
 
                     <?php
                     require_once './bbddmusic.php';
@@ -81,70 +116,54 @@ if (isset($_POST["ordre2"])) {
                             <p>Repeteix la nova contrasenya:</p><p><input type="password" name="fpasswd2" /></p>
                             </div>
                             <p>Email*: </p><p><input type="email"  value="' . $email . '" name="email" required /> </p>
-                            <p>Nom: </p><p> <input type="text" value="' . $fname . '" name="fname" required /></p>
-                            <p>Cognoms: </p><p> <input type="text" value="' . $fsurname . '" name="fsurname" required /></p>
+                            <p>Nom: </p><p> <input type="text" value="' . $nom . '" name="fname" required /></p>
+                            <p>Cognoms: </p><p> <input type="text" value="' . $cognoms . '" name="fsurname" required /></p>
                             <p>Direcció: </p><p> <input type="text" value="' . $direccio . '" name="direccio" required /></p>
                             <p>Data neixement: </p><p> <input type="text" value="' . $data_naixement . '" name="fnac" required /></p>
-                        
-</div>
+                        </div>
                         <div>                            
                             <p>Telefon de Contacte: </p><p> <input type="tel" value="' . $telefon . '" name="tel" maxlength="9"></p>
-                            <p>Ciutat: </p><p> <input type="date" value="' . $id_ciutat . '" name="ciutat"></p>   
+                            <p>Ciutat*: <select name="ciutat" required>';
+                    $idciutat = $id_ciutat;
+                    $ciutats = selectCiutats();
+                    while ($fila = mysqli_fetch_array($ciutats)) {
+                        extract($fila);
+                        echo "<option value='$id_ciutat'";
+                        if ($id_ciutat == $idciutat) {
+                            echo "selected";
+                        }
+                        echo " >$nom</option>";
+                    }
+                    echo '</select></p>
                             <p>IMG: </p>
-                            <p>Gènere musical preferit*:</p><p>    
-                                <select name="genero" >';
+                             <p>Gènere que es toca al local*:</p><p>    
+                                <select name="genero">';
+
+                    $idact = $id_estil;
                     $generos = selectGenere();
                     while ($fila = mysqli_fetch_array($generos)) {
                         extract($fila);
-                        echo "<option value='$id_estil'>$nom</option>";
+                        echo "<option value='$id_estil'";
+
+                        if ($id_estil == $idact) {
+                            echo "selected";
+                        }
+
+                        echo " >$nom</option>";
                     }
+                    echo "</select></p></div>";
                     ?>
 
-                    </select>
-                    </p>
+                    <div><input type="submit" value="Guardar Cambios" name="fan" /></div>
+                    </form>
                 </div>
-                <div><input type="submit" value="Guardar Cambios" name="music" /></div>
-                </form>
+                
+            </section><section class="banner right">
+                <img src= "musica.png" alt="musica" title="musica"/>
+            </section>
         </div>
-        <?php
-        require_once './bbddmusic.php';
-        if (isset($_POST["music"])) {
-            $user = $_SESSION["user"];
-
-            $email = $_POST["email"];
-            $ngrup = $_POST["fname"];
-            $ncomp = $_POST["numero_components"];
-            $web = $_POST["web"];
-            $tel = $_POST["tel"];
-            $datform = $_POST["datform"];
-            $genere = $_POST["genero"];
-
-            $oldpassw = $_POST["oldpasswd"];
-            if (verificarUser($user, $oldpassw)) {
-                $passw = $_POST["fpasswd"];
-                $passw2 = $_POST["fpasswd2"];
-                $passcif = password_hash($passw, PASSWORD_DEFAULT);
-
-                if ($passw != $passw2 && $oldpassw != null) {
-                    echo "Error, las dos contraseñas deben ser iguales";
-                }
-            } else if ($passw == $oldpassw && $oldpassw != null) {
-                echo "Error, la contraseña nueva no puede ser igual que la anterior";
-            } else {
-                updatePassword2($user, $passcif);
-                editprofilm($email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);
-                echo "<p>Dades modificades</p>";
-            }
-        } else {
-            echo "Contraseña incorrecta";
-        }
-        ?>
-    </section><section class="banner right">
-        <img src= "musica.png" alt="musica" title="musica"/>
-    </section>
-</div>
-<footer>
-    <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
-</footer>
-</body>
+        <footer>
+            <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
+        </footer>
+    </body>
 </html>

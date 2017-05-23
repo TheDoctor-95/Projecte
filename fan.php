@@ -15,8 +15,8 @@
             <div id="mig">
                 <div><img src="lletra.png" alt="titul web" /></div>
                 <nav>
-                    <a href=""><div class="opcio">Fan</div></a>
-                    <a href=""><div class="opcio">Perfil</div></a>
+                    <a href="Perfil_Fan.php"><div class="opcio">Perfil</div></a>
+                    <a href="fan.php"><div class="opcio">Notificacions/Avisos</div></a>
 
                 </nav>
 

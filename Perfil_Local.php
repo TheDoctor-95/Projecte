@@ -87,7 +87,7 @@ if (isset($_POST["ordre2"])) {
                                 echo "Error, la contraseña nueva no puede ser igual que la anterior";
                             } else {
                                 updatePassword2($user, $passcif);
-                                editprofill1($email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user);
+                                editprofill($email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user);
                                 echo "<p>Dades modificades</p>";
                             }
                         } else {
