@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -73,9 +72,9 @@
                             } else {
                                 insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $direccio, $ciutat, $genero);
                                 session_start();
-                                $_SESSION["user"] = $user;
-                                $_SESSION["type"] = $type;
-                                header("Location: fan.php");
+                                $_SESSION["user"] = $usu;
+                                $_SESSION["type"] = 'Fan';
+                                header("Location: Home.php");
                             }
                         }
                     }
@@ -93,7 +92,9 @@
                             $direccio = $_POST["direccio"];
                             $ciutat = $_POST["ciutat"];
                             $tel = $_POST["tel"];
+                            $web = $_POST["web"];
                             $genero = $_POST["genero"];
+                            $datinau = $_POST["datinau"];
                             // Registramos el usuario en la bbdd
 
                             $fpasswd = $_POST["fpasswd"];
@@ -103,11 +104,11 @@
                             if ($fpasswd != $fpasswd2) {
                                 echo "Error, las dos contraseñas deben ser iguales";
                             } else {
-                                insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero);
+                                insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $web, $datinau, $genero);
                                 session_start();
-                                $_SESSION["user"] = $user;
-                                $_SESSION["type"] = $type;
-                                header("Location: Local.php");
+                                $_SESSION["user"] = $usu;
+                                $_SESSION["type"] = 'Local';
+                                header("Location: Home.php");
                             }
                         }
                     }
@@ -126,6 +127,7 @@
                             $dformacio = $_POST["dformacio"];
                             $ciutat = $_POST["ciutat"];
                             $genere = $_POST["genere"];
+                            $tel = $_POST["tel"];
 
                             // Registramos el usuario en la bbdd
                             $fpasswd = $_POST["fpasswd"];
@@ -135,11 +137,11 @@
                             if ($fpasswd != $fpasswd2) {
                                 echo "Error, las dos contraseñas deben ser iguales";
                             } else {
-                                insertMusic($usu, $passcif, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere);
+                                insertMusic($usu, $passcif, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere, $tel);
                                 session_start();
-                                $_SESSION["user"] = $user;
-                                $_SESSION["type"] = $type;
-                                header("Location: Music.php");
+                                $_SESSION["user"] = $usu;
+                                $_SESSION["type"] = 'Music';
+                                header("Location: Home.php");
                             }
                         }
                     }
@@ -161,8 +163,8 @@
                                         <div>
                                             <p><input type="hidden" value="fan" name="type" /></p>
                                             <p>Nick o nom d'usuari*: </p><p><input type="text"  name="usu" required /> </p>
-                                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
-                                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
+                                            <p>Contrasenya*:</p><p><input type="password" name="fpasswd" required/> </p>
+                                            <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required/></p>
                                             <p>Nom: </p><p> <input type="text"  name="fname" /> </p>
                                             <p>Cognoms:</p><p><input type="text"  name="fsurname" /> </p>
                                             <p>Email*:</p><p> <input type="email"  name="email" required /></p>    
@@ -171,7 +173,7 @@
                                         </div>
                                         <div>
                                             <p>Data naixement</p><p><input type="date" name="fnac" /></p>
-                                            <p>Telèfon:</p><p> <input type="text" name="tel"></p>
+                                            <p>Telèfon:</p><p> <input type="text" name="tel" maxlength="9"></p>
                                             <p>Direcció:</p><p> <input type="text" name="direccio"></p> 
                                             <p>Ciutat</p> 
                                             <p><select name="ciutat">
@@ -215,15 +217,16 @@
                                     <div>
                                         <p><input type="hidden" value="local" name="type" /></p>
                                         <p>Nick o nom d'usuari*:</p><p> <input type="text"  name="usu" required /> </p>
-                                        <p>Contrasenya*:</p><p><input type="password" name="fpasswd" /> </p>
-                                        <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" /></p>
+                                        <p>Contrasenya*:</p><p><input type="password" name="fpasswd" required/> </p>
+                                        <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required/></p>
                                         <p>Email*: </p><p><input type="email"  name="email" required /> </p>
                                         <p>Nom del local*: </p><p> <input type="text"  name="nomlocal" required /></p>
+                                        <p>Data inauguració local: </p><p> <input type="date"  name="datinau" required /></p>
 
 
                                     </div>
                                     <div>
-                                        <p>Direcció*: </p><p><input type="text" name="direccio" /></p> 
+                                        <p>Direcció*: </p><p><input type="text" name="direccio" required/></p> 
                                         <p>Ciutat</p>
                                         <p><select name="ciutat">
                                                 <?php
@@ -234,7 +237,8 @@
                                                 }
                                                 ?>
                                             </select></p> 
-                                        <p>Telèfon*: </p><p> <input type="tel" name="tel"></p>
+                                        <p>Telèfon: </p><p> <input type="tel" name="tel" maxlength="9"></p>
+                                        <p>Web: </p><p><input type="url"  name="web"><label></label></p>
                                         <p>Genere:</p>
                                         <p><select name="genero" >
                                                 <?php
@@ -261,8 +265,9 @@
                                         <p>Contrasenya*:</p><p><input type="password" name="fpasswd" required><label></label> </p>
                                         <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required><label></label><p>
                                         <p>Email*: </p><p><input type="email"  name="email" required><label></label> </p>    
-                                        <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup"> <label></label>   </p>
-                                        <p>Web*: </p><p><input type="url"  name="web"><label></label></p>
+                                        <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup" required> <label></label>   </p>
+                                        <p>Web: </p><p><input type="url"  name="web"><label></label></p>
+                                        <p>Telèfon:</p><p> <input type="text" name="tel" maxlength="9"></p>
                                     </div>
                                     <div>
 

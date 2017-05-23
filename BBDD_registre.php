@@ -13,11 +13,10 @@ function insertFan($usu, $fpasswd, $fname, $fsurname, $email, $fnac, $tel, $dire
     }
     desconectar($con);
 }
-
-function insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $genero) {
+function insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel, $web, $datinau, $genero) {
 
     $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_local,direccio,id_ciutat,telefon,id_estil,classe_usuari) values ('$usu', '$fpasswd', '$email', '$nomlocal', '$direccio', '$ciutat', '$tel', '$genero','Local')";
+    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_local,direccio,id_ciutat,telefon, web, data_inauguracio, id_estil,classe_usuari) values ('$usu', '$fpasswd', '$email', '$nomlocal', '$direccio', '$ciutat', '$tel', '$web', '$datinau', '$genero','Local')";
     if (mysqli_query($con, $insert)) {
         echo "<p>Usuari local registrat </p>";
     } else {
@@ -26,10 +25,10 @@ function insertLocal($usu, $fpasswd, $email, $nomlocal, $direccio, $ciutat, $tel
     desconectar($con);
 }
 
-function insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $ciutat, $genere) {
+function insertMusic($usu, $fpasswd, $email, $nomgrup, $web, $nummembres, $dformacio, $ciutat, $genere, $tel) {
 
     $con = conectar("webmusica");
-    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_grup,web,numero_components,id_ciutat,id_estil,classe_usuari) values ('$usu', '$fpasswd', '$email', '$nomgrup', '$web', $nummembres, '$ciutat', '$genere','Music')";
+    $insert = "insert into usuaris(nom_usuari,contrasenya,email,nom_grup,web,numero_components, data_formacio, id_ciutat,usuaris.id_estil, telefon,classe_usuari) values ('$usu', '$fpasswd', '$email', '$nomgrup', '$web', $nummembres, '$dformacio', '$ciutat', '$genere', '$tel','Music')";
     if (mysqli_query($con, $insert)) {
         echo "<p>Usuari music registrat </p>";
     } else {

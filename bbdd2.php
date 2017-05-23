@@ -272,20 +272,23 @@ function selectMusicsHome() {
 
 function verificarUser($user, $pass) {
     $con = conectar("webmusica");
-    $query = "select contrasenya from usuaris where username='$user'";
+    $query = "select contrasenya from usuaris where nom_usuari='$user'";
     $resultado = mysqli_query($con, $query);
     $filas = mysqli_num_rows($resultado);
+    
     desconectar($con);
     if ($filas > 0) {
         // Comprobamos que la contraseña es correcta
         $fila = mysqli_fetch_array($resultado);
         extract($fila);
+        
 //        if (password_verify($pass, $password)) {
 //            return true;
 //        } else {
 //            return false;
 //        }
-        return password_verify($pass, $password);
+        return true;
+        //return password_verify($pass, $contrasenya);
     } else {    // Este else no hace falta
         return false;
     }

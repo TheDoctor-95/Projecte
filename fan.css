@@ -1,0 +1,109 @@
+/* FAN --------------------------------------------------------------------------------------------*/
+
+#general{
+    text-align: center;
+  
+
+}
+#dalt{
+    width: 100%;
+}
+
+#taules{
+    width: 100%;
+
+}
+
+.taula{
+
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+
+}
+#taulaconcerts{
+    display: inline-block;
+    width: 49%;
+    margin: 20px;
+    margin-left: 41px;
+}
+#faninfo{
+    width: 28%;
+    height: 244px;
+    background-color: whitesmoke;
+    display: inline-block;
+    border-radius: 35px;
+    margin-top: 38px;
+}
+#img{
+    width: 34%;
+    height: 135px;
+    background-color: pink;
+    margin-top: 30px;
+}
+#info{
+    width: 50%;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+#sliders{
+    width: 100%;
+}
+.slider_fan{
+    display: block;
+    height: 210px;
+    width: 90%;
+    margin: 5%;
+
+
+}
+
+#taules{
+    display: block;
+    margin-top: 10px;
+}
+
+table{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-collapse: collapse;
+}
+
+td{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;   
+}
+
+#toptable>td{
+    background-color: black;
+    color: white;
+
+}
+tr>td:nth-child(1){
+    width: 150px;
+}
+tr>td:nth-child(2){
+    width: 150px;
+}
+tr>td:nth-child(3){
+    width: 150px;
+}
+tr>td:nth-child(4){
+    width: 150px;
+}
+tr>td:nth-child(5){
+    width: autopx;
+}
+tr>td:nth-child(6){
+    width: 10px;
+}
+
+#table_slider{
+    display: inline-block
+}
+
+

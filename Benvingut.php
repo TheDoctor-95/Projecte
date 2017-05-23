@@ -41,7 +41,11 @@
                 <p>
                   Instruccions d'ús de la pàgina
                   <br><br>
-                  Passos a seguir
+                  Les funcionalitats d'aquesta pàgina estan dividides en funció del tipus d'usuari que s'hi registra:<br>
+                  * Music: Artistes o Grups Musicals<br>
+                  * Local: Propietaris de locals interessats en organitzar concerts<br>
+                  * Fan: Persones interessades en anar a veure els concerts<br><br>
+                  Avans de res, heu de seleccionar la opció "Registra't" o "Entra", si ja esteu registrats, en el Menú superior de la dreta.
                   
                 </p></div>     
             </section><section class="banner right">

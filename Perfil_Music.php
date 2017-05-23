@@ -2,20 +2,20 @@
 session_start();
 require_once './bbdd2.php';
 if (!isset($_SESSION["ordre1"])) {
-$_SESSION["ordre1"] = "concerts.nom desc";
+    $_SESSION["ordre1"] = "concerts.nom desc";
 }
 
 if (isset($_POST["ordre1"])) {
-$_SESSION["ordre1"] = $_POST["ordre1"];
+    $_SESSION["ordre1"] = $_POST["ordre1"];
 }
 
 
 if (!isset($_SESSION["ordre2"])) {
-$_SESSION["ordre2"] = "concerts.nom desc";
+    $_SESSION["ordre2"] = "concerts.nom desc";
 }
 
 if (isset($_POST["ordre2"])) {
-$_SESSION["ordre2"] = $_POST["ordre2"];
+    $_SESSION["ordre2"] = $_POST["ordre2"];
 }
 ?>
 <html>
@@ -62,6 +62,40 @@ $_SESSION["ordre2"] = $_POST["ordre2"];
                 <img src= "musica.png" alt="musica" title="musica"/>
             </section><section id="content">
                 <div class ="local" >
+                    <?php
+                require_once './bbddmusic.php';
+                if (isset($_POST["music"])) {
+                    $user = $_SESSION["user"];
+
+                    $email = $_POST["email"];
+                    $ngrup = $_POST["nom_grup"];
+                    $ncomp = $_POST["numero_components"];
+                    $web = $_POST["web"];
+                    $tel = $_POST["tel"];
+                    $datform = $_POST["datform"];
+                    $genere = $_POST["genero"];
+
+                    $oldpassw = $_POST["oldpasswd"];
+                    if (verificarUser($user, $oldpassw)) {
+                        $passw = $_POST["fpasswd"];
+                        $passw2 = $_POST["fpasswd2"];
+                        $passcif = password_hash($passw, PASSWORD_DEFAULT);
+
+                        if ($passw != $passw2 && $oldpassw != null) {
+                            echo "Error, las dos contraseñas deben ser iguales";
+                        } else if ($passw == $oldpassw && $oldpassw != null) {
+                            echo "Error, la contraseña nueva no puede ser igual que la anterior";
+                        } else {
+                            updatePassword2($user, $passcif);
+                            editprofilm($email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);
+                            echo "<p>Dades modificades</p>";
+                            
+                        }
+                    } else {
+                        echo "Contraseña incorrecta";
+                    }
+                }
+                ?>
 
                     <?php
                     require_once './bbddmusic.php';
@@ -91,60 +125,31 @@ $_SESSION["ordre2"] = $_POST["ordre2"];
                             <p>IMG: </p>
                             <p>Gènere musical del grup*:</p><p>    
                                 <select name="genero" >';
+                    $idact=$id_estil;
                     $generos = selectGenere();
                     while ($fila = mysqli_fetch_array($generos)) {
-                    extract($fila);
-                    echo "<option value='$id_estil'>$nom</option>";
+                        extract($fila);
+                        echo "<option value='$id_estil'";
+
+                        if ($id_estil == $idact) {
+                            echo "selected";
+                        }
+
+                        echo " >$nom</option>";
                     }
+                    echo "</select></p></div>";
                     ?>
 
-                    </select>
-                    </p>
+                    <div><input type="submit" value="Guardar Cambios" name="music" /></div>
+                    </form>
                 </div>
-                <div><input type="submit" value="Guardar Cambios" name="music" /></div>
-                </form>
+                
+            </section><section class="banner right">
+                <img src= "musica.png" alt="musica" title="musica"/>
+            </section>
         </div>
-        <?php
-        require_once './bbddmusic.php';
-        if (isset($_POST["music"])) {
-        $user = $_SESSION["user"];
-
-        $email = $_POST["email"];
-        $ngrup = $_POST["nom_grup"];
-        $ncomp = $_POST["numero_components"];
-        $web = $_POST["web"];
-        $tel = $_POST["tel"];
-        $datform = $_POST["datform"];
-        $genere = $_POST["genero"];
-
-        $oldpassw = $_POST["oldpasswd"];
-        if (verificarUser($user, $oldpassw)) {
-        $passw = $_POST["fpasswd"];
-        $passw2 = $_POST["fpasswd2"];
-        $passcif = password_hash($passw, PASSWORD_DEFAULT);
-
-        if ($passw != $passw2 && $oldpassw != null) {
-        echo "Error, las dos contraseñas deben ser iguales";
-        } } else if ($passw == $oldpassw && $oldpassw != null) {
-        echo "Error, la contraseña nueva no puede ser igual que la anterior";
-        }
-
-        else {
-        updatePassword2($user, $passcif);
-        editprofilm($email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user);
-        echo "<p>Dades modificades</p>";
-        }
-        } else {
-        echo "Contraseña incorrecta";
-        }
-
-        ?>
-    </section><section class="banner right">
-        <img src= "musica.png" alt="musica" title="musica"/>
-    </section>
-</div>
-<footer>
-    <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
-</footer>
-</body>
+        <footer>
+            <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
+        </footer>
+    </body>
 </html>

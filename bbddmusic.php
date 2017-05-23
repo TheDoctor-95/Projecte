@@ -68,9 +68,10 @@ function selectUsubyNameM($name) {
     return $resultado;
 }
 
-function editprofilm($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user) {
+function editprofilm($email, $ngrup, $ncomp, $web, $tel, $datform, $genere, $user) {
     $con = conectar("webmusica");
-    $update = "update usuaris set contrasenya='$passw', email='$email', nom_grup='$ngrup', numero_components='$ncomp', web='$web', telefon='$tel', data_formacio='$datform' ,id_estil='$genere' where nom_usuari='$user'";
+    $update = "update usuaris set email='$email', nom_grup='$ngrup', numero_components='$ncomp',"
+            . " web='$web', telefon='$tel', data_formacio='$datform' ,id_estil='$genere' where nom_usuari='$user'";
     if (mysqli_query($con, $update)) {
         
     } else {
@@ -81,15 +82,15 @@ function editprofilm($passw, $email, $ngrup, $ncomp, $web, $tel, $datform, $gene
 
 function selectUsubyNameL($name) {
     $con = conectar("webmusica");
-    $query = "select * from usuaris inner join concerts on usuaris.nom_usuari=concerts.nom_usuari inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat where usuaris.nom_usuari='$name'";
+    $query = "select * from usuaris left join concerts on usuaris.nom_usuari=concerts.nom_usuari inner join ciutats on usuaris.id_ciutat=ciutats.id_ciutat where usuaris.nom_usuari='$name' group by usuaris.nom_usuari";
     $resultado = mysqli_query($con, $query);
     desconectar($con);
     return $resultado;
 }
 
-function editprofill1($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user) {
+function editprofill1($email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user) {
     $con = conectar("webmusica");
-    $update = "update usuaris set usuaris.contrasenya='$passw', usuaris.email='$email', usuaris.nom_local='$nlocal', usuaris.id_ciutat='$ciutat', usuaris.web='$web', usuaris.direccio='$direccio', usuaris.telefon='$tel', usuaris.data_inauguracio='$datinau' ,usuaris.id_estil='$genere' where usuaris.nom_usuari='$user'";
+    $update = "update usuaris set usuaris.email='$email', usuaris.nom_local='$nlocal', usuaris.id_ciutat='$ciutat', usuaris.web='$web', usuaris.direccio='$direccio', usuaris.telefon='$tel', usuaris.data_inauguracio='$datinau' ,usuaris.id_estil='$genere' where usuaris.nom_usuari='$user'";
     if (mysqli_query($con, $update)) {
         
     } else {
@@ -110,7 +111,7 @@ function editprofill2($aforo, $user) {
 
 function updatePassword2($username, $pass) {
     $con = conectar("webmusica");
-    $update = "update usuaris set contrasenya='$pass' where username='$username'";
+    $update = "update usuaris set contrasenya='$pass' where nom_usuari='$username'";
     if (mysqli_query($con, $update)) {
     } else {
         echo mysqli_error($con);

@@ -64,6 +64,37 @@ if (isset($_POST["ordre2"])) {
                 <div class ="local" >
                     <?php
                     require_once './bbddmusic.php';
+                    if (isset($_POST["local"])) {
+                        $user = $_SESSION["user"];
+                        $email = $_POST["email"];
+                        $nlocal = $_POST["nomlocal"];
+                        $ciutat = $_POST["ciutat"];
+                        $web = $_POST["web"];
+                        $direccio = $_POST["direccio"];
+                        $tel = $_POST["tel"];
+                        $datinau = $_POST["datinau"];
+                        $genere = $_POST["genero"];
+
+                        $oldpassw = $_POST["oldpasswd"];
+                        if (verificarUser($user, $oldpassw)) {
+                            $passw = $_POST["fpasswd"];
+                            $passw2 = $_POST["fpasswd2"];
+                            $passcif = password_hash($passw, PASSWORD_DEFAULT);
+
+                            if ($passw != $passw2 && $oldpassw != null) {
+                                echo "Error, las dos contraseñas deben ser iguales";
+                            } else if ($passw == $oldpassw && $oldpassw != null) {
+                                echo "Error, la contraseña nueva no puede ser igual que la anterior";
+                            } else {
+                                updatePassword2($user, $passcif);
+                                editprofill1($email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user);
+                                echo "<p>Dades modificades</p>";
+                            }
+                        } else {
+                            echo "Contraseña incorrecta";
+                        }
+                    }
+
                     $user = $_SESSION["user"];
 
                     $datos = selectUsubyNameL($user);
@@ -82,12 +113,17 @@ if (isset($_POST["ordre2"])) {
                             <p>Email*: </p><p><input type="email"  value="' . $email . '" name="email" required /> </p>
                             <p>Nom del local*: </p><p> <input type="text"  name="nomlocal" value="' . $nom_local . '" required /></p>
                             <p>Direcció*: </p><p><input type="text" name="direccio" value="' . $direccio . '" required/></p>   
-                            <p>Ciutat*: <select name="ciutat" value="' . $nom . '" required>';
-                                                $ciutats = selectCiutats();
-                                                while ($fila = mysqli_fetch_array($ciutats)) {
-                                                    extract($fila);
-                                                    echo "<option value='$id_ciutat'>$nom</option>";
-                                                }
+                            <p>Ciutat*: <select name="ciutat" required>';
+                    $idciutat = $id_ciutat;
+                    $ciutats = selectCiutats();
+                    while ($fila = mysqli_fetch_array($ciutats)) {
+                        extract($fila);
+                        echo "<option value='$id_ciutat'";
+                        if ($id_ciutat == $idciutat) {
+                            echo "selected";
+                        }
+                        echo " >$nom</option>";
+                    }
                     echo '</select></p>
                             <p>Web del local: </p><p> <input type="text" value="' . $web . '" name="web"/></p>
                         </div>
@@ -96,56 +132,36 @@ if (isset($_POST["ordre2"])) {
                             <p>Data inauguració: </p><p> <input type="date" value="' . $data_inauguracio . '" name="datinau"></p>
                             <p>IMG: </p>
                             <p>Gènere que es toca al local*:</p><p>    
-                                <select name="genero" value="' . $nom . '">';
+                                <select name="genero">';
+
+                    $idact = $id_estil;
                     $generos = selectGenere();
                     while ($fila = mysqli_fetch_array($generos)) {
                         extract($fila);
-                        echo "<option value='$id_estil'>$nom</option>";
+                        echo "<option value='$id_estil'";
+
+                        if ($id_estil == $idact) {
+                            echo "selected";
+                        }
+
+                        echo " >$nom</option>";
                     }
                     echo '</select>
-                    </p>
-                    <p>Aforo: </p><p> <input type="number" name="aforo" value="' . $aforament_max . '"></p>';
+                    </p></div><div><input type="submit" value="Guardar Cambios" name="local" /></div></form>';
                     ?>
 
 
-                </div>
-                <div><input type="submit" value="Guardar Cambios" name="local" /></div>
-                </form>
-        </div>
-        <?php
-        require_once './bbddmusic.php';
-        if (isset($_POST["local"])) {
-            $user = $_SESSION["user"];
-            $oldpassw = $_POST["oldpasswd"];
-            $passw = $_POST["fpasswd"];
-            $passw2 = $_POST["fpasswd2"];
-            $email = $_POST["email"];
-            $nlocal = $_POST["nomlocal"];
-            $ciutat = $_POST["ciutat"];
-            $web = $_POST["web"];
-            $direccio = $_POST["direccio"];
-            $tel = $_POST["tel"];
-            $datinau = $_POST["datinau"];
-            $genere = $_POST["genero"];
-            $aforo = $_POST["aforo"];
-            if ($passw != $passw2 && $oldpassw != null) {
-                echo "Error, las dos contraseñas deben ser iguales";
-            } else if ($passw == $oldpassw && $oldpassw != null) {
-                echo "Error, la contraseña nueva no puede ser igual que la anterior";
-            } else {
-                editprofill1($passw, $email, $nlocal, $ciutat, $web, $direccio, $tel, $datinau, $genere, $user);
-                editprofill2($aforo, $user);
-                echo "<p>Dades modificades</p>";
-            }
-        }
-        ?>
 
-    </section><section class="banner right">
-        <img src= "musica.png" alt="musica" title="musica"/>
-    </section>
-</div>
-<footer>
-    <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
-</footer>
-</body>
+                </div>
+
+
+            </section><section class="banner right">
+                <img src= "musica.png" alt="musica" title="musica"/>
+            </section>
+        </div>
+        <footer>
+            <span>Your Easy Music</span> <a href=''>Qui Som</a> | <a href=''> Copyright</a>
+        </footer>
+    </body>
 </html>
+
