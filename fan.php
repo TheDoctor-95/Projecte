@@ -32,7 +32,9 @@
                     </div>
                 </div>
                 <div><input type="text" placeHolder="Buscar..."/></div>
-                <div><a href="">Sortir</a> </div>
+                <div><form action='home.php' method='POST'>
+                        <button name='logout'>Sortir</button>
+                    </form></div>
             </div>
         </header>
 

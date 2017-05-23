@@ -201,6 +201,8 @@
 
                                             <p> IMG: </p>
                                             <p> <input type="file"  /> </p>
+                                        </div>
+                                            
                                             <div class="submit"><input type="submit" value="Registrate" name="fan" /></div>
                                     </form>
 
@@ -208,7 +210,7 @@
 
 
 
-                                </div>
+                                
                             </div>
 
 
@@ -267,10 +269,11 @@
                                         <p>Email*: </p><p><input type="email"  name="email" required><label></label> </p>    
                                         <p>Nom del grup/cantant*: </p><p><input type="text"  name="nomgrup" required> <label></label>   </p>
                                         <p>Web: </p><p><input type="url"  name="web"><label></label></p>
-                                        <p>Telèfon:</p><p> <input type="text" name="tel" maxlength="9"></p>
+                                        
                                     </div>
                                     <div>
 
+                                        <p>Telèfon:</p><p> <input type="text" name="tel" maxlength="9"></p>
 
                                         <p>Data formacio: </p><p><input type="date"  name="dformacio"><label></label></p>
                                         <p>Numero de membres del grup*: </p><p><input type="number"  name="nummembres"><label></label></p>

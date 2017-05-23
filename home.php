@@ -93,8 +93,6 @@
                         ?></div>
 
 
-                    <div class="opcio">Notícies</div>
-
                 </nav>
 
             </div>
