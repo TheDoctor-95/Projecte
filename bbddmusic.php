@@ -118,3 +118,13 @@ function updatePassword2($username, $pass) {
     }
     desconectar($con);
 }
+
+function selectGeneresbyname($name) {
+    $con = conectar("webmusica");
+    $query = "select * from estils where id_estil='$name'";
+    $resultado = mysqli_query($con, $query);
+    desconectar($con);
+    $result=  mysqli_fetch_array($resultado);
+    extract($result);
+    return $nom;
+}

@@ -165,8 +165,8 @@
                                             <p>Nick o nom d'usuari*: </p><p><input type="text"  name="usu" required /> </p>
                                             <p>Contrasenya*:</p><p><input type="password" name="fpasswd" required/> </p>
                                             <p>Repeteix la contrasenya*:</p><p><input type="password" name="fpasswd2" required/></p>
-                                            <p>Nom: </p><p> <input type="text"  name="fname" /> </p>
-                                            <p>Cognoms:</p><p><input type="text"  name="fsurname" /> </p>
+                                            <p>Nom*: </p><p> <input type="text"  name="fname" required/> </p>
+                                            <p>Cognoms*:</p><p><input type="text"  name="fsurname" required/> </p>
                                             <p>Email*:</p><p> <input type="email"  name="email" required /></p>    
 
 

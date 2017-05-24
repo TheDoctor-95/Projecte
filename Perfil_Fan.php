@@ -116,10 +116,10 @@ if (isset($_POST["ordre2"])) {
                             <p>Repeteix la nova contrasenya:</p><p><input type="password" name="fpasswd2" /></p>
                             </div>
                             <p>Email*: </p><p><input type="email"  value="' . $email . '" name="email" required /> </p>
-                            <p>Nom: </p><p> <input type="text" value="' . $nom . '" name="fname" required /></p>
-                            <p>Cognoms: </p><p> <input type="text" value="' . $cognoms . '" name="fsurname" required /></p>
-                            <p>Direcció: </p><p> <input type="text" value="' . $direccio . '" name="direccio" required /></p>
-                            <p>Data neixement: </p><p> <input type="text" value="' . $data_naixement . '" name="fnac" required /></p>
+                            <p>Nom*: </p><p> <input type="text" value="' . $nom . '" name="fname" required /></p>
+                            <p>Cognoms*: </p><p> <input type="text" value="' . $cognoms . '" name="fsurname" required /></p>
+                            <p>Direcció*: </p><p> <input type="text" value="' . $direccio . '" name="direccio" required /></p>
+                            <p>Data neixement*: </p><p> <input type="text" value="' . $data_naixement . '" name="fnac" required /></p>
                         </div>
                         <div>                            
                             <p>Telefon de Contacte: </p><p> <input type="tel" value="' . $telefon . '" name="tel" maxlength="9"></p>
