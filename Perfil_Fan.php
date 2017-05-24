@@ -136,7 +136,7 @@ if (isset($_POST["ordre2"])) {
                     }
                     echo '</select></p>
                             <p>IMG: </p>
-                             <p>Gènere que es toca al local*:</p><p>    
+                             <p>Gènere preferit:</p><p>    
                                 <select name="genero">';
 
                     $idact = $id_estil;
